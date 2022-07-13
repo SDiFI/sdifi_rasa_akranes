@@ -1,8 +1,8 @@
-# sdifi_rasa_docker_3
+# sdifi_rasa_akranes
 
-Dockerfile & resources to build Rasa image (version 3.0) and data to train and test on.
+Dockerfile & resources to build Rasa image (version 3.0) and data to train and test on for Akranes use case.
 
-## Installation & Docker build
+## Installation
 
 The Convbert language model is included as a submodule, so either clone this directory using the command:
 
@@ -16,38 +16,16 @@ git clone git@github.com:SDiFI/sdifi_rasa_3_docker.git
 git submodule update --init
 ```
 
-Once everything is checked out and the repo cloned, run the following to build the docker image:
+## Docker build, training and testing
+
+The docker commands to train and test the model are the same as in our original sdifi_rasa_docker_3 repo. The file restart.sh contains all commands necessary to build the docker images, start an action server called action-server2, train using the current data and run the rasa server in a shell. It expects a docker network called my-project3, so first create that network with the command:
 
 ```bash
-docker build -f dockerfile -t sdifi_rasa_3 .
+docker network create my-project3
 ```
 
-## Training
-
-To train the model:
+and then, if you have made changes to any data or code, you can re-build, train and open a rasa server with:
 
 ```bash
-docker run -v $(pwd):/app sdifi_rasa_3:latest train --domain domain.yml --data data --out models
+bash restart.sh
 ```
-
-## Running
-
-To test the model (with default training data, can only respond to a greeting, a thank you, an empty message or a goodbye in Icelandic):
-
-### Interactive shell
-
-```bash
-docker run -it -v $(pwd):/app sdifi_rasa_3:latest shell
-```
-
-(Add the --debug flag in order to view logs, confidence threshold of predictions, etc.)
-
-### Web widget
-
-In order to start rasa and test it via a web chat widget, expose port 5005 in docker and enable web api-access :
-
-```bash
-docker run -p 5005:5005 -it -v $(pwd):/app sdifi_rasa_3:latest run -m models --enable-api --cors "*" --debug
-```
-
-Then open the file [webchat/index.html](/webchat/index.html) in a web browser.
