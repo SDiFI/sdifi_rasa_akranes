@@ -7,12 +7,12 @@ Dockerfile & resources to build Rasa image (version 3.0) and data to train and t
 The Convbert language model is included as a submodule, so either clone this directory using the command:
 
 ```bash
-git clone --recurse-submodules git@github.com:SDiFI/sdifi_rasa_3_docker.git
+git clone --recurse-submodules git@github.com:SDiFI/sdifi_rasa_akranes.git
 ```
 or:
 
 ```bash
-git clone git@github.com:SDiFI/sdifi_rasa_3_docker.git
+git clone git@github.com:SDiFI/sdifi_rasa_akranes.git
 git submodule update --init
 ```
 
