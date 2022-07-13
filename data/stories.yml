@@ -1,0 +1,48 @@
+version: "3.0"
+ 
+stories:
+ 
+ - story: greet_path
+   steps:
+   - intent: greet
+   - action: utter_greet
+   
+
+ - story: tell_joke
+   steps:
+   - intent: ask_for_joke
+   - action: action_joke
+
+#  - story: ask_for_email_path
+#    steps:
+#    - intent: ask_for_email
+#    - action: action_lookup_employee
+
+#  - story: ask_for_title_path
+#    steps:
+#    - intent: ask_for_title
+#    - action: action_lookup_title
+  
+ - story: thank_path
+   steps:
+   - intent: thank
+   - action: utter_thank
+ 
+ - story: bye_path
+   steps:
+   - intent: bye
+   - action: utter_bye
+
+#  - story: get_contact_info_path
+#    steps:
+#    - intent: greet
+#    - action: utter_greet
+#    - action: utter_offer_help
+#    - intent: get_contact_info
+#    - action: utter_contact_info
+#    - action: utter_offer_more_help
+
+ - story: get_contact_info_path
+   steps:
+   - intent: get_contact_info
+   - action: action_get_contact_info

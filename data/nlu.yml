@@ -1,0 +1,88 @@
+version: "3.0"
+ 
+nlu:
+ - intent: greet
+   examples: |
+     - Hæ
+     - Hæ!
+     - Góðan daginn!
+     - Góðan dag.
+     - Daginn.
+     - Halló
+     - Halló!
+     - Sæll vertu
+     - Sæl vertu
+     - Blessaður
+     - Blessuð
+ 
+ - intent: bye
+   examples: |
+     - Bless bless!
+     - Bæ!
+     - bless
+     - Sjáumst!
+     - Sjáumst síðar.
+     - Vertu sæll
+     - Vertu sæl
+ 
+ - intent: thank
+   examples: |
+     - Takk!
+     - Takk kærlega!
+     - Þakka þér
+     - Takk fyrir
+     - Bestu þakkir!
+
+ - intent: ask_for_joke
+   examples: |
+     - Segðu mér eitthvað fyndið á ensku
+
+ - intent: get_contact_info
+   examples: |
+     - Hvernig næ ég í [Sævar Frey Þráinsson](contact)
+     - Hvernig get ég haft samband við [Valgerður Janusdóttir](contact)
+     - Hvar get ég nálgast [Svala Hreinsdóttir](contact)
+     - Ég þarf að tala við [Ásta Jóna Ásmundsdóttir](contact)
+
+
+ - intent: get_contact_title
+   examples: |
+     - Hvaða starfi gegnir [Kristín Björg Jónsdóttir](contact)
+     - Hvað gerir [Laufey Jónsdóttir](contact)
+     - Við hvað vinnur [Sveinborg Kristjánsdóttir](contact)
+     
+
+ - intent: get_contact_email_info
+   examples: |
+     - Hvað er netfangið hjá [Sævar Freyr Þráinsson](contact)
+     - Hvar get ég sent póst á [Ólafur Ragnar](contact)
+     - Hvað er tölvupóstfangið hjá [Dagný Hauksdóttir](contact)
+
+
+ - lookup: contact
+   examples: |
+     - Sigurður Páll Harðarson
+     - Alfreð Alfreðsson
+     - Anna Berglind Einarsdóttir
+     - Anna Þóra Gísladóttir
+     - Ásbjörn Egilsson
+     - Björn Breiðfjörð Gíslason
+     - Hafdís Sigurþórsdóttir
+     - Halla Marta Árnadóttir
+     - Jón Arnar Sverrisson
+     - Karl Jóhann Haagensen
+     - Svala Hreinsdóttir
+     - Andrea Marta Vigfúsdóttir
+     - Ásta Jóna Ásmundsdóttir
+     - Berglind Jóhannesdóttir
+     - Erla Björg Kristjánsdóttir
+     - Hrefna Rún Ákadóttir
+     - Hrönn Ásgeirsdóttir
+     - Kristín Björg Jónsdóttir
+     - Laufey Jónsdóttir
+     - Lilja Lind Sturlaugsdóttir
+     - Sólveig Sigurðardóttir
+     - Sveinborg Kristjánsdóttir
+     - Vigdís Elfa Jónsdóttir
+     - Sævar Freyr Þráinsson
+     - Dagný Hauksdóttir

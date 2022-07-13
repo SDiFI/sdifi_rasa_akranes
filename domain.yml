@@ -1,0 +1,77 @@
+version: "3.0"
+ 
+intents:
+  - greet
+  - bye
+  - thank
+  - ask_for_joke
+  - get_contact_info
+  - get_contact_title
+  - get_contact_email_info
+
+entities:
+  - contact
+  - department
+  - responsibility
+
+slots:
+  contact:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: contact
+  department:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: department
+  responsibility:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: responsibility
+
+actions:
+  - utter_greet
+  - utter_bye
+  - utter_not_understood
+  - utter_offer_help
+  - utter_thank
+  - utter_responsible_department
+  - utter_responsible_employee
+  - utter_contact_info
+  - action_joke
+  - action_lookup_employee
+  - action_lookup_title
+  - action_get_contact_info
+ 
+responses:
+  utter_thank:
+   - text: Verði þér að góðu!
+
+  utter_greet:
+   - text: Halló hér!
+
+  utter_bye:
+   - text: Sjáumst!
+
+  utter_not_understood:
+   - text: Ég náði þessu ekki alveg
+   - text: Þetta skildi ég ekki
+   - text: Ég skildi þetta því miður ekki
+   - text: Ertu til í að umorða þetta?
+
+  utter_responsible_department:
+   - text: "<TODO call to database/API> Félagsleg heimaþjónusta heyrir undir velferðar- og mannréttindasvið. Hér er hlekkur á umsókn um félagslega heimaþjónustu: https://akranes.is"
+
+  utter_responsible_employee:
+   - text: "<TODO call to database/API> Sviðsstjóri velferðar- og mannréttindasviðs er Svala Hreinsdóttir. Hún veitir nánari upplýsingar í tölvupósti á netfangið svala.hreinsdottir@akranes.is og í síma 433-1000."
+
+  utter_offer_help:
+   - text: Hvernig get ég aðstoðað?
+
+  utter_offer_more_help:
+   - text: Er eitthvað fleira sem ég get gert fyrir þig
+
+  utter_contact_info:
+   - text: Þú fylltir slottið contact með upplýsingum {contact}

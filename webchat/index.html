@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+      <style>
+
+      </style>
+  <title>The Sdifi Rasa Chatbot Demo</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/@sdifi/rasa-webchat@1.1.0-dev1/lib/index.js"></script>
+    <script>
+     window.onload = () => {
+       WebChat.default(
+         {
+           customData: { language: "is" },
+           socketUrl: "http://localhost:5005",
+           // add other props here
+         },
+         null
+       );
+     }
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,13 @@
+version: "3.0"
+
+rules:
+- rule: Ask user to rephrase in case of low confidence classification.
+  steps:
+  - intent: nlu_fallback
+  - action: utter_not_understood
+  
+- rule: Ask user to rephrase in case of no input.
+  steps:
+  - intent: None
+  - action: utter_not_understood
+
