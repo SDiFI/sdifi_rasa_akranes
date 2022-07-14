@@ -69,6 +69,7 @@
     <org:hasMember>https://grammatek.com/munic/akranes#HallaMartaÁrnadóttir</org:hasMember>
     <org:hasMember>https://grammatek.com/munic/akranes#JónArnarSverrisson</org:hasMember>
     <org:hasMember>https://grammatek.com/munic/akranes#KarlJóhannHaagensen</org:hasMember>
+    <org:purpose></org:purpose>
   </rdf:Description>
     
 <rdf:Description rdf:about="https://grammatek.com/munic/akranes/Skóla-ogfrístundasvið">
@@ -165,7 +166,7 @@
 <foaf:Person rdf:about="https://grammatek.com/munic/akranes#SigurðurPállHarðarson">
       <foaf:mbox>sigurdur.pall.hardarson@akranes.is</foaf:mbox>
       <org:headOf>https://grammatek.com/munic/akranes/Skipulags-ogumhverfissvið</org:headOf>
-      <org:role>sviðsstjóri skipulags- og umhverfissviðs</org:role>
+      <foaf:title>sviðsstjóri skipulags- og umhverfissviðs</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Harðarson</foaf:familyName>
       <foaf:firstName>Sigurður</foaf:firstName>
@@ -177,7 +178,7 @@
       <org:memberOf>https://grammatek.com/munic/akranes/Skipulags-ogumhverfissvið</org:memberOf>
       <org:headOf>https://grammatek.com/munic/akranes/Áhaldahús</org:headOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SigurðurPállHarðarson</org:reportsTo>
-      <org:role>rekstrarstjóri áhaldahúss</org:role>
+      <foaf:title>rekstrarstjóri áhaldahúss</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Alfreðsson</foaf:familyName>
       <foaf:firstName>Alfreð</foaf:firstName>
@@ -191,7 +192,7 @@
       <foaf:mbox>annabe@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skipulags-ogumhverfissvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SigurðurPállHarðarson</org:reportsTo>
-      <org:role>þjónustufulltrúi</org:role>
+      <foaf:title>þjónustufulltrúi</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Einarsdóttir</foaf:familyName>
       <foaf:firstName>Anna</foaf:firstName>
@@ -202,7 +203,7 @@
       <foaf:mbox>annathg@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skipulags-ogumhverfissvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SigurðurPállHarðarson</org:reportsTo>
-      <org:role>fulltrúi</org:role>
+      <foaf:title>fulltrúi</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Gísladóttir</foaf:familyName>
       <foaf:firstName>Anna</foaf:firstName>
@@ -213,7 +214,7 @@
       <foaf:mbox>asbjorn@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skipulags-ogumhverfissvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SigurðurPállHarðarson</org:reportsTo>
-      <org:role>verkefnastjóri</org:role>
+      <foaf:title>verkefnastjóri</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Egilsson</foaf:familyName>
       <foaf:firstName>Ásbjörn</foaf:firstName>
@@ -224,7 +225,7 @@
       <foaf:mbox>bjornbg@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skipulags-ogumhverfissvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SigurðurPállHarðarson</org:reportsTo>
-      <org:role>verkefnastjóri</org:role>
+      <foaf:title>verkefnastjóri</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Gíslason</foaf:familyName>
       <foaf:firstName>Björn</foaf:firstName>
@@ -235,7 +236,7 @@
       <foaf:mbox>hafdis.sigurthorsdottir@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skipulags-ogumhverfissvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SigurðurPállHarðarson</org:reportsTo>
-      <org:role>fulltrui</org:role>
+      <foaf:title>fulltrui</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Sigurþórsdóttir</foaf:familyName>
       <foaf:firstName>Hafdís</foaf:firstName>
@@ -249,7 +250,8 @@
       <foaf:mbox>halla@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skipulags-ogumhverfissvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SigurðurPállHarðarson</org:reportsTo>
-      <org:role>skipulagsfulltrúi</org:role>
+      <foaf:title>skipulagsfulltrúi</foaf:title>
+      <org:role>Skipulagsmál</org:role>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Árnadóttir</foaf:familyName>
       <foaf:firstName>Halla</foaf:firstName>
@@ -260,7 +262,8 @@
       <foaf:mbox>jonsverris@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skipulags-ogumhverfissvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SigurðurPállHarðarson</org:reportsTo>
-      <org:role>garðyrkjustjóri og umsjónarmaður vinnuskóla</org:role>
+      <foaf:title>garðyrkjustjóri og umsjónarmaður vinnuskóla</foaf:title>
+      <org:role>Garðamál</org:role>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Sverrisson</foaf:familyName>
       <foaf:firstName>Jón</foaf:firstName>
@@ -274,7 +277,8 @@
       <foaf:mbox>karljh@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skipulags-ogumhverfissvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SigurðurPállHarðarson</org:reportsTo>
-      <org:role>byggingarfulltrúi</org:role>
+      <foaf:title>byggingarfulltrúi</foaf:title>
+      <org:role>Byggingarmál</org:role>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Haagensen</foaf:familyName>
       <foaf:firstName>Karl</foaf:firstName>
@@ -284,7 +288,8 @@
 <foaf:Person rdf:about="https://grammatek.com/munic/akranes#ValgerðurJanusdóttir">
       <foaf:mbox>skoliogfristund@akranes.is</foaf:mbox>
       <org:headOf>https://grammatek.com/munic/akranes/Skóla-ogfrístundasvið</org:headOf>
-      <org:role>sviðsstjóri Skóla- og frístundasviðs</org:role>
+      <foaf:title>sviðsstjóri Skóla- og frístundasviðs</foaf:title>
+      <org:role>Skólamál</org:role>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Janusdóttir</foaf:familyName>
       <foaf:firstName>Valgerður</foaf:firstName>
@@ -295,7 +300,7 @@
       <foaf:mbox>bergros.olafsdottir@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skóla-ogfrístundasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#ValgerðurJanusdóttir</org:reportsTo>
-      <org:role>talmeinafræðingur</org:role>
+      <foaf:title>talmeinafræðingur</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Ólafsdóttir</foaf:familyName>
       <foaf:firstName>Bergrós</foaf:firstName>
@@ -306,7 +311,7 @@
       <foaf:mbox>dagnyh@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skóla-ogfrístundasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#ValgerðurJanusdóttir</org:reportsTo>
-      <org:role>verkefnastjóri</org:role>
+      <foaf:title>verkefnastjóri</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Hauksdóttir</foaf:familyName>
       <foaf:firstName>Dagný</foaf:firstName>
@@ -316,7 +321,8 @@
 <foaf:Person rdf:about="https://grammatek.com/munic/akranes#SteinarAdolfsson">
       <foaf:mbox>steinara@akranes.is</foaf:mbox>
       <org:headOf>https://grammatek.com/munic/akranes/Stjórnsýslu-ogfjármálasvið</org:headOf>
-      <org:role>sviðsstjóri stjórnsýslu- og fjármálasviðs og persónuverndarfulltrúi</org:role>
+      <foaf:title>sviðsstjóri stjórnsýslu- og fjármálasviðs og persónuverndarfulltrúi</foaf:title>
+      <org:role>Stjórnsýslumál</org:role>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Adolfsson</foaf:familyName>
       <foaf:firstName>Steinar</foaf:firstName>
@@ -327,7 +333,7 @@
       <foaf:mbox>adalheidur@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Stjórnsýslu-ogfjármálasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SteinarAdolfsson</org:reportsTo>
-      <org:role>launafulltrúi</org:role>
+      <foaf:title>launafulltrúi</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Eiríksdóttir</foaf:familyName>
       <foaf:firstName>Aðalheiður</foaf:firstName>
@@ -338,7 +344,8 @@
       <foaf:mbox>asdis.gunnarsdottir@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Stjórnsýslu-ogfjármálasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SteinarAdolfsson</org:reportsTo>
-      <org:role>deildarstjóri launadeildar Akraneskaupstaðar.</org:role>
+      <foaf:title>deildarstjóri launadeildar Akraneskaupstaðar.</foaf:title>
+      <org:role>Launamál</org:role>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Gunnarsdóttir</foaf:familyName>
       <foaf:firstName>Ásdís</foaf:firstName>
@@ -352,7 +359,7 @@
       <foaf:mbox>dagmar@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Stjórnsýslu-ogfjármálasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SteinarAdolfsson</org:reportsTo>
-      <org:role>innheimtufulltrúi og gjaldkeri í fjárreiðudeild</org:role>
+      <foaf:title>innheimtufulltrúi og gjaldkeri í fjárreiðudeild</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Clothier</foaf:familyName>
       <foaf:firstName>Dagmar</foaf:firstName>
@@ -366,7 +373,8 @@
       <foaf:mbox>kristjana.olafsdottir@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Stjórnsýslu-ogfjármálasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SteinarAdolfsson</org:reportsTo>
-      <org:role>deildarstjóri fjármála</org:role>
+      <foaf:title>deildarstjóri fjármála</foaf:title>
+      <org:role>Fjármál</org:role>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Ólafsdóttir</foaf:familyName>
       <foaf:firstName>Kristjana</foaf:firstName>
@@ -377,7 +385,7 @@
       <foaf:mbox>adalheidur@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Stjórnsýslu-ogfjármálasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SteinarAdolfsson</org:reportsTo>
-      <org:role>launafulltrúi</org:role>
+      <foaf:title>launafulltrúi</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Eiríksdóttir</foaf:familyName>
       <foaf:firstName>Aðalheiður</foaf:firstName>
@@ -388,7 +396,7 @@
       <foaf:mbox>moeidur.sigvaldadottir@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Stjórnsýslu-ogfjármálasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SteinarAdolfsson</org:reportsTo>
-      <org:role>bókari í bókhaldsdeild</org:role>
+      <foaf:title>bókari í bókhaldsdeild</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Sigvaldadóttir</foaf:familyName>
       <foaf:firstName>Móeiður</foaf:firstName>
@@ -402,7 +410,7 @@
       <foaf:mbox>rannveig.thorisdottir@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Stjórnsýslu-ogfjármálasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SteinarAdolfsson</org:reportsTo>
-      <org:role>launafulltrúi</org:role>
+      <foaf:title>launafulltrúi</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Þórisdóttir</foaf:familyName>
       <foaf:firstName>Rannveig</foaf:firstName>
@@ -417,7 +425,7 @@
       <org:memberOf>https://grammatek.com/munic/akranes/Stjórnsýslu-ogfjármálasvið</org:memberOf>
       <org:memberOf>https://grammatek.com/munic/akranes/Skrifstofabæjarstjóra</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SteinarAdolfsson</org:reportsTo>
-      <org:role>þjónustufulltrúi í þjónustudeild og launafulltrúi í launadeild</org:role>
+      <foaf:title>þjónustufulltrúi í þjónustudeild og launafulltrúi í launadeild</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Sigurðardóttir</foaf:familyName>
       <foaf:firstName>Selma</foaf:firstName>
@@ -431,7 +439,8 @@
       <foaf:mbox>sigmundur.amundason@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Stjórnsýslu-ogfjármálasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SteinarAdolfsson</org:reportsTo>
-      <org:role>deildarstjóri bókhaldsdeildar</org:role>
+      <foaf:title>deildarstjóri bókhaldsdeildar</foaf:title>
+      <org:role>Bókhaldsmál</org:role>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Ámundason</foaf:familyName>
       <foaf:firstName>Sigmundur</foaf:firstName>
@@ -445,7 +454,7 @@
       <foaf:mbox>sigridurv@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Stjórnsýslu-ogfjármálasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SteinarAdolfsson</org:reportsTo>
-      <org:role>bókari</org:role>
+      <foaf:title>bókari</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Valdimarsdóttir</foaf:familyName>
       <foaf:firstName>Sigríður</foaf:firstName>
@@ -459,6 +468,8 @@
       <foaf:mbox>svala.hreinsdottir@akranes.is</foaf:mbox>
       <org:headOf>https://grammatek.com/munic/akranes/Velferðar-ogmannréttindasvið</org:headOf>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
+      <foaf:title>sviðsstjóri velferðar- og mannréttindasviðs</foaf:title>
+      <org:role>Velferðarmál</org:role>
       <foaf:familyName>Hreinsdóttir</foaf:familyName>
       <foaf:firstName>Svala</foaf:firstName>
       <foaf:name>Svala Hreinsdóttir</foaf:name>
@@ -467,7 +478,7 @@
 <foaf:Person rdf:about="https://grammatek.com/munic/akranes#AndreaMartaVigfúsdóttir">
       <org:memberOf>https://grammatek.com/munic/akranes/Velferðar-ogmannréttindasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SvalaHreinsdóttir</org:reportsTo>
-      <org:role>félagsráðgjafi</org:role>
+      <foaf:title>félagsráðgjafi</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Vigfúsdóttir</foaf:familyName>
       <foaf:firstName>Andrea</foaf:firstName>
@@ -478,7 +489,7 @@
       <foaf:mbox>asta.jona.asmundsdottir@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Velferðar-ogmannréttindasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SvalaHreinsdóttir</org:reportsTo>
-      <org:role>félagsráðgjafi</org:role>
+      <foaf:title>félagsráðgjafi</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Ásmundsdóttir</foaf:familyName>
       <foaf:firstName>Ásta Jóna</foaf:firstName>
@@ -489,7 +500,7 @@
       <foaf:mbox>berglind.johannesdottir@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Velferðar-ogmannréttindasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SvalaHreinsdóttir</org:reportsTo>
-      <org:role>ráðgjafaþroskaþjálfi</org:role>
+      <foaf:title>ráðgjafaþroskaþjálfi</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Jóhannesdóttir</foaf:familyName>
       <foaf:firstName>Berglind</foaf:firstName>
@@ -500,7 +511,7 @@
       <foaf:mbox>erlabk@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Velferðar-ogmannréttindasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SvalaHreinsdóttir</org:reportsTo>
-      <org:role>yfirfélagsráðgjafi</org:role>
+      <foaf:title>yfirfélagsráðgjafi</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Kristjánsdóttir</foaf:familyName>
       <foaf:firstName>Erla</foaf:firstName>
@@ -511,7 +522,7 @@
       <foaf:mbox>hrefna.run.akadottir@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Velferðar-ogmannréttindasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SvalaHreinsdóttir</org:reportsTo>
-      <org:role>félagsráðgjafi</org:role>
+      <foaf:title>félagsráðgjafi</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Ákadóttir</foaf:familyName>
       <foaf:firstName>Hrefna</foaf:firstName>
@@ -522,7 +533,7 @@
       <foaf:mbox>hronn.asgeirsdottir@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Velferðar-ogmannréttindasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SvalaHreinsdóttir</org:reportsTo>
-      <org:role>félagsráðgjafi</org:role>
+      <foaf:title>félagsráðgjafi</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Ásgeirsdóttir</foaf:familyName>
       <foaf:firstName>Hrönn</foaf:firstName>
@@ -533,7 +544,7 @@
       <foaf:mbox>kristinbj@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Velferðar-ogmannréttindasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SvalaHreinsdóttir</org:reportsTo>
-      <org:role>verkefnastjóri heimaþjónustu</org:role>
+      <foaf:title>verkefnastjóri heimaþjónustu</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Jónsdóttir</foaf:familyName>
       <foaf:firstName>Kristín</foaf:firstName>
@@ -544,7 +555,7 @@
       <foaf:mbox>laufey.jonsdottir@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Velferðar-ogmannréttindasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SvalaHreinsdóttir</org:reportsTo>
-      <org:role>verkefnastjóri heimaþjónustu</org:role>
+      <foaf:title>verkefnastjóri heimaþjónustu</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Jónsdóttir</foaf:familyName>
       <foaf:firstName>Laufey</foaf:firstName>
@@ -555,7 +566,7 @@
       <foaf:mbox>lilja.lind@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Velferðar-ogmannréttindasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SvalaHreinsdóttir</org:reportsTo>
-      <org:role>ráðgjafi í málefnum fatlaðs fólks</org:role>
+      <foaf:title>ráðgjafi í málefnum fatlaðs fólks</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Sturlaugsdóttir</foaf:familyName>
       <foaf:firstName>Lilja Lind</foaf:firstName>
@@ -566,7 +577,7 @@
       <foaf:mbox>solveigs@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Velferðar-ogmannréttindasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SvalaHreinsdóttir</org:reportsTo>
-      <org:role>verkefnastjóri í undirbúningsvinnu fyrir Akranes - barnvænt samfélag</org:role>
+      <foaf:title>verkefnastjóri í undirbúningsvinnu fyrir Akranes - barnvænt samfélag</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Sigurðardóttir</foaf:familyName>
       <foaf:firstName>Sólveig</foaf:firstName>
@@ -577,7 +588,8 @@
       <foaf:mbox>sveinborg.kristjansdottir@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Velferðar-ogmannréttindasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SvalaHreinsdóttir</org:reportsTo>
-      <org:role>félagsmálastjóri</org:role>
+      <foaf:title>félagsmálastjóri</foaf:title>
+      <org:role>Félagsþjónusta</org:role>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Kristjánsdóttir</foaf:familyName>
       <foaf:firstName>Sveinborg</foaf:firstName>
@@ -588,7 +600,7 @@
       <foaf:mbox>vigdisej@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Velferðar-ogmannréttindasvið</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#SvalaHreinsdóttir</org:reportsTo>
-      <org:role>ráðgjafi í undirbúningsvinnu fyrir Akranes - barnvænt samfélag</org:role>
+      <foaf:title>ráðgjafi í undirbúningsvinnu fyrir Akranes - barnvænt samfélag</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Jónsdóttir</foaf:familyName>
       <foaf:firstName>Vigdís</foaf:firstName>
@@ -598,7 +610,7 @@
 <foaf:Person rdf:about="https://grammatek.com/munic/akranes#ArnbjörgKjartansdóttir">
       <foaf:mbox>arnbjorgk@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skrifstofabæjarstjóra</org:memberOf>
-      <org:role>matráður</org:role>
+      <foaf:title>matráður</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Kjartansdóttir</foaf:familyName>
       <foaf:firstName>Arnbjörg</foaf:firstName>
@@ -608,7 +620,7 @@
 <foaf:Person rdf:about="https://grammatek.com/munic/akranes#GuðnýJÓlafsdóttir">
       <foaf:mbox>gudny.olafsdottir@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skrifstofabæjarstjóra</org:memberOf>
-      <org:role>verkefnastjóri skjalamála</org:role>
+      <foaf:title>verkefnastjóri skjalamála</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Ólafsdóttir</foaf:familyName>
       <foaf:firstName>Guðný</foaf:firstName>
@@ -621,7 +633,7 @@
 <foaf:Person rdf:about="https://grammatek.com/munic/akranes#HarpaHallsdóttir">
       <foaf:mbox>harpa@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skrifstofabæjarstjóra</org:memberOf>
-      <org:role>mannauðsstjóri</org:role>
+      <foaf:title>mannauðsstjóri</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Hallsdóttir</foaf:familyName>
       <foaf:firstName>Harpa</foaf:firstName>
@@ -631,7 +643,7 @@
 <foaf:Person rdf:about="https://grammatek.com/munic/akranes#HeiðrúnJónsdóttir">
       <foaf:mbox>anna.heidrun.jonsdottir@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skrifstofabæjarstjóra</org:memberOf>
-      <org:role>þjónustufulltrúi</org:role>
+      <foaf:title>þjónustufulltrúi</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Jónsdóttir</foaf:familyName>
       <foaf:firstName>Heiðrún</foaf:firstName>
@@ -644,7 +656,7 @@
 <foaf:Person rdf:about="https://grammatek.com/munic/akranes#JóhannGuðmundsson">
       <foaf:mbox>joi@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skrifstofabæjarstjóra</org:memberOf>
-      <org:role>kerfisstjóri</org:role>
+      <foaf:title>kerfisstjóri</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Guðmundsson</foaf:familyName>
       <foaf:firstName>Jóhann</foaf:firstName>
@@ -654,7 +666,7 @@
 <foaf:Person rdf:about="https://grammatek.com/munic/akranes#MaríaSigríðurKjartansdóttir">
       <foaf:mbox>maria.kjartansdottir@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skrifstofabæjarstjóra</org:memberOf>
-      <org:role>þjónustufulltrúi</org:role>
+      <foaf:title>þjónustufulltrúi</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Kjartansdóttir</foaf:familyName>
       <foaf:firstName>María</foaf:firstName>
@@ -664,7 +676,7 @@
 <foaf:Person rdf:about="https://grammatek.com/munic/akranes#SigrúnÁgústaHelgudóttir">
       <foaf:mbox>sigrunagusta@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skrifstofabæjarstjóra</org:memberOf>
-      <org:role>verkefnastjóri</org:role>
+      <foaf:title>verkefnastjóri</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Helgudóttir</foaf:familyName>
       <foaf:firstName>Sigrún</foaf:firstName>
@@ -674,7 +686,7 @@
 <foaf:Person rdf:about="https://grammatek.com/munic/akranes#ValdísEyjólfsdóttir">
       <foaf:mbox>valdise@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Skrifstofabæjarstjóra</org:memberOf>
-      <org:role>verkefnastjóri Verkefnastofu</org:role>
+      <foaf:title>verkefnastjóri Verkefnastofu</foaf:title>
       <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Eyjólfsdóttir</foaf:familyName>
       <foaf:firstName>Valdís</foaf:firstName>
@@ -684,7 +696,7 @@
 <foaf:Person rdf:about="https://grammatek.com/munic/akranes#ÁrniMagnússon">
       <org:memberOf>https://grammatek.com/munic/akranes/Áhaldahús</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#AlfreðAlfreðsson</org:reportsTo>
-      <org:role>iðnaðarmaður</org:role>
+      <foaf:title>iðnaðarmaður</foaf:title>
       <foaf:familyName>Magnússon</foaf:familyName>
       <foaf:firstName>Árni</foaf:firstName>
       <foaf:name>Árni Magnússon</foaf:name>
@@ -693,7 +705,7 @@
 <foaf:Person rdf:about="https://grammatek.com/munic/akranes#ElíasMelstedKristjánsson">
       <org:memberOf>https://grammatek.com/munic/akranes/Áhaldahús</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#AlfreðAlfreðsson</org:reportsTo>
-      <org:role>starfsmaður</org:role>
+      <foaf:title>starfsmaður</foaf:title>
       <foaf:familyName>Kristjánsson</foaf:familyName>
       <foaf:firstName>Elías</foaf:firstName>
       <foaf:name>Elías Melsted Kristjánsson</foaf:name>
@@ -702,7 +714,7 @@
 <foaf:Person rdf:about="https://grammatek.com/munic/akranes#HaraldurFriðriksson">
       <org:memberOf>https://grammatek.com/munic/akranes/Áhaldahús</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#AlfreðAlfreðsson</org:reportsTo>
-      <org:role>iðnaðarmaður</org:role>
+      <foaf:title>iðnaðarmaður</foaf:title>
       <foaf:familyName>Friðriksson</foaf:familyName>
       <foaf:firstName>Haraldur</foaf:firstName>
       <foaf:name>Haraldur Friðriksson</foaf:name>
@@ -712,7 +724,7 @@
       <foaf:mbox>ludvik.helgason@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Áhaldahús</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#AlfreðAlfreðsson</org:reportsTo>
-      <org:role>iðnaðarmaður</org:role>
+      <foaf:title>iðnaðarmaður</foaf:title>
       <foaf:familyName>Helgason</foaf:familyName>
       <foaf:firstName>Lúðvík</foaf:firstName>
       <foaf:name>Lúðvík Ibsen Helgason</foaf:name>
@@ -725,7 +737,8 @@
       <foaf:mbox>dyraeftirlit@akranes.is</foaf:mbox>
       <org:memberOf>https://grammatek.com/munic/akranes/Áhaldahús</org:memberOf>
       <org:reportsTo>https://grammatek.com/munic/akranes#AlfreðAlfreðsson</org:reportsTo>
-      <org:role>dýraeftirlitsmaður</org:role>
+      <foaf:title>dýraeftirlitsmaður</foaf:title>
+      <org:role>Dýraeftirlit</org:role>
       <foaf:familyName>Ólafsson</foaf:familyName>
       <foaf:firstName>Sigurður</foaf:firstName>
       <foaf:name>Sigurður Ólafsson</foaf:name>
