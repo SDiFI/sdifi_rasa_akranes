@@ -4,6 +4,12 @@ Dockerfile & resources to build Rasa image (version 3.0) and data to train and t
 
 ## Installation
 
+Make sure git lfs is installed to pull large files from the repo.
+
+```bash
+git lfs install
+```
+
 The Convbert language model is included as a submodule, so either clone this directory using the command:
 
 ```bash
