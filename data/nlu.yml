@@ -43,20 +43,23 @@ nlu:
      - Hvernig get ég haft samband við [Valgerður Janusdóttir](contact)
      - Hvar get ég nálgast [Svala Hreinsdóttir](contact)
      - Ég þarf að tala við [Ásta Jóna Ásmundsdóttir](contact)
+     - Mig vantar að ná í [Halla Marta Árnadóttir](contact)
 
-
- - intent: get_contact_title
+ - intent: get_contact_number
    examples: |
-     - Hvaða starfi gegnir [Kristín Björg Jónsdóttir](contact)
-     - Hvað gerir [Laufey Jónsdóttir](contact)
-     - Við hvað vinnur [Sveinborg Kristjánsdóttir](contact)
-     
+     - Mig vantar símanúmerið hjá [Svala Hreinsdóttir](contact)
+     - Ég þarf að hringja í [Hrönn Ásgeirsdóttir](contact)
 
- - intent: get_contact_email_info
+ - intent: get_contact_email
    examples: |
-     - Hvað er netfangið hjá [Sævar Freyr Þráinsson](contact)
-     - Hvar get ég sent póst á [Ólafur Ragnar](contact)
-     - Hvað er tölvupóstfangið hjá [Dagný Hauksdóttir](contact)
+     - Hvað er netfangið hjá [Berglind Jóhannesdóttir](contact)
+     - Hvar get ég sent póst á [Björn Breiðfjörð Gíslason](contact)
+     - Hvað er tölvupóstfangið hjá [Hrefna Rún Ákadóttir](contact)
+
+ - intent: get_filled_slot
+   examples: |
+     - Gef mer slot
+     - Slot nuna
 
 
  - lookup: contact
