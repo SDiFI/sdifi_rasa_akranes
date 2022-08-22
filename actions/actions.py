@@ -15,6 +15,7 @@ from rasa_sdk.events import Restarted
 from rasa_sdk.executor import CollectingDispatcher
 
 import sparql_queries
+import declension
 
 class ActionJoke(Action):
   def name(self):
