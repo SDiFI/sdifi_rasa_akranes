@@ -34,7 +34,7 @@
     <skos:prefLabel xml:lang="is">Skrifstofa Akraneskaupstaðar</skos:prefLabel>
     <org:siteOf>https://grammatek.com/munic/akranes</org:siteOf>
     <vcard:hasTelephone rdf:parseType="Resource">
-        <vcard:hasValue>tel:433 1000</vcard:hasValue>
+        <vcard:hasValue>433 1000</vcard:hasValue>
       </vcard:hasTelephone>
      <vcard:hasAddress rdf:parseType="Resource">
   	 <vcard:street-address>Dalbraut 4</vcard:street-address>            
@@ -156,8 +156,7 @@
 <foaf:Person rdf:about="https://grammatek.com/munic/akranes#RagnarBSæmundsson">
       <foaf:mbox>ragnar.saemundsson@akranes.is</foaf:mbox>
       <org:headOf>https://grammatek.com/munic/akranes/Skipulags-ogumhverfisráð</org:headOf>
-      ### memberOf bæjarstjórn?
-      ### <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
+      <org:basedAt>https://grammatek.com/munic/akranes/SkrifstofaAkraneskaupstaðar</org:basedAt>
       <foaf:familyName>Sæmundsson</foaf:familyName>
       <foaf:firstName>Ragnar</foaf:firstName>
       <foaf:name>Ragnar B. Sæmundsson</foaf:name>
@@ -184,7 +183,7 @@
       <foaf:firstName>Alfreð</foaf:firstName>
       <foaf:name>Alfreð Alfreðsson</foaf:name>
       <vcard:hasTelephone rdf:parseType="Resource">
-        <vcard:hasValue>tel:433 1054</vcard:hasValue>
+        <vcard:hasValue>433 1054</vcard:hasValue>
       </vcard:hasTelephone>
     </foaf:Person>
     
@@ -242,7 +241,7 @@
       <foaf:firstName>Hafdís</foaf:firstName>
       <foaf:name>Hafdís Sigurþórsdóttir</foaf:name>
       <vcard:hasTelephone rdf:parseType="Resource">
-        <vcard:hasValue>tel:433 1052</vcard:hasValue>
+        <vcard:hasValue>433 1052</vcard:hasValue>
       </vcard:hasTelephone>
     </foaf:Person>
     
@@ -269,7 +268,7 @@
       <foaf:firstName>Jón</foaf:firstName>
       <foaf:name>Jón Arnar Sverrisson</foaf:name>
       <vcard:hasTelephone rdf:parseType="Resource">
-        <vcard:hasValue>tel:898 3490</vcard:hasValue>
+        <vcard:hasValue>898 3490</vcard:hasValue>
       </vcard:hasTelephone>
     </foaf:Person>  
     
@@ -351,7 +350,7 @@
       <foaf:firstName>Ásdís</foaf:firstName>
       <foaf:name>Ásdís Gunnarsdóttir</foaf:name>
       <vcard:hasTelephone rdf:parseType="Resource">
-        <vcard:hasValue>tel:433 1015</vcard:hasValue>
+        <vcard:hasValue>433 1015</vcard:hasValue>
       </vcard:hasTelephone>
     </foaf:Person>    
     
@@ -365,7 +364,7 @@
       <foaf:firstName>Dagmar</foaf:firstName>
       <foaf:name>Dagmar Atlanta Clothier</foaf:name>
       <vcard:hasTelephone rdf:parseType="Resource">
-        <vcard:hasValue>tel:433 1019</vcard:hasValue>
+        <vcard:hasValue>433 1019</vcard:hasValue>
       </vcard:hasTelephone>
     </foaf:Person> 
     
@@ -402,7 +401,7 @@
       <foaf:firstName>Móeiður</foaf:firstName>
       <foaf:name>Móeiður Sigvaldadóttir</foaf:name>
       <vcard:hasTelephone rdf:parseType="Resource">
-        <vcard:hasValue>tel:433 1013</vcard:hasValue>
+        <vcard:hasValue>433 1013</vcard:hasValue>
       </vcard:hasTelephone>
     </foaf:Person>
     
@@ -416,7 +415,7 @@
       <foaf:firstName>Rannveig</foaf:firstName>
       <foaf:name>Rannveig Þórisdóttir</foaf:name>
       <vcard:hasTelephone rdf:parseType="Resource">
-        <vcard:hasValue>tel:433 1016</vcard:hasValue>
+        <vcard:hasValue>433 1016</vcard:hasValue>
       </vcard:hasTelephone>
     </foaf:Person> 
     
@@ -431,7 +430,7 @@
       <foaf:firstName>Selma</foaf:firstName>
       <foaf:name> Selma Sigurðardóttir</foaf:name>
       <vcard:hasTelephone rdf:parseType="Resource">
-        <vcard:hasValue>tel:433 1003</vcard:hasValue>
+        <vcard:hasValue>433 1003</vcard:hasValue>
       </vcard:hasTelephone>
     </foaf:Person> 
     
@@ -446,7 +445,7 @@
       <foaf:firstName>Sigmundur</foaf:firstName>
       <foaf:name>Sigmundur Ámundason</foaf:name>
       <vcard:hasTelephone rdf:parseType="Resource">
-        <vcard:hasValue>tel:433 1011</vcard:hasValue>
+        <vcard:hasValue>433 1011</vcard:hasValue>
       </vcard:hasTelephone>
     </foaf:Person> 
     
@@ -460,7 +459,7 @@
       <foaf:firstName>Sigríður</foaf:firstName>
       <foaf:name>Sigríður K. Valdimarsdóttir</foaf:name>
       <vcard:hasTelephone rdf:parseType="Resource">
-        <vcard:hasValue>tel:433 1012</vcard:hasValue>
+        <vcard:hasValue>433 1012</vcard:hasValue>
       </vcard:hasTelephone>
     </foaf:Person> 
     
@@ -626,7 +625,7 @@
       <foaf:firstName>Guðný</foaf:firstName>
       <foaf:name>Guðný J. Ólafsdóttir</foaf:name>
       <vcard:hasTelephone rdf:parseType="Resource">
-        <vcard:hasValue>tel:433 1002</vcard:hasValue>
+        <vcard:hasValue>433 1002</vcard:hasValue>
       </vcard:hasTelephone>
     </foaf:Person> 
     
@@ -649,7 +648,7 @@
       <foaf:firstName>Heiðrún</foaf:firstName>
       <foaf:name>Heiðrún Jónsdóttir</foaf:name>
       <vcard:hasTelephone rdf:parseType="Resource">
-        <vcard:hasValue>tel:433 1004</vcard:hasValue>
+        <vcard:hasValue>433 1004</vcard:hasValue>
       </vcard:hasTelephone>
     </foaf:Person> 
     
@@ -729,7 +728,7 @@
       <foaf:firstName>Lúðvík</foaf:firstName>
       <foaf:name>Lúðvík Ibsen Helgason</foaf:name>
       <vcard:hasTelephone rdf:parseType="Resource">
-        <vcard:hasValue>tel:433 1055/898 8101</vcard:hasValue>
+        <vcard:hasValue>433 1055/898 8101</vcard:hasValue>
       </vcard:hasTelephone>
     </foaf:Person>  
     
@@ -743,7 +742,7 @@
       <foaf:firstName>Sigurður</foaf:firstName>
       <foaf:name>Sigurður Ólafsson</foaf:name>
       <vcard:hasTelephone rdf:parseType="Resource">
-        <vcard:hasValue>tel:433 1055/898 9478</vcard:hasValue>
+        <vcard:hasValue>433 1055/898 9478</vcard:hasValue>
       </vcard:hasTelephone>
     </foaf:Person>     
     
