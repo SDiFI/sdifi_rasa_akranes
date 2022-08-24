@@ -14,8 +14,7 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.events import Restarted
 from rasa_sdk.executor import CollectingDispatcher
 
-import sparql_queries
-import declension
+import sparql_queries, declension
 
 class ActionJoke(Action):
   def name(self):
@@ -43,10 +42,19 @@ class ActionGetContactInfoFromContact(Action):
         g = Graph()
         g.parse('offices_staff.rdf')
         
-        query = sparql_queries.get_contact_info_query(contact)
+        query = sparql_queries.get_info_for_contact_query(contact)
         result = g.query(query)
         
-        for r in result:
-            dispatcher.utter_message(text=r['name'] + " er með netfangið: " + r['email'])
+        if len(result) == 0:
+            candidates = declension.get_nominative_name(contact)
+            for c in candidates:
+                query = sparql_queries.get_info_for_contact_query(c)
+                result = g.query(query)
+                for r in result:
+                    dispatcher.utter_message(text=r['name'] + " er með netfangið: " + r['email'])
+                    
+        else:
+            for r in result:
+                dispatcher.utter_message(text=r['name'] + " er með netfangið: " + r['email'])
         
         return [Restarted()]

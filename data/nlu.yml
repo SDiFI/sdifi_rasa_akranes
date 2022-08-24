@@ -40,9 +40,9 @@ nlu:
  - intent: get_contact_info
    examples: |
      - Hvernig næ ég í [Sævar Frey Þráinsson](contact)
-     - Hvernig get ég haft samband við [Valgerður Janusdóttir](contact)
-     - Hvar get ég nálgast [Svala Hreinsdóttir](contact)
-     - Ég þarf að tala við [Ásta Jóna Ásmundsdóttir](contact)
+     - Hvernig get ég haft samband við [Valgerði Janusdóttur](contact)
+     - Hvar get ég nálgast [Svölu Hreinsdóttur](contact)
+     - Ég þarf að tala við [Ástu Jónu Ásmundsdóttur](contact)
 
 
  - intent: get_contact_title
@@ -54,9 +54,9 @@ nlu:
 
  - intent: get_contact_email_info
    examples: |
-     - Hvað er netfangið hjá [Sævar Freyr Þráinsson](contact)
-     - Hvar get ég sent póst á [Ólafur Ragnar](contact)
-     - Hvað er tölvupóstfangið hjá [Dagný Hauksdóttir](contact)
+     - Hvað er netfangið hjá [Sævari Frey Þráinssyni](contact)
+     - Hvar get ég sent póst á [Ólaf Ragnar](contact)
+     - Hvað er tölvupóstfangið hjá [Dagnýju Hauksdóttur](contact)
 
 
  - lookup: contact
