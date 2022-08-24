@@ -1,8 +1,15 @@
+
 FROM rasa/rasa-sdk:3.0.6
 USER root
 RUN pip install rdflib==6.1.1
 RUN pip install islenska==0.4.3
 RUN mkdir actions
+RUN mkdir src
+COPY src/ /src
+COPY offices_staff.rdf offices_staff.rdf
+
+ENV PYTHONPATH "${PYTHONPATH}:/src/akranes_info_api"
+
 WORKDIR actions
 
 EXPOSE 5005
