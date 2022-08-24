@@ -44,19 +44,21 @@ nlu:
      - Hvar get ég nálgast [Svölu Hreinsdóttur](contact)
      - Ég þarf að tala við [Ástu Jónu Ásmundsdóttur](contact)
 
-
- - intent: get_contact_title
+ - intent: get_contact_number
    examples: |
-     - Hvaða starfi gegnir [Kristín Björg Jónsdóttir](contact)
-     - Hvað gerir [Laufey Jónsdóttir](contact)
-     - Við hvað vinnur [Sveinborg Kristjánsdóttir](contact)
-     
+     - Mig vantar símanúmerið hjá [Svala Hreinsdóttir](contact)
+     - Ég þarf að hringja í [Hrönn Ásgeirsdóttir](contact)
 
- - intent: get_contact_email_info
+ - intent: get_contact_email
    examples: |
-     - Hvað er netfangið hjá [Sævari Frey Þráinssyni](contact)
-     - Hvar get ég sent póst á [Ólaf Ragnar](contact)
-     - Hvað er tölvupóstfangið hjá [Dagnýju Hauksdóttur](contact)
+     - Hvað er netfangið hjá [Berglind Jóhannesdóttir](contact)
+     - Hvar get ég sent póst á [Björn Breiðfjörð Gíslason](contact)
+     - Hvað er tölvupóstfangið hjá [Hrefna Rún Ákadóttir](contact)
+
+ - intent: get_filled_slot
+   examples: |
+     - Gef mer slot
+     - Slot nuna
 
 
  - lookup: contact

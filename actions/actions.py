@@ -38,12 +38,15 @@ class ActionGetContactInfoFromContact(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         contact = tracker.get_slot('contact')
+        dispatcher.utter_message(text="Ég er inni í ActionGetContactInfoFromContact.run()")
 
         g = Graph()
         g.parse('offices_staff.rdf')
         
         query = sparql_queries.get_info_for_contact_query(contact)
         result = g.query(query)
+        
+        # Example:
         
         if len(result) == 0:
             candidates = declension.get_nominative_name(contact)
@@ -56,5 +59,32 @@ class ActionGetContactInfoFromContact(Action):
         else:
             for r in result:
                 dispatcher.utter_message(text=r['name'] + " er með netfangið: " + r['email'])
-        
         return [Restarted()]
+
+
+class ActionGetContactNumberFromContact(Action):
+    def name(self) -> Text:
+        return "action_get_contact_number"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        contact = tracker.get_slot('contact')
+        dispatcher.utter_message(text="Ég er inni í ActionGetContactNumberFromContact.run()")
+        return []
+
+
+class ActionGetContactEmailFromContact(Action):
+    def name(self) -> Text:
+        return "action_get_contact_email"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        contact = tracker.get_slot('contact')
+        dispatcher.utter_message(text="Ég er inni í ActionGetContactEmailFromContact.run()")
+        return []
+
+
