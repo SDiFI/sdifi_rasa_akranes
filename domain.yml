@@ -1,77 +1,86 @@
-version: "3.0"
- 
+version: '3.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
 intents:
-  - greet
-  - bye
-  - thank
-  - ask_for_joke
-  - get_contact_info
-  - get_contact_title
-  - get_contact_email_info
-
+- request_contact
+- faq:
+    is_retrieval_intent: true
+- greet
+- inform
+- chitchat:
+    is_retrieval_intent: true
+- bye
+- thank
 entities:
-  - contact
-  - department
-  - responsibility
-
+- contact
+- email_or_phone
+- subject
 slots:
   contact:
     type: text
+    influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: contact
-  department:
+    - type: from_entity
+      entity: contact
+  subject:
     type: text
+    influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: department
-  responsibility:
+    - type: from_entity
+      entity: subject
+  email_or_phone:
     type: text
+    influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: responsibility
-
-actions:
-  - utter_greet
-  - utter_bye
-  - utter_not_understood
-  - utter_offer_help
-  - utter_thank
-  - utter_responsible_department
-  - utter_responsible_employee
-  - utter_contact_info
-  - action_joke
-  - action_lookup_employee
-  - action_lookup_title
-  - action_get_contact_info
- 
+    - type: from_entity
+      entity: email_or_phone
 responses:
   utter_thank:
-   - text: Verði þér að góðu!
-
+  - text: Verði þér að góðu!
   utter_greet:
-   - text: Halló hér!
-
+  - text: Góðan daginn! Hvernig get ég aðstoðað?
   utter_bye:
-   - text: Sjáumst!
-
+  - text: Sjáumst!
   utter_not_understood:
-   - text: Ég náði þessu ekki alveg
-   - text: Þetta skildi ég ekki
-   - text: Ég skildi þetta því miður ekki
-   - text: Ertu til í að umorða þetta?
-
-  utter_responsible_department:
-   - text: "<TODO call to database/API> Félagsleg heimaþjónusta heyrir undir velferðar- og mannréttindasvið. Hér er hlekkur á umsókn um félagslega heimaþjónustu: https://akranes.is"
-
-  utter_responsible_employee:
-   - text: "<TODO call to database/API> Sviðsstjóri velferðar- og mannréttindasviðs er Svala Hreinsdóttir. Hún veitir nánari upplýsingar í tölvupósti á netfangið svala.hreinsdottir@akranes.is og í síma 433-1000."
-
-  utter_offer_help:
-   - text: Hvernig get ég aðstoðað?
-
-  utter_offer_more_help:
-   - text: Er eitthvað fleira sem ég get gert fyrir þig
-
-  utter_contact_info:
-   - text: Þú fylltir slottið contact með upplýsingum {contact}
+  - text: Ég náði þessu ekki alveg.
+  - text: Þetta skildi ég ekki.
+  - text: Ég skildi þetta því miður ekki.
+  - text: Ertu til í að umorða þetta?
+  utter_chitchat/ask_name:
+  - text: Ég heiti Sæmi og er spjallmenni Akraneskaupstaðar. Gaman að kynnast þér.
+  utter_chitchat/ask_weather:
+  - text: Það er alltaf rjómablíða á Skaganum!
+  utter_faq/ask_population:
+  - text: Það búa tæplega átta þúsund manns á Akranesi.
+  utter_faq/ask_location:
+  - text: Akraneskaupstaður er á Vesturlandi, um klukkutíma akstursleið frá höfuðborgarsvæðinu.
+  utter_ask_subject:
+  - text: Hvað vantar þig upplýsingar um?
+  utter_ask_contact:
+  - text: Við hvern viltu tala?
+  utter_ask_email_or_phone:
+  - text: Viltu fá símanúmer eða netfang?
+  utter_submit:
+  - text: Flott er.
+  utter_slots_values:
+  - text: |-
+      Ég athuga þá hvort ég finni ekki einhvern að tala við þig:
+       - Málaflokkur: {subject}
+       - Manneskja: {contact}
+       - Samskiptamáti: {email_or_phone}
+actions:
+- utter_bye
+- utter_chitchat
+- utter_faq
+- utter_greet
+- utter_not_understood
+- utter_slots_values
+- utter_submit
+- utter_thank
+forms:
+  request_contact_form:
+    required_slots:
+    - contact
+    - subject
+    - email_or_phone

@@ -10,4 +10,27 @@ rules:
   steps:
   - intent: None
   - action: utter_not_understood
+  
+- rule: respond to FAQs
+  steps:
+  - intent: faq
+  - action: utter_faq
+- rule: respond to chitchat
+  steps:
+  - intent: chitchat
+  - action: utter_chitchat  
 
+- rule: activate request_contact_form
+  steps:
+  - intent: request_contact
+  - action: request_contact_form
+  - active_loop: request_contact_form
+
+- rule: submit form
+  condition:
+  - active_loop: request_contact_form
+  steps:
+  - action: request_contact_form
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_slots_values

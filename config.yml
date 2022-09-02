@@ -5,18 +5,22 @@ language: "is"
 pipeline:
  - name: WhitespaceTokenizer
  - name: LexicalSyntacticFeaturizer
+ - name: RegexFeaturizer
  - name: CountVectorsFeaturizer
    analyzer: char_wb
    min_ngram: 1
    max_ngram: 4
- - name: LanguageModelFeaturizer
-   model_name: "convbert"
-   model_weights: "jonfd/convbert-small-igc-is"
  - name: DIETClassifier
    epochs: 100
  - name: FallbackClassifier
    threshold: 0.95
-   
+ - name: EntitySynonymMapper
+ - name: ResponseSelector
+   epochs: 100
+   retrieval_intent: faq
+ - name: ResponseSelector
+   epochs: 100
+   retrieval_intent: chitchat
 policies:
 # # No configuration for policies was provided. The following default policies were used to train your model.
 # # If you'd like to customize them, uncomment and adjust the policies.

@@ -1,88 +1,185 @@
 version: "3.0"
- 
 nlu:
- - intent: greet
-   examples: |
-     - Hæ
-     - Hæ!
-     - Góðan daginn!
-     - Góðan dag.
-     - Daginn.
-     - Halló
-     - Halló!
-     - Sæll vertu
-     - Sæl vertu
-     - Blessaður
-     - Blessuð
- 
- - intent: bye
-   examples: |
-     - Bless bless!
-     - Bæ!
-     - bless
-     - Sjáumst!
-     - Sjáumst síðar.
-     - Vertu sæll
-     - Vertu sæl
- 
- - intent: thank
-   examples: |
-     - Takk!
-     - Takk kærlega!
-     - Þakka þér
-     - Takk fyrir
-     - Bestu þakkir!
-
- - intent: ask_for_joke
-   examples: |
-     - Segðu mér eitthvað fyndið á ensku
-
- - intent: get_contact_info
-   examples: |
-     - Hvernig næ ég í [Sævar Frey Þráinsson](contact)
-     - Hvernig get ég haft samband við [Valgerði Janusdóttur](contact)
-     - Hvar get ég nálgast [Svölu Hreinsdóttur](contact)
-     - Ég þarf að tala við [Ástu Jónu Ásmundsdóttur](contact)
-
-
- - intent: get_contact_title
-   examples: |
-     - Hvaða starfi gegnir [Kristín Björg Jónsdóttir](contact)
-     - Hvað gerir [Laufey Jónsdóttir](contact)
-     - Við hvað vinnur [Sveinborg Kristjánsdóttir](contact)
-     
-
- - intent: get_contact_email_info
-   examples: |
-     - Hvað er netfangið hjá [Sævari Frey Þráinssyni](contact)
-     - Hvar get ég sent póst á [Ólaf Ragnar](contact)
-     - Hvað er tölvupóstfangið hjá [Dagnýju Hauksdóttur](contact)
-
-
- - lookup: contact
-   examples: |
-     - Sigurður Páll Harðarson
-     - Alfreð Alfreðsson
-     - Anna Berglind Einarsdóttir
-     - Anna Þóra Gísladóttir
-     - Ásbjörn Egilsson
-     - Björn Breiðfjörð Gíslason
-     - Hafdís Sigurþórsdóttir
-     - Halla Marta Árnadóttir
-     - Jón Arnar Sverrisson
-     - Karl Jóhann Haagensen
-     - Svala Hreinsdóttir
-     - Andrea Marta Vigfúsdóttir
-     - Ásta Jóna Ásmundsdóttir
-     - Berglind Jóhannesdóttir
-     - Erla Björg Kristjánsdóttir
-     - Hrefna Rún Ákadóttir
-     - Hrönn Ásgeirsdóttir
-     - Kristín Björg Jónsdóttir
-     - Laufey Jónsdóttir
-     - Lilja Lind Sturlaugsdóttir
-     - Sólveig Sigurðardóttir
-     - Sveinborg Kristjánsdóttir
-     - Vigdís Elfa Jónsdóttir
-     - Sævar Freyr Þráinsson
-     - Dagný Hauksdóttir
+- intent: greet
+  examples: |
+    - Hæ
+    - Hæ!
+    - Góðan daginn!
+    - Góðan dag.
+    - Daginn.
+    - Halló
+    - Halló!
+    - Sæll vertu
+    - Sæl vertu
+    - Blessaður
+    - Blessuð
+    - daginn
+- intent: bye
+  examples: |
+    - Bless bless!
+    - Bæ!
+    - bless
+    - Sjáumst!
+    - Sjáumst síðar.
+    - Vertu sæll
+    - Vertu sæl
+- intent: thank
+  examples: |
+    - Takk!
+    - Takk kærlega!
+    - Þakka þér
+    - Takk fyrir
+    - Bestu þakkir!
+- intent: chitchat/ask_name
+  examples: |
+    - Hvað heitir þú?
+    - hvað heitir þú
+    - heitir þú eitthvað?
+- intent: chitchat/ask_weather
+  examples: |
+    - hvernig er veðrið?
+    - Hvernig er veðrið í dag?
+    - hvernig er veðrið á Akranesi?
+    - er gott veður á Skaganum?
+- intent: faq/ask_population
+  examples: |
+    - hvað búa margir á Akranesi?
+    - hvað búa margir á Skaganum?
+    - Hvað búa margir hérna?
+- intent: faq/ask_location
+  examples: |
+    - hvar er Akranes?
+    - hvar á landinu er akranes?
+    - hvar er Skaginn?
+- intent: request_contact
+  examples: |
+    - hver sér um [launamál]{"entity": "subject", "value": "stj\u00f3rns\u00fdsla"}?
+    - hver sér um [skólamál]{"entity": "subject", "value": "sk\u00f3li"}?
+    - hver sér um [lóðirnar]{"entity": "subject", "value": "skipulag"}?
+    - hver sér um að [keyra út mat til aldraðra]{"entity": "subject", "value": "velfer\u00f0"}
+    - mig vantar að tala við einhvern um [sorphirðu]{"entity": "subject", "value": "skipulag"}
+    - ég þarf að tala við einhvern um [leikskóla]{"entity": "subject", "value": "sk\u00f3li"}
+    - Hvernig næ ég í [Sævar Frey Þráinsson](contact)
+    - Hvernig get ég haft samband við [Valgerði Janusdóttur](contact)
+    - Hvar get ég nálgast [Svölu Hreinsdóttur](contact)
+    - Ég þarf að tala við [Ástu Jónu Ásmundsdóttur](contact)
+    - Hvernig næ ég í [Sævar](contact)
+    - Hvernig get ég haft samband við [Valgerði](contact)
+    - Hvar get ég nálgast [Svölu](contact)
+    - Ég þarf að tala við [Ástu Jónu](contact)
+    - Hvernig næ ég í [sævar frey þráinsson](contact)
+    - Hvernig get ég haft samband við [valgerði janusdóttur](contact)
+    - Hvar get ég nálgast [svölu hreinsdóttur](contact)
+    - Ég þarf að tala við [ástu jónu ásmundsdóttur](contact)
+    - Hvernig næ ég í [sævar frey](contact)
+    - Hvernig get ég haft samband við [valgerði](contact)
+    - Hvar get ég nálgast [svölu](contact)
+    - Ég þarf að tala við [ástu jónu](contact)
+    - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Sævari Frey Þráinssyni](contact)
+    - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Valgerði Janusdóttur](contact)?
+    - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [Svölu Hreinsdóttur](contact)?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu Ásmundsdóttur](contact) á [velferðarsviði]{"entity": "subject", "value": "velfer\u00f0"}?
+    - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Sævari Frey](contact)
+    - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Valgerði](contact)?
+    - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [Svölu](contact)?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu](contact) á [velferðarsviði]{"entity": "subject", "value": "velfer\u00f0"}?
+    - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [sævari frey þráinssyni](contact)
+    - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [valgerði janusdóttur](contact)?
+    - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [svölu hreinsdóttur](contact)?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [ástu jónu ásmundsdóttur](contact) á [velferðarsviði]{"entity": "subject", "value": "velfer\u00f0"}?
+    - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [sævari frey](contact)
+    - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [valgerði](contact)?
+    - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [svölu](contact)?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [ástu jónu](contact) á velferðarsviði?
+    - Hvað er [netfangið]{"entity": "email_or_phone", "value": "email"} hjá [Sævari Frey Þráinssyni](contact)
+    - Hvar get ég sent [póst]{"entity": "email_or_phone", "value": "email"} á [Valgerði Janusdóttur](contact)
+    - Hvað er [tölvupóstfangið]{"entity": "email_or_phone", "value": "email"} hjá [Svölu Hreinsdóttur](contact)
+    - [email](email_or_phone) hjá [Ástu Jónu Ásmundsdóttur](contact)?
+    - Hvað er [netfangið]{"entity": "email_or_phone", "value": "email"} hjá [Sævari Frey](contact)
+    - Hvar get ég sent [póst]{"entity": "email_or_phone", "value": "email"} á [Valgerði](contact)
+    - Hvað er [tölvupóstfangið]{"entity": "email_or_phone", "value": "email"} hjá [Svölu](contact)
+    - [email](email_or_phone) hjá [Ástu Jónu](contact)?
+    - Hvað er [netfangið]{"entity": "email_or_phone", "value": "email"} hjá [sævari frey þráinssyni](contact)
+    - Hvar get ég sent [póst]{"entity": "email_or_phone", "value": "email"} á [valgerði janusdóttur](contact)
+    - Hvað er [tölvupóstfangið]{"entity": "email_or_phone", "value": "email"} hjá [svölu hreinsdóttur](contact)
+    - [email](email_or_phone) hjá [ástu jónu ásmundsdóttur](contact)?
+    - Hvað er [netfangið]{"entity": "email_or_phone", "value": "email"} hjá [sævari frey](contact)
+    - Hvar get ég sent [póst]{"entity": "email_or_phone", "value": "email"} á [valgerði](contact)
+    - Hvað er [tölvupóstfangið]{"entity": "email_or_phone", "value": "email"} hjá [svölu](contact)
+    - [email](email_or_phone) hjá [ástu jónu](contact)?
+    - mig vantar að tala við einhvern um [sorphirðu]{"entity": "subject", "value": "skipulag"}
+    - [svölu hreins](contact)
+- intent: inform
+  examples: |
+    - [skólamál]{"entity": "subject", "value": "sk\u00f3li"}
+    - [sorphirðumál]{"entity": "subject", "value": "skipulag"}
+    - [ruslið]{"entity": "subject", "value": "skipulag"}
+    - [laun]{"entity": "subject", "value": "stj\u00f3rns\u00fdsla"}
+    - [launamál]{"entity": "subject", "value": "stj\u00f3rns\u00fdsla"}
+    - ég vil tala við [svölu](contact)
+    - ég vil tala við [ástu jónu](contact)
+    - mig langar að tala við [Sigurð](contact)
+    - mig langar að tala við [Steinar Adolfsson](contact)
+    - [síma]{"entity": "email_or_phone", "value": "phone"} takk
+    - [símanúmer]{"entity": "email_or_phone", "value": "phone"}
+    - Ég vil fá [símanúmer]{"entity": "email_or_phone", "value": "phone"} hjá honum
+    - gemmér [símann]{"entity": "email_or_phone", "value": "phone"}
+    - bara [tölvupóst]{"entity": "email_or_phone", "value": "email"}
+    - [netfangið]{"entity": "email_or_phone", "value": "email"} takk
+    - [email](email_or_phone) takk
+    - ég vil fá [netfangið]{"entity": "email_or_phone", "value": "email"}
+    - [símanúmer]{"entity": "email_or_phone", "value": "phone"}
+- synonym: stjórnsýsla
+  examples: |
+    - launamál
+    - laun
+- synonym: skóli
+  examples: |
+    - skólamál
+    - leikskóla
+- synonym: skipulag
+  examples: |
+    - lóðirnar
+    - sorphirðu
+    - sorphirðumál
+    - ruslið
+- synonym: velferð
+  examples: |
+    - keyra út mat til aldraðra
+    - velferðarsviði
+- synonym: phone
+  examples: |
+    - númerið
+    - síminn
+    - Símanúmer
+    - síma
+    - símanúmer
+    - símann
+- synonym: email
+  examples: |
+    - netfangið
+    - póst
+    - tölvupóstfangið
+    - tölvupóst
+- lookup: contact
+  examples: |
+    - Sigurður Páll Harðarson
+    - Sigurður
+    - sigurður páll harðarson
+    - sigurður
+    - Alfreð Alfreðsson
+    - Alfreð
+    - alfreð alfreðsson
+    - alfreð
+    - Anna Berglind Einarsdóttir
+    - Önnu Berglindi Einarsdóttur
+    - Önnu Berglindi
+    - önnu berglindi einarsdóttur
+    - önnu berglindi
+    - Önnu
+    - önnu
+    - Anna Þóra Gísladóttir
+    - Önnu Þóru Gísladóttur
+    - Önnu Þóru
+    - önnu þóru gísladóttur
+    - önnu þóru
