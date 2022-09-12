@@ -1,5 +1,14 @@
 version: "3.0"
 nlu:
+- intent: out_of_scope
+  examples: |
+    - Ætla fa eina meat and cheese, 2 storar vegendary brauðstangir og kok
+    - af hverju er himininn blár?
+    - Er jólasveinninn til?
+- intent: no_intent
+  examples: |
+    - " "
+    - ""
 - intent: greet
   examples: |
     - Hæ

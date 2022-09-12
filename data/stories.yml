@@ -2,20 +2,20 @@ version: "3.0"
  
 stories:
  
- - story: greet_path
-   steps:
-   - intent: greet
-   - action: utter_greet
-  
- - story: thank_path
-   steps:
-   - intent: thank
-   - action: utter_thank
- 
- - story: bye_path
-   steps:
-   - intent: bye
-   - action: utter_bye
+- story: greet_path
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: thank_path
+  steps:
+  - intent: thank
+  - action: utter_thank
+
+- story: bye_path
+  steps:
+  - intent: bye
+  - action: utter_bye
 
 - story: interactive_story_1
   steps:

@@ -1,6 +1,18 @@
 version: "3.0"
 
 rules:
+
+- rule: Welcome user
+  conversation_start: True
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Respond to out-of-scope request.
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+
 - rule: Ask user to rephrase in case of low confidence classification.
   steps:
   - intent: nlu_fallback
@@ -8,7 +20,7 @@ rules:
   
 - rule: Ask user to rephrase in case of no input.
   steps:
-  - intent: None
+  - intent: no_intent
   - action: utter_not_understood
   
 - rule: respond to FAQs

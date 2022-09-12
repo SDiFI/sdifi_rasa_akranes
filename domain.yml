@@ -7,6 +7,8 @@ intents:
 - faq:
     is_retrieval_intent: true
 - greet
+- no_intent
+- out_of_scope
 - inform
 - chitchat:
     is_retrieval_intent: true
@@ -36,6 +38,8 @@ slots:
     - type: from_entity
       entity: email_or_phone
 responses:
+  utter_out_of_scope:
+  - text: Ég biðst forláts, en ég ræð ekki við svona beiðnir. Þú getur prófað að biðja mig um hjálp við að ná í starfsfólk Akraneskaupstaðar.
   utter_thank:
   - text: Verði þér að góðu!
   utter_greet:
