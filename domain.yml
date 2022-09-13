@@ -82,8 +82,18 @@ actions:
 - utter_slots_values
 - utter_submit
 - utter_thank
+- action_get_contact_info
+- validate_request_contact_form
 forms:
   request_contact_form:
+    ignored_intents:
+    - chitchat
+    - faq
+    - bye
+    - thank
+    - greet
+    - out_of_scope
+    - no_intent
     required_slots:
     - contact
     - subject

@@ -135,9 +135,13 @@ nlu:
     - gemmér [símann]{"entity": "email_or_phone", "value": "phone"}
     - bara [tölvupóst]{"entity": "email_or_phone", "value": "email"}
     - [netfangið]{"entity": "email_or_phone", "value": "email"} takk
+    - [netfang]{"entity": "email_or_phone", "value": "email"}
     - [email](email_or_phone) takk
     - ég vil fá [netfangið]{"entity": "email_or_phone", "value": "email"}
     - [símanúmer]{"entity": "email_or_phone", "value": "phone"}
+    - [bæði]{"entity": "email_or_phone", "value": "both"}
+    - ég vil fá [bæði]{"entity": "email_or_phone", "value": "both"} takk
+    - gefðu mér [bæði]{"entity": "email_or_phone", "value": "both"}
 - synonym: stjórnsýsla
   examples: |
     - launamál

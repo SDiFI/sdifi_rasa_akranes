@@ -1,210 +1,125 @@
-# # This files contains your custom actions which can be used to run
-# # custom Python code.
-# #
-# # See this guide on how to implement these action:
-# # https://rasa.com/docs/rasa/custom-actions
+# This files contains your custom actions which can be used to run
+# custom Python code.
 #
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker, FormValidationAction
-# from rasa_sdk.events import Restarted, AllSlotsReset
-# from rasa_sdk.executor import CollectingDispatcher
-#
-# import info_api, declension
-#
-#
-# class ActionGetInfoForContact(Action):
-#     def name(self) -> Text:
-#         return "action_get_info_for_contact"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         contact = tracker.get_slot('contact')
-#         if contact:
-#             contact = contact.title()
-#             result = info_api.get_info_for_contact(contact)
-#
-#             if len(result) == 0:
-#                 candidates = declension.get_nominative_name(contact)
-#                 for c in candidates:
-#                     result = info_api.get_info_for_contact(c)
-#                     if len(result) == 0:
-#                         result = info_api.get_info_for_partial_contact(contact)
-#                         if len(result) == 0:
-#                             result = info_api.get_info_for_partial_contact(c)
-#                             for r in result:
-#                                 dispatcher.utter_message(text=r.name + " er með netfangið: " + r.email + " og síma: " + r.phone + ".")
-#                         else:
-#                             for r in result:
-#                                 dispatcher.utter_message(text=r.name + " er með netfangið: " + r.email + " og síma: " + r.phone + ".")
-#                     else:
-#                         for r in result:
-#                             dispatcher.utter_message(text=r.name + " er með netfangið: " + r.email + " og síma: " + r.phone + ".")
-#
-#             else:
-#                 for r in result:
-#                     dispatcher.utter_message(text=r.name + " er með netfangið: " + r.email + " og síma: " + r.phone + ".")
-#         else:
-#             dispatcher.utter_message(text="Því miður skil ég ekki alveg hjá hverjum þig vantar upplýsingar.")
-#
-#         return [Restarted()]
-#
-#
-# class ActionGetNumberForContact(Action):
-#     def name(self) -> Text:
-#         return "action_get_number_for_contact"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         contact = tracker.get_slot('contact')
-#         if contact:
-#             contact = contact.title()
-#             result = info_api.get_info_for_contact(contact)
-#
-#             if len(result) == 0:
-#                 candidates = declension.get_nominative_name(contact)
-#                 for c in candidates:
-#                     result = info_api.get_info_for_contact(c)
-#                     if len(result) == 0:
-#                         result = info_api.get_info_for_partial_contact(contact)
-#                         if len(result) == 0:
-#                             result = info_api.get_info_for_partial_contact(c)
-#                             for r in result:
-#                                 dispatcher.utter_message(
-#                                     text=r.name + " er með síma: " + r.phone + ".")
-#                         else:
-#                             for r in result:
-#                                 dispatcher.utter_message(
-#                                     text=r.name + " er með síma: " + r.phone + ".")
-#                     else:
-#                         for r in result:
-#                             dispatcher.utter_message(
-#                                 text=r.name + " er með síma: " + r.phone + ".")
-#
-#             else:
-#                 for r in result:
-#                     dispatcher.utter_message(
-#                         text=r.name + " er með síma: " + r.phone + ".")
-#         else:
-#             dispatcher.utter_message(text="Því miður skil ég ekki alveg hjá hverjum þig vantar símanúmer.")
-#
-#         return [Restarted()]
-#
-#
-# class ActionGetEmailForContact(Action):
-#     def name(self) -> Text:
-#         return "action_get_email_for_contact"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         contact = tracker.get_slot('contact')
-#         if contact:
-#             contact = contact.title()
-#             result = info_api.get_info_for_contact(contact)
-#
-#             if len(result) == 0:
-#                 candidates = declension.get_nominative_name(contact)
-#                 for c in candidates:
-#                     result = info_api.get_info_for_contact(c)
-#                     if len(result) == 0:
-#                         result = info_api.get_info_for_partial_contact(contact)
-#                         if len(result) == 0:
-#                             result = info_api.get_info_for_partial_contact(c)
-#                             for r in result:
-#                                 dispatcher.utter_message(
-#                                     text=r.name + " er með netfangið: " + r.email + ".")
-#                         else:
-#                             for r in result:
-#                                 dispatcher.utter_message(
-#                                     text=r.name + " er með netfangið: " + r.email + ".")
-#                     else:
-#                         for r in result:
-#                             dispatcher.utter_message(
-#                                 text=r.name + " er með netfangið: " + r.email + ".")
-#
-#             else:
-#                 for r in result:
-#                     dispatcher.utter_message(
-#                         text=r.name + " er með netfangið: " + r.email + ".")
-#         else:
-#             dispatcher.utter_message(text="Því miður skil ég ekki alveg hjá hverjum þig vantar netfang.")
-#
-#         return [Restarted()]
-#
-#
-# # class ActionGiveContact(Action):
-# #     """"""
-# #
-# #     def name(self) -> Text:
-# #         return "action_give_contact"
-# #
-# #     def run(self, dispatcher: CollectingDispatcher,
-# #             tracker: Tracker,
-# #             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-# #         contact = tracker.get_slot('contact')
-# #         candidates = declension.get_nominative_name(contact)
-# #
-# #         if len(candidates) == 0:
-# #             dispatcher.utter_message(f"Því miður fundum við engan undir þessu nafni.")
-# #             return [AllSlotsReset()]
-# #         else:
-# #             res = self.check_full_name_or_partial(candidates)
-# #             if len(res) == 0:
-# #                 dispatcher.utter_message(f"Því miður fundum við engan undir þessu nafni.")
-# #             else:
-# #                 out_text = "Þetta er það sem ég fann: \n"
-# #                 for elem in res:
-# #                     name = elem.name
-# #                     title = elem.title
-# #                     phone = elem.phone
-# #                     email = elem.email
-# #
-# #                     if title != 'None':
-# #                         out_text += f"{name} er {title}."
-# #                     if email != 'None':
-# #                         out_text += f" {contact} veitir nánari upplýsingar í tölvupósti á netfangið {email} eða í síma {phone}.\n"
-# #                     else:
-# #                         out_text += f" {contact} veitir nánari upplýsingar í síma {phone}.\n"
-# #
-# #             dispatcher.utter_message(text=out_text)
-# #         return [AllSlotsReset()]
-# #
-# #     def check_full_name_or_partial(self, candidates: list) -> list:
-# #         for c in candidates:
-# #             res = info_api.get_info_for_contact(c)
-# #             if len(res) == 0:
-# #                 res = info_api.get_info_for_partial_contact
-# #         return res
-#
-#
-# # class ValidateContactForm(FormValidationAction):
-# #     def name(self) -> Text:
-# #         return "validate_request_contact_form"
-#
-#     # def validate_contact(
-#     #         self,
-#     #         slot_value: Any,
-#     #         dispatcher: CollectingDispatcher,
-#     #         tracker: Tracker,
-#     #         domain: DomainDict,
-#     # ) -> Dict[Text, Any]:
-#     #     """Validate contact value."""
-#
-#         # contact = tracker.get_slot('contact')
-#         # candidates = declension.get_nominative_name(contact)
-#
-#         # if len(candidates) == 0:
-#         #     dispatcher.utter_message(f"Því miður fundum við engan undir þessu nafni.")
-#         # else:
-#         #     res = info_api.get_info_for_partial_contact(contact)
-#         #     if len(res) == 0:
-#         #         dispatcher.utter_message(f"Því miður fundum við engan undir nafninu {contact}.")
-#         #         return {"contact": None}
-#         #     return {"contact": contact}
-#         #
+# See this guide on how to implement these action:
+# https://rasa.com/docs/rasa/custom-actions
+
+from typing import Any, Text, Dict, List
+
+from rasa_sdk import Action, Tracker, FormValidationAction
+from rasa_sdk.events import AllSlotsReset
+from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.types import DomainDict
+
+import info_api, declension
+
+
+class ActionGetInfoForContact(Action):
+    def name(self) -> Text:
+        return "action_get_contact_info"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[str, Any]]:
+
+        contact = tracker.get_slot('contact')
+        subject = tracker.get_slot('subject')
+        email_or_phone = tracker.get_slot('email_or_phone')
+        out_text = ''
+
+        if contact and contact != ' ':
+            res = info_api.get_info_for_contact(contact.title())
+            for r in res:
+                if r.title:
+                    out_text += f"{r.name} er {r.title}."
+                if email_or_phone == 'email':
+                    if r.email:
+                        out_text += f" {r.name} er með netfangið: {r.email}."
+                    else:
+                        out_text += f" Því miður er {r.name} ekki með skráð netfang hjá okkur. Þú getur prófað síma: {r.phone}."
+                elif email_or_phone == 'phone':
+                    out_text += f" {r.name} svarar frekari spurningum í síma: {r.phone}."
+                elif email_or_phone == 'both':
+                    if r.email:
+                        out_text += f" {r.name} svarar frekari spurningum í síma: {r.phone} og á netfangið: {r.email}."
+                    else:
+                        out_text += f" Því miður er {r.name} ekki með skráð netfang hjá okkur. Þú getur prófað síma: {r.phone}."
+            dispatcher.utter_message(text=out_text)
+        return [AllSlotsReset()]
+
+
+class ValidateRequestContactForm(FormValidationAction):
+
+    def name(self) -> Text:
+        return "validate_request_contact_form"
+
+    @staticmethod
+    def subject_list() -> List[Text]:
+        """List of possible subjects to inquire about."""
+
+        return ['stjórnsýsla', 'skóli', 'skipulag', 'velferð']
+
+    @staticmethod
+    def contact_list() -> List[Text]:
+        """List of possible contacts from RDF graph."""
+
+        return info_api.get_all_names()
+
+    async def required_slots(
+            self,
+            domain_slots: List[Text],
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: DomainDict,
+    ) -> List[Text]:
+        """Don't ask for name of contact if subject is already stated, and vice versa."""
+
+        updated_slots = domain_slots.copy()
+        if tracker.slots.get('contact') is True:
+            updated_slots.remove('subject')
+        elif tracker.slots.get('subject') is True:
+            updated_slots.remove('contact')
+        return updated_slots
+
+    def validate_subject(
+            self, slot_value: Any,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        """Validate subject value."""
+
+        if slot_value.lower() in self.subject_list():
+            return {'subject': slot_value, 'contact': ' '}
+        else:
+            return {'subject': None}
+
+    def validate_contact(self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        """Validate subject value."""
+
+        if slot_value.lower() in self.contact_list():
+            return {'contact': slot_value, 'subject': ' '}
+        else:
+            candidates = declension.get_nominative_name(slot_value)
+            for candidate in candidates:
+                if candidate.lower() in self.contact_list():
+                    return {'contact': candidate, 'subject': ' '}
+            return {'contact': None}
+
+    def validate_email_or_phone(self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        """Validate email_or_phone value."""
+
+        if slot_value.lower() in ['phone', 'email', 'both']:
+            return {'email_or_phone': slot_value}
+        else:
+            return {'email_or_phone': None}
