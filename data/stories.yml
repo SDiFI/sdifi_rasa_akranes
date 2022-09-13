@@ -45,7 +45,6 @@ stories:
  - story: get_contact_info_path
    steps:
    - intent: get_contact_info
-   - action: utter_wait_moment
    - action: action_get_contact_info
  
  - story: get_contact_number_path
@@ -57,10 +56,4 @@ stories:
    steps:
    - intent: get_contact_email
    - action: action_get_contact_email
-
-
- - story: utter_filled_slot_path
-   steps:
-   - intent: get_filled_slot
-   - action: utter_contact_info
 

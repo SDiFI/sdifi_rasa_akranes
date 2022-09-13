@@ -6,13 +6,11 @@ intents:
   - thank
   - ask_for_joke
   - get_contact_info
-  - get_contact_title
-  - get_contact_email_info
+  - get_contact_number
+  - get_contact_email
 
 entities:
   - contact
-  - department
-  - responsibility
 
 slots:
   contact:
@@ -20,16 +18,6 @@ slots:
     mappings:
       - type: from_entity
         entity: contact
-  department:
-    type: text
-    mappings:
-      - type: from_entity
-        entity: department
-  responsibility:
-    type: text
-    mappings:
-      - type: from_entity
-        entity: responsibility
 
 actions:
   - utter_greet
@@ -41,9 +29,9 @@ actions:
   - utter_responsible_employee
   - utter_contact_info
   - action_joke
-  - action_lookup_employee
-  - action_lookup_title
   - action_get_contact_info
+  - action_get_contact_number
+  - action_get_contact_email
  
 responses:
   utter_thank:
