@@ -1,0 +1,8 @@
+.git*
+.dockerignore
+docker
+!docker/rasa/start-rasa.sh
+deploy*
+models*
+README.md
+webchat/

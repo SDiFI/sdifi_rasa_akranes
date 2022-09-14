@@ -1,0 +1,63 @@
+version: '3'
+
+volumes:
+  redis_data: {}
+  model_data: {}
+
+services:
+  sdifi_akranes:
+    container_name: 'sdifi_akranes'
+    build:
+      context: ..
+      dockerfile: ./docker/rasa/Dockerfile
+    environment:
+      - TOKEN=${TOKEN}
+    image: ${REGISTRY_URL:-}sdifi_akranes:${APPLICATION_VERSION:-latest}
+    restart: unless-stopped
+    depends_on:
+      - redis
+      - action_server
+    volumes:
+      - model_data:/app/models
+    networks:
+      - backend
+
+  action_server:
+    container_name: 'action_server_akranes'
+    build:
+      context: ..
+      dockerfile: ./docker/sdk/Dockerfile
+    image: ${REGISTRY_URL:-}sdifi_akranes_sdk:${APPLICATION_VERSION:-latest}
+    restart: unless-stopped
+    networks:
+      - backend
+
+  redis:
+    container_name: 'redis_akranes'
+    image: redis:7.0
+    volumes:
+      - redis_data:/var/lib/redis/data
+    restart: unless-stopped
+    networks:
+      - backend
+
+  web:
+    container_name: 'web_akranes'
+    image: nginx:latest
+    ports:
+      - "${NGINX_PORT:-8080}:8080"
+    volumes:
+      - ./web/nginx-app.conf:/etc/nginx/conf.d/default.conf
+      - ./web/nginx-main.conf:/etc/nginx/nginx.conf
+      - ./web/nginx-basic-proxy.conf:/etc/nginx/nginx-basic-proxy.conf
+      - ./web/html:/usr/share/nginx/html
+      - ./web/html:/usr/etc/nginx/html
+    restart: unless-stopped
+    depends_on:
+      - sdifi_akranes
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
