@@ -28,7 +28,12 @@ class ActionGetInfoForContact(Action):
         out_text = ''
 
         if contact and contact != ' ':
-            res = info_api.get_info_for_contact(contact.title())
+            res = info_api.get_info_for_contact(contact)
+        elif subject and subject != ' ':
+            res = info_api.get_contact_from_subject(subject.title())
+        if len(res) == 0:
+            out_text += f"Því miður fann ég engar upplýsingar um {contact}{subject}."
+        else:
             for r in res:
                 if r.title:
                     out_text += f"{r.name} er {r.title}."
@@ -44,7 +49,7 @@ class ActionGetInfoForContact(Action):
                         out_text += f" {r.name} svarar frekari spurningum í síma: {r.phone} og á netfangið: {r.email}."
                     else:
                         out_text += f" Því miður er {r.name} ekki með skráð netfang hjá okkur. Þú getur prófað síma: {r.phone}."
-            dispatcher.utter_message(text=out_text)
+        dispatcher.utter_message(text=out_text)
         return [AllSlotsReset()]
 
 
@@ -57,7 +62,9 @@ class ValidateRequestContactForm(FormValidationAction):
     def subject_list() -> List[Text]:
         """List of possible subjects to inquire about."""
 
-        return ['stjórnsýsla', 'skóli', 'skipulag', 'velferð']
+        return ['Skipulagsmál', 'Garðamál', 'Byggingarmál', 'Skólamál',
+                'Stjórnsýslumál', 'Launamál', 'Fjármál', 'Bókhaldsmál',
+                'Velferðarmál', 'Félagsþjónusta', 'Dýraeftirlit']
 
     @staticmethod
     def contact_list() -> List[Text]:
@@ -73,7 +80,7 @@ class ValidateRequestContactForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate subject value."""
 
-        if slot_value.lower() in self.subject_list():
+        if slot_value.title() in self.subject_list():
             return {'subject': slot_value, 'contact': ' '}
         else:
             return {'subject': None}
@@ -86,14 +93,22 @@ class ValidateRequestContactForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate subject value."""
 
-        if slot_value.lower() in self.contact_list():
-            return {'contact': slot_value, 'subject': ' '}
-        else:
-            candidates = declension.get_nominative_name(slot_value)
+        candidates = []
+        nominative_names = declension.get_nominative_name(slot_value.title())
+        for name in nominative_names:
+            for contact in self.contact_list():
+                if name in contact:
+                    candidates.append(contact)
+        candidates = [*set(candidates)]
+        if len(candidates) == 1:
+            return {'contact': candidates[0], 'subject': ' '}
+        elif len(candidates) > 1:
+            # Pass list of possible names to user.
+            dispatcher.utter_message(text="Ég fann fleiri en einn starfsmann með þessu nafni:")
             for candidate in candidates:
-                if candidate.lower() in self.contact_list():
-                    return {'contact': candidate, 'subject': ' '}
+                dispatcher.utter_message(text=candidate)
             return {'contact': None}
+        return {'contact': None}
 
     def validate_email_or_phone(self,
         slot_value: Any,

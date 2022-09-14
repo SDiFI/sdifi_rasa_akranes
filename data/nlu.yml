@@ -62,12 +62,12 @@ nlu:
     - hvar er Skaginn?
 - intent: request_contact
   examples: |
-    - hver sér um [launamál]{"entity": "subject", "value": "stj\u00f3rns\u00fdsla"}?
-    - hver sér um [skólamál]{"entity": "subject", "value": "sk\u00f3li"}?
-    - hver sér um [lóðirnar]{"entity": "subject", "value": "skipulag"}?
+    - hver sér um [launamál]{"entity": "subject", "value": "Stjórnsýslumál"}?
+    - hver sér um [skólamál]{"entity": "subject", "value": "Skólamál"}?
+    - hver sér um [lóðirnar]{"entity": "subject", "value": "Skipulagsmál"}?
     - hver sér um að [keyra út mat til aldraðra]{"entity": "subject", "value": "velfer\u00f0"}
-    - mig vantar að tala við einhvern um [sorphirðu]{"entity": "subject", "value": "skipulag"}
-    - ég þarf að tala við einhvern um [leikskóla]{"entity": "subject", "value": "sk\u00f3li"}
+    - mig vantar að tala við einhvern um [sorphirðu]{"entity": "subject", "value": "Skipulagsmál"}
+    - ég þarf að tala við einhvern um [leikskóla]{"entity": "subject", "value": "Skólamál"}
     - Hvernig næ ég í [Sævar Frey Þráinsson](contact)
     - Hvernig get ég haft samband við [Valgerði Janusdóttur](contact)
     - Hvar get ég nálgast [Svölu Hreinsdóttur](contact)
@@ -87,19 +87,19 @@ nlu:
     - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Sævari Frey Þráinssyni](contact)
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Valgerði Janusdóttur](contact)?
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [Svölu Hreinsdóttur](contact)?
-    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu Ásmundsdóttur](contact) á [velferðarsviði]{"entity": "subject", "value": "velfer\u00f0"}?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu Ásmundsdóttur](contact) á [Velferðarmálarsviði]{"entity": "subject", "value": "velfer\u00f0"}?
     - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Sævari Frey](contact)
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Valgerði](contact)?
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [Svölu](contact)?
-    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu](contact) á [velferðarsviði]{"entity": "subject", "value": "velfer\u00f0"}?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu](contact) á [Velferðarmálarsviði]{"entity": "subject", "value": "velfer\u00f0"}?
     - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [sævari frey þráinssyni](contact)
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [valgerði janusdóttur](contact)?
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [svölu hreinsdóttur](contact)?
-    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [ástu jónu ásmundsdóttur](contact) á [velferðarsviði]{"entity": "subject", "value": "velfer\u00f0"}?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [ástu jónu ásmundsdóttur](contact) á [Velferðarmálarsviði]{"entity": "subject", "value": "velfer\u00f0"}?
     - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [sævari frey](contact)
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [valgerði](contact)?
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [svölu](contact)?
-    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [ástu jónu](contact) á velferðarsviði?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [ástu jónu](contact) á Velferðarmálarsviði?
     - Hvað er [netfangið]{"entity": "email_or_phone", "value": "email"} hjá [Sævari Frey Þráinssyni](contact)
     - Hvar get ég sent [póst]{"entity": "email_or_phone", "value": "email"} á [Valgerði Janusdóttur](contact)
     - Hvað er [tölvupóstfangið]{"entity": "email_or_phone", "value": "email"} hjá [Svölu Hreinsdóttur](contact)
@@ -116,18 +116,18 @@ nlu:
     - Hvar get ég sent [póst]{"entity": "email_or_phone", "value": "email"} á [valgerði](contact)
     - Hvað er [tölvupóstfangið]{"entity": "email_or_phone", "value": "email"} hjá [svölu](contact)
     - [email](email_or_phone) hjá [ástu jónu](contact)?
-    - mig vantar að tala við einhvern um [sorphirðu]{"entity": "subject", "value": "skipulag"}
+    - mig vantar að tala við einhvern um [sorphirðu]{"entity": "subject", "value": "Skipulagsmál"}
     - [svölu hreins](contact)
 - intent: inform
   examples: |
-    - [skólamál]{"entity": "subject", "value": "sk\u00f3li"}
-    - [sorphirðumál]{"entity": "subject", "value": "skipulag"}
-    - [ruslið]{"entity": "subject", "value": "skipulag"}
-    - [laun]{"entity": "subject", "value": "stj\u00f3rns\u00fdsla"}
-    - [launamál]{"entity": "subject", "value": "stj\u00f3rns\u00fdsla"}
+    - [skólamál]{"entity": "subject", "value": "Skólamál"}
+    - [sorphirðumál]{"entity": "subject", "value": "Skipulagsmál"}
+    - [ruslið]{"entity": "subject", "value": "Skipulagsmál"}
+    - [laun]{"entity": "subject", "value": "Stjórnsýslumál"}
+    - [launamál]{"entity": "subject", "value": "Stjórnsýslumál"}
     - ég vil tala við [svölu](contact)
     - ég vil tala við [ástu jónu](contact)
-    - mig langar að tala við [Sigurð](contact)
+    - mig langar að tala við [Sævar](contact)
     - mig langar að tala við [Steinar Adolfsson](contact)
     - [síma]{"entity": "email_or_phone", "value": "phone"} takk
     - [símanúmer]{"entity": "email_or_phone", "value": "phone"}
@@ -142,24 +142,24 @@ nlu:
     - [bæði]{"entity": "email_or_phone", "value": "both"}
     - ég vil fá [bæði]{"entity": "email_or_phone", "value": "both"} takk
     - gefðu mér [bæði]{"entity": "email_or_phone", "value": "both"}
-- synonym: stjórnsýsla
+- synonym: Stjórnsýslumál
   examples: |
     - launamál
     - laun
-- synonym: skóli
+- synonym: Skólamál
   examples: |
     - skólamál
     - leikskóla
-- synonym: skipulag
+- synonym: Skipulagsmál
   examples: |
     - lóðirnar
     - sorphirðu
     - sorphirðumál
     - ruslið
-- synonym: velferð
+- synonym: Velferðarmál
   examples: |
     - keyra út mat til aldraðra
-    - velferðarsviði
+    - Velferðarmálarsviði
 - synonym: phone
   examples: |
     - númerið
