@@ -65,22 +65,6 @@ class ValidateRequestContactForm(FormValidationAction):
 
         return info_api.get_all_names()
 
-    async def required_slots(
-            self,
-            domain_slots: List[Text],
-            dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: DomainDict,
-    ) -> List[Text]:
-        """Don't ask for name of contact if subject is already stated, and vice versa."""
-
-        updated_slots = domain_slots.copy()
-        if tracker.slots.get('contact') is True:
-            updated_slots.remove('subject')
-        elif tracker.slots.get('subject') is True:
-            updated_slots.remove('contact')
-        return updated_slots
-
     def validate_subject(
             self, slot_value: Any,
             dispatcher: CollectingDispatcher,
