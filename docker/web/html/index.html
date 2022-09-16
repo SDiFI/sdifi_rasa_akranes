@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>The Sdifi Rasa Chatbot Demo</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/@sdifi/rasa-webchat@1.1.0-dev1/lib/index.js"></script>
+    <script>
+     window.onload = () => {
+       console.log("Location:", window.location.protocol + "//" + window.location.hostname)
+       WebChat.default(
+         {
+           customData: { language: "is" },
+           socketUrl: window.location.protocol + "//" + window.location.hostname + ":" + window.location.port,
+           socketPath: "/rasa/cable",
+           hideWhenNotConnected: false,
+           title: "Sdifi",
+           subtitle: "Akranes",
+           inputTextFieldHint: "Spurðu spurningar um stofnanir eða starfsfólk Akraneskaupstaðar",
+           params: {
+            storage: "session"
+           }
+         },
+         null
+       );
+     }
+    </script>
+  </body>
+</html>
+
