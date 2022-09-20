@@ -18,6 +18,7 @@ nlu:
     - Daginn.
     - Halló
     - Halló!
+    - Sæll
     - Sæll vertu
     - Sæl vertu
     - Blessaður
@@ -65,7 +66,7 @@ nlu:
     - hver sér um [launamál]{"entity": "subject", "value": "Stjórnsýslumál"}?
     - hver sér um [skólamál]{"entity": "subject", "value": "Skólamál"}?
     - hver sér um [lóðirnar]{"entity": "subject", "value": "Skipulagsmál"}?
-    - hver sér um að [keyra út mat til aldraðra]{"entity": "subject", "value": "velfer\u00f0"}
+    - hver sér um að [keyra út mat til aldraðra]{"entity": "subject", "value": "Velferðarmál"}
     - mig vantar að tala við einhvern um [sorphirðu]{"entity": "subject", "value": "Skipulagsmál"}
     - ég þarf að tala við einhvern um [leikskóla]{"entity": "subject", "value": "Skólamál"}
     - Hvernig næ ég í [Sævar Frey Þráinsson](contact)
@@ -87,15 +88,15 @@ nlu:
     - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Sævari Frey Þráinssyni](contact)
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Valgerði Janusdóttur](contact)?
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [Svölu Hreinsdóttur](contact)?
-    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu Ásmundsdóttur](contact) á [Velferðarmálarsviði]{"entity": "subject", "value": "velfer\u00f0"}?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu Ásmundsdóttur](contact) á [Velferðarmálarsviði]{"entity": "subject", "value": "Velferðarmál"}?
     - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Sævari Frey](contact)
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Valgerði](contact)?
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [Svölu](contact)?
-    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu](contact) á [Velferðarmálarsviði]{"entity": "subject", "value": "velfer\u00f0"}?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu](contact) á [Velferðarmálarsviði]{"entity": "subject", "value": "Velferðarmál"}?
     - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [sævari frey þráinssyni](contact)
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [valgerði janusdóttur](contact)?
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [svölu hreinsdóttur](contact)?
-    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [ástu jónu ásmundsdóttur](contact) á [Velferðarmálarsviði]{"entity": "subject", "value": "velfer\u00f0"}?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [ástu jónu ásmundsdóttur](contact) á [Velferðarmálarsviði]{"entity": "subject", "value": "Velferðarmál"}?
     - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [sævari frey](contact)
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [valgerði](contact)?
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [svölu](contact)?
