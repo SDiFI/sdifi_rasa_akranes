@@ -1,0 +1,73 @@
+stories:
+- story: Test chitchat
+  steps:
+  - user: |
+      hvað búa margir á skaganum
+    intent: faq/ask_population
+  - action: utter_faq/ask_population
+  - user: |
+      hvernig er veðrið núna
+    intent: chitchat/ask_weather
+  - action: utter_chitchat/ask_weather
+  - user: |
+      "hvað heitiru"
+    intent: chitchat/ask_name
+  - action: utter_chitchat/ask_name
+  - user: |
+      hvar er akranes?
+    intent: faq/ask_location
+  - action: utter_faq/ask_location
+
+- story: Test form, user asks for contact, happy path
+  steps:
+  - user: |
+      góðan daginn
+    intent: greet
+  - action: utter_greet
+  - user: |
+      tala við [svölu](contact)
+    intent: request_contact
+  - slot_was_set:
+      - contact: "svölu"
+  - action: request_contact_form
+  - active_loop: request_contact_form
+  - slot_was_set:
+      - contact: "Svala Hreinsdóttir"
+  - action: utter_ask_email_or_phone
+  - user: |
+      [bæði]{"entity": "email_or_phone", "value": "both"}
+    intent: inform
+  - action: request_contact_form
+  - slot_was_set:
+      - email_or_phone: "both"
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_slots_values
+  - action: get_contact_info
+
+- story: Test form, user asks for subject, happy path, faq interruption
+  steps:
+  - user: |
+      ég þarf að tala við eihnvern um frí í [leikskólanum]{"entity": "subject", "value": "Skólamál"}
+    intent: request_contact
+  - slot_was_set:
+      - subject: "Skólamál"
+  - action: request_contact_form
+  - active_loop: request_contact_form
+  - action: utter_ask_email_or_phone
+  - user: |
+      hvað búa margir á akranesi
+    intent: faq/ask_population
+  - action: utter_faq/ask_population
+  - action: utter_ask_email_or_phone
+  - user: |
+      bara [email]{"entity": "email_or_phone", "value": "email"} takk
+    intent: inform
+  - action: request_contact_form
+  - slot_was_set:
+      - email_or_phone: "email"
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_slots_values
+  - action: get_contact_info
+

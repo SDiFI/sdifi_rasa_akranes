@@ -1,4 +1,4 @@
-version: '3.0'
+version: '3.1'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
@@ -14,6 +14,7 @@ intents:
     is_retrieval_intent: true
 - bye
 - thank
+- stop
 entities:
 - contact
 - email_or_phone
@@ -45,12 +46,14 @@ responses:
   utter_greet:
   - text: Góðan daginn! Hvernig get ég aðstoðað?
   utter_bye:
-  - text: Sjáumst!
-  utter_not_understood:
+  - text: Sjáumst síðar!
+  utter_ask_rephrase:
   - text: Ég náði þessu ekki alveg.
   - text: Þetta skildi ég ekki.
   - text: Ég skildi þetta því miður ekki.
   - text: Ertu til í að umorða þetta?
+  utter_default:
+  - text: Því miður get ég þá ekki hjálpað þér.
   utter_chitchat/ask_name:
   - text: Ég heiti Sæmi og er spjallmenni Akraneskaupstaðar. Gaman að kynnast þér.
   utter_chitchat/ask_weather:
@@ -78,12 +81,14 @@ actions:
 - utter_chitchat
 - utter_faq
 - utter_greet
-- utter_not_understood
+- utter_ask_rephrase
 - utter_slots_values
 - utter_submit
 - utter_thank
 - action_get_contact_info
 - validate_request_contact_form
+- action_deactivate_loop
+- action_default_ask_affirmation
 forms:
   request_contact_form:
     ignored_intents:

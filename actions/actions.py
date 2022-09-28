@@ -5,16 +5,98 @@
 # https://rasa.com/docs/rasa/custom-actions
 
 from typing import Any, Text, Dict, List
+import json
 
 from rasa_sdk import Action, Tracker, FormValidationAction
-from rasa_sdk.events import AllSlotsReset
+from rasa_sdk.events import AllSlotsReset, SessionStarted, ActionExecuted
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
 import info_api, declension
 
 
+class ActionSessionStart(Action):
+    def name(self) -> Text:
+        return "action_session_start"
+
+    def run(
+        self,
+        dispatcher: "CollectingDispatcher",
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+
+        events = [SessionStarted()]
+        dispatcher.utter_message(text="Góðan daginn! Hvernig get ég aðstoðað?")
+        events.append(ActionExecuted("action_listen"))
+        return events
+
+class ActionDefaultAskAffirmation(Action):
+    """"""
+
+    def name(self) -> Text:
+        return "action_default_ask_affirmation"
+
+    @staticmethod
+    def intent_mappings():
+        """"""
+
+        return {'request_contact': 'fá að tala', 'inform': 'fá að tala',
+                'greet': 'heilsa mér', 'no_intent': 'ekkert sérstakt', 'out_of_scope': 'eitthvað sem ég ræð ekki við',
+                'bye': 'kveðja', 'thank': 'þakka mér', 'stop': 'hætta við og byrja upp á nýtt'}
+
+    def run(
+        self,
+        dispatcher: "CollectingDispatcher",
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+        """"""
+
+        intent_name = tracker.get_intent_of_latest_message()
+        contact = tracker.get_slot('contact')
+        subject = tracker.get_slot('subject')
+        prompt = self.intent_mappings()[intent_name]
+        entities = {}
+
+        if contact:
+            prompt += f" við {contact}"
+            entities["contact"] = contact
+        if subject:
+            prompt += f" um {subject}"
+            entities["subject"] = subject
+        out_text = f"Afsakaðu, ég er nýr og enn að læra. Er það rétt skilið hjá mér að þú viljir {prompt}?"
+        buttons = [{'title': 'Já',
+                    'payload': f'/{intent_name}'+json.dumps(entities)},
+                    {'title': 'Nei',
+                     'payload': '/stop'}]
+        dispatcher.utter_message(text=out_text, buttons=buttons)
+
+        return {}
+
+
+class ActionDeactivateLoop(Action):
+    """"""
+
+    def name(self) -> Text:
+        return "action_deactivate_loop"
+
+    def run(
+        self,
+        dispatcher: "CollectingDispatcher",
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+        """"""
+
+        dispatcher.utter_message("Ég hætti þá leitinni og við getum byrjað upp á nýtt ef þú vilt. Afsakaðu vesenið.")
+
+        return [AllSlotsReset()]
+
+
 class ActionGetInfoForContact(Action):
+    """"""
+
     def name(self) -> Text:
         return "action_get_contact_info"
 
@@ -26,13 +108,16 @@ class ActionGetInfoForContact(Action):
         subject = tracker.get_slot('subject')
         email_or_phone = tracker.get_slot('email_or_phone')
         out_text = ''
+        error_prompt = ''
 
-        if contact and contact != ' ':
+        if contact:
             res = info_api.get_info_for_contact(contact)
-        elif subject and subject != ' ':
+            error_prompt = contact
+        elif subject:
             res = info_api.get_contact_from_subject(subject.title())
+            error_prompt = subject
         if len(res) == 0:
-            out_text += f"Því miður fann ég engar upplýsingar um {contact}{subject}."
+            out_text += f"Því miður fann ég engar upplýsingar um {error_prompt}."
         else:
             for r in res:
                 if r.title:
@@ -58,6 +143,20 @@ class ValidateRequestContactForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_request_contact_form"
 
+    async def required_slots(
+            self,
+            domain_slots: List[Text],
+            dispatcher: "CollectingDispatcher",
+            tracker: "Tracker",
+            domain: "DomainDict",
+    ) -> List[Text]:
+        updated_slots = domain_slots.copy()
+        if tracker.slots.get("subject"):
+            updated_slots.remove("contact")
+        elif tracker.slots.get("contact"):
+            updated_slots.remove("subject")
+        return updated_slots
+
     @staticmethod
     def subject_list() -> List[Text]:
         """List of possible subjects to inquire about."""
@@ -81,7 +180,7 @@ class ValidateRequestContactForm(FormValidationAction):
         """Validate subject value."""
 
         if slot_value.title() in self.subject_list():
-            return {'subject': slot_value, 'contact': ' '}
+            return {'subject': slot_value}
         else:
             return {'subject': None}
 
@@ -101,7 +200,7 @@ class ValidateRequestContactForm(FormValidationAction):
                     candidates.append(contact)
         candidates = [*set(candidates)]
         if len(candidates) == 1:
-            return {'contact': candidates[0], 'subject': ' '}
+            return {'contact': candidates[0]}
         elif len(candidates) > 1:
             # Pass list of possible names to user.
             dispatcher.utter_message(text="Ég fann fleiri en einn starfsmann með þessu nafni:")

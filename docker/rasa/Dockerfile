@@ -1,4 +1,4 @@
-FROM rasa/rasa:3.0.7-full
+FROM rasa/rasa:3.2.5-full
 USER root
 RUN pip install torch==1.10.0
 RUN pip install transformers==4.16.2

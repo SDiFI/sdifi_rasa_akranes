@@ -1,9 +1,9 @@
-version: "3.0"
+version: "3.1"
 
 rules:
 
 - rule: Welcome user
-  conversation_start: True
+  conversation_start: true
   steps:
   - intent: greet
   - action: utter_greet
@@ -13,15 +13,21 @@ rules:
   - intent: out_of_scope
   - action: utter_out_of_scope
 
-- rule: Ask user to rephrase in case of low confidence classification.
+#- rule: Ask user to rephrase in case of low confidence classification.
+#  steps:
+#  - intent: nlu_fallback
+#  - action: utter_not_understood
+
+- rule: Two-stage fallback
   steps:
   - intent: nlu_fallback
-  - action: utter_not_understood
+  - action: action_two_stage_fallback
+  - active_loop: action_two_stage_fallback
   
 - rule: Ask user to rephrase in case of no input.
   steps:
   - intent: no_intent
-  - action: utter_not_understood
+  - action: utter_ask_rephrase
   
 - rule: respond to FAQs
   steps:
@@ -35,6 +41,12 @@ rules:
 - rule: activate request_contact_form
   steps:
   - intent: request_contact
+  - action: request_contact_form
+  - active_loop: request_contact_form
+
+- rule: activate request_contact_form from 'inform' intent
+  steps:
+  - intent: inform
   - action: request_contact_form
   - active_loop: request_contact_form
 
