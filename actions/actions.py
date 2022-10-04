@@ -31,19 +31,21 @@ class ActionSessionStart(Action):
         events.append(ActionExecuted("action_listen"))
         return events
 
+
 class ActionDefaultAskAffirmation(Action):
-    """"""
+    """Ask user for affirmation of intent, in case of low confidence."""
 
     def name(self) -> Text:
         return "action_default_ask_affirmation"
 
     @staticmethod
     def intent_mappings():
-        """"""
+        """Mappings of names of possible intents to user-readable text."""
 
         return {'request_contact': 'fá að tala', 'inform': 'fá að tala',
                 'greet': 'heilsa mér', 'no_intent': 'ekkert sérstakt', 'out_of_scope': 'eitthvað sem ég ræð ekki við',
-                'bye': 'kveðja', 'thank': 'þakka mér', 'stop': 'hætta við og byrja upp á nýtt'}
+                'bye': 'kveðja', 'thank': 'þakka mér', 'stop': 'hætta við og byrja upp á nýtt',
+                'chitchat': 'bara spjalla aðeins'}
 
     def run(
         self,
@@ -51,7 +53,6 @@ class ActionDefaultAskAffirmation(Action):
         tracker: Tracker,
         domain: "DomainDict",
     ) -> List[Dict[Text, Any]]:
-        """"""
 
         intent_name = tracker.get_intent_of_latest_message()
         contact = tracker.get_slot('contact')
@@ -76,7 +77,7 @@ class ActionDefaultAskAffirmation(Action):
 
 
 class ActionDeactivateLoop(Action):
-    """"""
+    """Stop active loop and clear all slots."""
 
     def name(self) -> Text:
         return "action_deactivate_loop"
@@ -95,7 +96,7 @@ class ActionDeactivateLoop(Action):
 
 
 class ActionGetInfoForContact(Action):
-    """"""
+    """Make call to RDF knowledge base to retrieve requested contact information."""
 
     def name(self) -> Text:
         return "action_get_contact_info"
@@ -109,6 +110,7 @@ class ActionGetInfoForContact(Action):
         email_or_phone = tracker.get_slot('email_or_phone')
         out_text = ''
         error_prompt = ''
+        res = []
 
         if contact:
             res = info_api.get_info_for_contact(contact)
@@ -165,6 +167,15 @@ class ValidateRequestContactForm(FormValidationAction):
                 'Stjórnsýslumál', 'Launamál', 'Fjármál', 'Bókhaldsmál',
                 'Velferðarmál', 'Félagsþjónusta', 'Dýraeftirlit']
 
+    def subject_buttons(self) -> List[Dict]:
+        """Buttons suggesting all possible subjects to user, in case of trouble."""
+        buttons = []
+        for subject in self.subject_list():
+            # Unnecessary step below, but seemingly only way to correctly format the output as a proper json object.
+            subject_dict = {"subject": subject}
+            buttons.append({'title': subject, 'payload': '/request_contact'+json.dumps(subject_dict)})
+        return buttons
+
     @staticmethod
     def contact_list() -> List[Text]:
         """List of possible contacts from RDF graph."""
@@ -182,6 +193,10 @@ class ValidateRequestContactForm(FormValidationAction):
         if slot_value.title() in self.subject_list():
             return {'subject': slot_value}
         else:
+            dispatcher.utter_message(text=f"Því miður fann ég engar upplýsingar um {slot_value}."
+                                          f"Er það örugglega rétt skrifað?")
+            dispatcher.utter_message(text="Þú getur reynt að umorða spurninguna eða valið málaflokk:",
+                                     buttons=self.subject_buttons())
             return {'subject': None}
 
     def validate_contact(self,
@@ -190,7 +205,7 @@ class ValidateRequestContactForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        """Validate subject value."""
+        """Validate contact value."""
 
         candidates = []
         nominative_names = declension.get_nominative_name(slot_value.title())
@@ -199,6 +214,7 @@ class ValidateRequestContactForm(FormValidationAction):
                 if name in contact:
                     candidates.append(contact)
         candidates = [*set(candidates)]
+
         if len(candidates) == 1:
             return {'contact': candidates[0]}
         elif len(candidates) > 1:
@@ -207,6 +223,11 @@ class ValidateRequestContactForm(FormValidationAction):
             for candidate in candidates:
                 dispatcher.utter_message(text=candidate)
             return {'contact': None}
+        else:
+            dispatcher.utter_message(text=f"Því miður fann ég engan starfsmann með nafninu {slot_value.title()}. "
+                                          f"Er það örugglega rétt skrifað?")
+            dispatcher.utter_message(text="Þú getur spurt eftir öðrum starfsmanni eða valið málaflokk:",
+                                     buttons=self.subject_buttons())
         return {'contact': None}
 
     def validate_email_or_phone(self,
