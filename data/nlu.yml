@@ -61,6 +61,13 @@ nlu:
     - hvar er Akranes?
     - hvar á landinu er akranes?
     - hvar er Skaginn?
+- intent: faq/ask_kennitala
+  examples: |
+    - hver er kennitala
+    - hver er kt Akranesbæjar
+    - hver er kennitalan hjá bænum
+    - mig vantar kennitöluna hjá bænum
+    - kennitala
 - intent: stop
   examples: |
     - hætta
@@ -125,6 +132,8 @@ nlu:
     - Hvað er [tölvupóstfangið]{"entity": "email_or_phone", "value": "email"} hjá [svölu](contact)
     - [email](email_or_phone) hjá [ástu jónu](contact)?
     - mig vantar að tala við einhvern um [sorphirðu]{"entity": "subject", "value": "Skipulagsmál"}
+    - mig langar að tala um [dýrahald]{"entity": "subject", "value": "Dýraeftirlit"}
+    - ég þarf að tala við einhvern um [frí í leikskólanum]{"entity": "subject", "value": "Skólamál"}
     - [svölu hreins](contact)
 - intent: inform
   examples: |
@@ -153,23 +162,98 @@ nlu:
     - [alveg sama]{"entity": "email_or_phone", "value": "both"}
 - synonym: Stjórnsýslumál
   examples: |
+    - stjórnsýslumál
+    - persónuvernd
+- synonym: Launamál
+  examples: |
     - launamál
     - laun
+    - launafulltrúi
+- synonym: Fjármál
+  examples: |
+    - fjármál
+- synonym: Bókhaldsmál
+  examples: |
+    - bókari
+    - bókhald
+    - reikningar
 - synonym: Skólamál
   examples: |
     - skólamál
     - leikskóla
+    - skólanum
+    - skólans
+    - skólapláss
+    - leikskólanum
+    - Leikjanámskeið
+    - Leikskólapláss
+    - Leikskólar
+    - frístund
+    - frístundinni
 - synonym: Skipulagsmál
   examples: |
-    - lóðirnar
     - sorphirðu
     - sorphirðumál
     - ruslið
     - rusl
+    - sorptunnu
+    - losun sorptunnu
+    - ruslatunnu
+    - snjómokstur
+    - mokstur
+- synonym: Byggingarmál
+  examples: |
+    - byggingarmál
+    - byggingarfulltrúi
+    - byggingaleyfi
+    - byggja skúr
+    - lóðamál
+    - lóðirnar
+    - lóðaleigu
+    - lóðaleigusamninga
+- synonym: Garðamál
+  examples: |
+    - garðarnir
+    - garða
+    - græn svæði
+    - vinnuskóli
+    - Vinnuskólinn
+    - unglingavinnu
+    - táningavinna
 - synonym: Velferðarmál
   examples: |
     - keyra út mat til aldraðra
     - Velferðarmálarsviði
+    - aldraðir
+    - öldruðum
+    - félagsstarf aldraðra
+    - barnavernd
+    - barnaverndarmál
+    - búsetuþjónustu fatlaðra
+    - búseta fatlaðra
+    - þjónustu við fatlaða
+    - dagforeldra
+    - dagforeldrum
+    - dagforeldrar
+    - dagmóðir
+    - dagmæður
+    - dagmamma
+    - dagmömmur
+- synonym: Félagsþjónusta
+  examples: |
+    - félagsþjónustu
+    - félagsleg aðstoð
+- synonym: Dýraeftirlit
+  examples: |
+    - dýraeftirlit
+    - dýramál
+    - eftirlit með dýrum
+    - dýrahald
+    - Dýrahald
+    - hundar
+    - skráning hunda
+    - kettir
+    - skráning katta
 - synonym: phone
   examples: |
     - númerið
