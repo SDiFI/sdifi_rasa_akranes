@@ -38,6 +38,18 @@ slots:
     mappings:
     - type: from_entity
       entity: email_or_phone
+  contacts_found:
+    type: bool
+    influence_conversation: False
+    initial_value: False
+    mappings:
+    - type: custom
+  contacts:
+    type: list
+    influence_conversation: False
+    initial_value: []
+    mappings:
+    - type: custom
 responses:
   utter_out_of_scope:
   - text: Ég biðst forláts, en ég ræð ekki við svona beiðnir. Þú getur prófað að biðja mig um hjálp við að ná í starfsfólk Akraneskaupstaðar.
@@ -64,10 +76,61 @@ responses:
   - text: Akraneskaupstaður er á Vesturlandi, um klukkutíma akstursleið frá höfuðborgarsvæðinu.
   utter_faq/ask_kennitala:
   - text: Kennitala Akraneskaupstaðar er 410169-4449
-#  utter_ask_subject:
-#  - text: Hvað vantar þig upplýsingar um?
-#  utter_ask_contact:
-#  - text: Við hvern viltu tala?
+  utter_ask_subject:
+  - text: Um hvað viltu tala, segirðu? Þú getur reynt að umorða spurninguna eða valið málaflokk.
+    buttons:
+    - title: "Skipulagsmál"
+      payload: '/request_contact{{"subject":"Skipulagsmál"}}'
+    - title: "Garðamál"
+      payload: '/request_contact{{"subject":"Garðamál"}}'
+    - title: "Byggingarmál"
+      payload: '/request_contact{{"subject":"Byggingarmál"}}'
+    - title: "Skólamál"
+      payload: '/request_contact{{"subject":"Skólamál"}}'
+    - title: "Stjórnsýslumál"
+      payload: '/request_contact{{"subject":"Stjórnsýslumál"}}'
+    - title: "Launamál"
+      payload: '/request_contact{{"subject":"Launamál"}}'
+    - title: "Fjármál"
+      payload: '/request_contact{{"subject":"Fjármál"}}'
+    - title: "Bókhaldsmál"
+      payload: '/request_contact{{"subject":"Bókhaldsmál"}}'
+    - title: "Velferðarmál"
+      payload: '/request_contact{{"subject":"Velferðarmál"}}'
+    - title: "Félagsþjónusta"
+      payload: '/request_contact{{"subject":"Félagsþjónusta"}}'
+    - title: "Dýraeftirlit"
+      payload: '/request_contact{{"subject":"Dýraeftirlit"}}'
+  utter_ask_contact:
+  - condition:
+      - type: slot
+        name: contacts_found
+        value: True
+    text: Hvern ofangreindra ertu að reyna að ná í?
+  - text: Við hvern viltu tala, segir þú? Þú getur reynt að umorða spurninguna eða valið málaflokk.
+    buttons:
+    - title: "Skipulagsmál"
+      payload: '/request_contact{{"subject":"Skipulagsmál"}}'
+    - title: "Garðamál"
+      payload: '/request_contact{{"subject":"Garðamál"}}'
+    - title: "Byggingarmál"
+      payload: '/request_contact{{"subject":"Byggingarmál"}}'
+    - title: "Skólamál"
+      payload: '/request_contact{{"subject":"Skólamál"}}'
+    - title: "Stjórnsýslumál"
+      payload: '/request_contact{{"subject":"Stjórnsýslumál"}}'
+    - title: "Launamál"
+      payload: '/request_contact{{"subject":"Launamál"}}'
+    - title: "Fjármál"
+      payload: '/request_contact{{"subject":"Fjármál"}}'
+    - title: "Bókhaldsmál"
+      payload: '/request_contact{{"subject":"Bókhaldsmál"}}'
+    - title: "Velferðarmál"
+      payload: '/request_contact{{"subject":"Velferðarmál"}}'
+    - title: "Félagsþjónusta"
+      payload: '/request_contact{{"subject":"Félagsþjónusta"}}'
+    - title: "Dýraeftirlit"
+      payload: '/request_contact{{"subject":"Dýraeftirlit"}}'
   utter_ask_email_or_phone:
   - text: Viltu fá símanúmer eða netfang?
   utter_submit:

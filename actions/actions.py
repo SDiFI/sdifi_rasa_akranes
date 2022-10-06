@@ -45,7 +45,7 @@ class ActionDefaultAskAffirmation(Action):
         return {'request_contact': 'fá að tala', 'inform': 'fá að tala',
                 'greet': 'heilsa mér', 'no_intent': 'ekkert sérstakt', 'out_of_scope': 'eitthvað sem ég ræð ekki við',
                 'bye': 'kveðja', 'thank': 'þakka mér', 'stop': 'hætta við og byrja upp á nýtt',
-                'chitchat': 'bara spjalla aðeins'}
+                'chitchat': 'bara spjalla aðeins', 'faq': 'bara spjalla aðeins'}
 
     def run(
         self,
@@ -167,15 +167,6 @@ class ValidateRequestContactForm(FormValidationAction):
                 'Stjórnsýslumál', 'Launamál', 'Fjármál', 'Bókhaldsmál',
                 'Velferðarmál', 'Félagsþjónusta', 'Dýraeftirlit']
 
-    def subject_buttons(self) -> List[Dict]:
-        """Buttons suggesting all possible subjects to user, in case of trouble."""
-        buttons = []
-        for subject in self.subject_list():
-            # Unnecessary step below, but seemingly only way to correctly format the output as a proper json object.
-            subject_dict = {"subject": subject}
-            buttons.append({'title': subject, 'payload': '/request_contact'+json.dumps(subject_dict)})
-        return buttons
-
     @staticmethod
     def contact_list() -> List[Text]:
         """List of possible contacts from RDF graph."""
@@ -195,8 +186,6 @@ class ValidateRequestContactForm(FormValidationAction):
         else:
             dispatcher.utter_message(text=f"Því miður fann ég engar upplýsingar um {slot_value}."
                                           f"Er það örugglega rétt skrifað?")
-            dispatcher.utter_message(text="Þú getur reynt að umorða spurninguna eða valið málaflokk:",
-                                     buttons=self.subject_buttons())
             return {'subject': None}
 
     def validate_contact(self,
@@ -208,27 +197,27 @@ class ValidateRequestContactForm(FormValidationAction):
         """Validate contact value."""
 
         candidates = []
+        if tracker.get_slot('contacts_found'):
+            contacts = tracker.get_slot('contacts')
+        else:
+            contacts = self.contact_list()
+
         nominative_names = declension.get_nominative_name(slot_value.title())
         for name in nominative_names:
-            for contact in self.contact_list():
+            for contact in contacts:
                 if name in contact:
                     candidates.append(contact)
-        candidates = [*set(candidates)]
-
         if len(candidates) == 1:
             return {'contact': candidates[0]}
         elif len(candidates) > 1:
-            # Pass list of possible names to user.
             dispatcher.utter_message(text="Ég fann fleiri en einn starfsmann með þessu nafni:")
             for candidate in candidates:
                 dispatcher.utter_message(text=candidate)
-            return {'contact': None}
+            return {'contact': None, 'contacts_found': True, 'contacts': candidates}
         else:
             dispatcher.utter_message(text=f"Því miður fann ég engan starfsmann með nafninu {slot_value.title()}. "
-                                          f"Er það örugglega rétt skrifað?")
-            dispatcher.utter_message(text="Þú getur spurt eftir öðrum starfsmanni eða valið málaflokk:",
-                                     buttons=self.subject_buttons())
-        return {'contact': None}
+                                              f"Er það örugglega rétt skrifað?")
+            return {'contact': None}
 
     def validate_email_or_phone(self,
         slot_value: Any,

@@ -77,17 +77,22 @@ nlu:
     - hætta núna
 - intent: request_contact
   examples: |
+    - hver sér um [kaffið hérna](subject)?
     - hver sér um [launamál]{"entity": "subject", "value": "Stjórnsýslumál"}?
     - hver sér um [skólamál]{"entity": "subject", "value": "Skólamál"}?
     - hver sér um [lóðirnar]{"entity": "subject", "value": "Skipulagsmál"}?
     - hver sér um að [keyra út mat til aldraðra]{"entity": "subject", "value": "Velferðarmál"}
+    - mig vantar að tala við einhvern um [lífið](subject)
     - mig vantar að tala við einhvern um [sorphirðu]{"entity": "subject", "value": "Skipulagsmál"}
+    - þarf að tala við einhvern um [símann minn](subject)
     - ég þarf að tala við einhvern um [leikskóla]{"entity": "subject", "value": "Skólamál"}
+    - ég þarf að tala við einhvern um [frí í leikskólanum]{"entity": "subject", "value": "Skólamál"}
     - Hvernig næ ég í [Sævar Frey Þráinsson](contact)
     - Hvernig get ég haft samband við [Valgerði Janusdóttur](contact)
     - Hvar get ég nálgast [Svölu Hreinsdóttur](contact)
     - Ég þarf að tala við [Ástu Jónu Ásmundsdóttur](contact)
     - Hvernig næ ég í [Sævar](contact)
+    - Hvernig næ ég í [Önnu](contact)
     - Hvernig get ég haft samband við [Valgerði](contact)
     - Hvar get ég nálgast [Svölu](contact)
     - Ég þarf að tala við [Ástu Jónu](contact)
@@ -131,9 +136,8 @@ nlu:
     - Hvar get ég sent [póst]{"entity": "email_or_phone", "value": "email"} á [valgerði](contact)
     - Hvað er [tölvupóstfangið]{"entity": "email_or_phone", "value": "email"} hjá [svölu](contact)
     - [email](email_or_phone) hjá [ástu jónu](contact)?
-    - mig vantar að tala við einhvern um [sorphirðu]{"entity": "subject", "value": "Skipulagsmál"}
     - mig langar að tala um [dýrahald]{"entity": "subject", "value": "Dýraeftirlit"}
-    - ég þarf að tala við einhvern um [frí í leikskólanum]{"entity": "subject", "value": "Skólamál"}
+    - mig langar að tala um [tónlist](subject)
     - [svölu hreins](contact)
 - intent: inform
   examples: |
@@ -142,6 +146,7 @@ nlu:
     - [ruslið]{"entity": "subject", "value": "Skipulagsmál"}
     - [laun]{"entity": "subject", "value": "Stjórnsýslumál"}
     - [launamál]{"entity": "subject", "value": "Stjórnsýslumál"}
+    - [bankið í ofnunum](subject)
     - [svölu](contact)
     - [ástu jónu](contact)
     - [Sævar](contact)
