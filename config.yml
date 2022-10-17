@@ -10,9 +10,9 @@ pipeline:
    analyzer: char_wb
    min_ngram: 1
    max_ngram: 4
-# - name: LanguageModelFeaturizer
-#   model_name: "convbert"
-#   model_weights: "jonfd/convbert-small-igc-is"
+ - name: LanguageModelFeaturizer
+   model_name: "convbert"
+   model_weights: "jonfd/convbert-base-igc-is"
  - name: DIETClassifier
    epochs: 100
  - name: FallbackClassifier

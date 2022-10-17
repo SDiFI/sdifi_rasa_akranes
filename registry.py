@@ -1,10 +1,12 @@
 import logging
+from typing import Dict, Text, Type
 
 # Explicitly set logging level for this module before any import
 # because otherwise it logs tensorflow/pytorch versions
 logging.getLogger("transformers.file_utils").setLevel(logging.WARNING)
 
 from transformers import (  # noqa: F401, E402
+    TFPreTrainedModel,
     TFBertModel,
     TFOpenAIGPTModel,
     TFGPT2Model,
@@ -12,6 +14,7 @@ from transformers import (  # noqa: F401, E402
     # TFXLMModel,
     TFDistilBertModel,
     TFRobertaModel,
+    PreTrainedTokenizer,
     BertTokenizer,
     OpenAIGPTTokenizer,
     GPT2Tokenizer,
@@ -19,7 +22,7 @@ from transformers import (  # noqa: F401, E402
     # XLMTokenizer,
     DistilBertTokenizer,
     RobertaTokenizer,
-    AutoModel,
+    TFAutoModel,
     AutoTokenizer,
 )
 from rasa.nlu.utils.hugging_face.transformers_pre_post_processors import (  # noqa: F401, E402, E501
@@ -37,11 +40,11 @@ from rasa.nlu.utils.hugging_face.transformers_pre_post_processors import (  # no
     xlnet_tokens_cleaner,
 )
 
-IceTokenizer = AutoTokenizer.from_pretrained("jonfd/convbert-small-igc-is", from_tf=True)
-IceModel = AutoModel.from_pretrained("jonfd/convbert-small-igc-is", from_tf=True)
+# Bjarki:
+tokenizer = AutoTokenizer.from_pretrained("jonfd/convbert-base-igc-is")
+model = TFAutoModel.from_pretrained("jonfd/convbert-base-igc-is")
 
-
-model_class_dict = {
+model_class_dict: Dict[Text, Type[TFPreTrainedModel]] = {
     "bert": TFBertModel,
     "gpt": TFOpenAIGPTModel,
     "gpt2": TFGPT2Model,
@@ -50,9 +53,10 @@ model_class_dict = {
     # library https://github.com/huggingface/transformers/issues/2729
     "distilbert": TFDistilBertModel,
     "roberta": TFRobertaModel,
-    "convbert": IceModel,
+    # Bjarki:
+    "convbert": model
 }
-model_tokenizer_dict = {
+model_tokenizer_dict: Dict[Text, Type[PreTrainedTokenizer]] = {
     "bert": BertTokenizer,
     "gpt": OpenAIGPTTokenizer,
     "gpt2": GPT2Tokenizer,
@@ -60,7 +64,8 @@ model_tokenizer_dict = {
     # "xlm": XLMTokenizer,
     "distilbert": DistilBertTokenizer,
     "roberta": RobertaTokenizer,
-    "convbert": IceTokenizer,
+    # Bjarki:
+    "convbert": tokenizer
 }
 model_weights_defaults = {
     "bert": "rasa/LaBSE",
@@ -80,7 +85,8 @@ model_special_tokens_pre_processors = {
     # "xlm": xlm_tokens_pre_processor,
     "distilbert": bert_tokens_pre_processor,
     "roberta": roberta_tokens_pre_processor,
-    "convbert": bert_tokens_pre_processor,
+    # Bjarki:
+    "convbert": bert_tokens_pre_processor
 }
 
 model_tokens_cleaners = {
@@ -91,7 +97,8 @@ model_tokens_cleaners = {
     # "xlm": xlm_tokens_pre_processor,
     "distilbert": bert_tokens_cleaner,  # uses the same as BERT
     "roberta": gpt2_tokens_cleaner,  # Uses the same as GPT2
-    "convbert": bert_tokens_cleaner,
+    # Bjarki:
+    "convbert": bert_tokens_cleaner
 }
 
 model_embeddings_post_processors = {
@@ -102,5 +109,6 @@ model_embeddings_post_processors = {
     # "xlm": xlm_embeddings_post_processor,
     "distilbert": bert_embeddings_post_processor,
     "roberta": roberta_embeddings_post_processor,
+    # Bjarki:
     "convbert": bert_embeddings_post_processor
 }
