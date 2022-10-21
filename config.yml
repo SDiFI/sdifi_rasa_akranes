@@ -11,8 +11,10 @@ pipeline:
    min_ngram: 1
    max_ngram: 4
  - name: LanguageModelFeaturizer
-   model_name: "convbert"
-   model_weights: "jonfd/convbert-base-igc-is"
+#   model_name: "convbert"
+#   model_weights: "jonfd/convbert-base-igc-is"
+   model_name: "bert"
+   model_weights: "m3hrdadfi/icelandic-ner-bert"
  - name: DIETClassifier
    epochs: 100
  - name: FallbackClassifier

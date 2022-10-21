@@ -23,6 +23,7 @@ from transformers import (  # noqa: F401, E402
     DistilBertTokenizer,
     RobertaTokenizer,
     TFAutoModel,
+    TFAutoModelForTokenClassification,
     AutoTokenizer,
 )
 from rasa.nlu.utils.hugging_face.transformers_pre_post_processors import (  # noqa: F401, E402, E501
@@ -40,12 +41,17 @@ from rasa.nlu.utils.hugging_face.transformers_pre_post_processors import (  # no
     xlnet_tokens_cleaner,
 )
 
-# Bjarki:
-tokenizer = AutoTokenizer.from_pretrained("jonfd/convbert-base-igc-is")
-model = TFAutoModel.from_pretrained("jonfd/convbert-base-igc-is")
+# Bjarki, jonfd model:
+# tokenizer = AutoTokenizer.from_pretrained("jonfd/convbert-base-igc-is")
+# model = TFAutoModel.from_pretrained("jonfd/convbert-base-igc-is")
+
+# Bjarki, NER model:
+tokenizer = AutoTokenizer.from_pretrained("m3hrdadfi/icelandic-ner-bert")
+model = TFAutoModelForTokenClassification.from_pretrained("m3hrdadfi/icelandic-ner-bert")
 
 model_class_dict: Dict[Text, Type[TFPreTrainedModel]] = {
-    "bert": TFBertModel,
+    # Bjarki
+    "bert": model,
     "gpt": TFOpenAIGPTModel,
     "gpt2": TFGPT2Model,
     "xlnet": TFXLNetModel,
@@ -57,7 +63,8 @@ model_class_dict: Dict[Text, Type[TFPreTrainedModel]] = {
     "convbert": model
 }
 model_tokenizer_dict: Dict[Text, Type[PreTrainedTokenizer]] = {
-    "bert": BertTokenizer,
+    # Bjarki:
+    "bert": tokenizer,
     "gpt": OpenAIGPTTokenizer,
     "gpt2": GPT2Tokenizer,
     "xlnet": XLNetTokenizer,
