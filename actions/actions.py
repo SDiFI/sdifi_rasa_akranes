@@ -131,7 +131,7 @@ class ActionGetInfoForContact(Action):
                         out_text += f" Því miður er {r.name} ekki með skráð netfang hjá okkur. Þú getur prófað síma: {r.phone}."
                 elif email_or_phone == 'phone':
                     out_text += f" {r.name} svarar frekari spurningum í síma: {r.phone}."
-                elif email_or_phone == 'both':
+                else:
                     if r.email:
                         out_text += f" {r.name} svarar frekari spurningum í síma: {r.phone} og á netfangið: {r.email}."
                     else:
@@ -205,29 +205,16 @@ class ValidateRequestContactForm(FormValidationAction):
         nominative_names = declension.get_nominative_name(slot_value.title())
         for name in nominative_names:
             for contact in contacts:
-                if name in contact:
-                    candidates.append(contact)
+                for part_name in contact.split():
+                    if name == part_name or name == contact:
+                        candidates.append(contact)
+        candidates = [*set(candidates)]
         if len(candidates) == 1:
             return {'contact': candidates[0]}
         elif len(candidates) > 1:
-            dispatcher.utter_message(text="Ég fann fleiri en einn starfsmann með þessu nafni:")
-            for candidate in candidates:
-                dispatcher.utter_message(text=candidate)
-            return {'contact': None, 'contacts_found': True, 'contacts': candidates}
+            # for candidate in candidates:
+            #     dispatcher.utter_message(candidate)
+            return {'contact': None, 'contacts_found': True,
+                    'contacts': candidates}
         else:
-            dispatcher.utter_message(text=f"Því miður fann ég engan starfsmann með nafninu {slot_value.title()}. "
-                                              f"Er það örugglega rétt skrifað?")
             return {'contact': None}
-
-    def validate_email_or_phone(self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: DomainDict,
-    ) -> Dict[Text, Any]:
-        """Validate email_or_phone value."""
-
-        if slot_value.lower() in ['phone', 'email', 'both']:
-            return {'email_or_phone': slot_value}
-        else:
-            return {'email_or_phone': None}

@@ -34,7 +34,7 @@ slots:
       entity: subject
   email_or_phone:
     type: text
-    influence_conversation: true
+    influence_conversation: false
     mappings:
     - type: from_entity
       entity: email_or_phone
@@ -106,8 +106,8 @@ responses:
       - type: slot
         name: contacts_found
         value: True
-    text: Hvern ofangreindra ertu að reyna að ná í?
-  - text: Við hvern viltu tala, segir þú? Þú getur reynt að umorða spurninguna eða valið málaflokk.
+    text: Ég fann fleiri en einn starfsmann með þessu nafni, hvern eftirtaldra ertu að reyna að ná í? {contacts}
+  - text: Ég fann því miður engan með þessu nafni. Við hvern viltu tala, segirðu?
     buttons:
     - title: "Skipulagsmál"
       payload: '/request_contact{{"subject":"Skipulagsmál"}}'
@@ -167,4 +167,3 @@ forms:
     required_slots:
     - contact
     - subject
-    - email_or_phone
