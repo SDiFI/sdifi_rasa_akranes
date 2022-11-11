@@ -8,7 +8,8 @@ from typing import Any, Text, Dict, List
 import json
 
 from rasa_sdk import Action, Tracker, FormValidationAction
-from rasa_sdk.events import AllSlotsReset, SessionStarted, ActionExecuted
+from rasa_sdk.events import AllSlotsReset, SessionStarted, ActionExecuted, \
+    ActiveLoop, ConversationPaused, UserUtteranceReverted
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
@@ -60,12 +61,15 @@ class ActionDefaultAskAffirmation(Action):
         prompt = self.intent_mappings()[intent_name]
         entities = {}
 
-        if contact:
-            prompt += f" við {contact}"
-            entities["contact"] = contact
-        if subject:
-            prompt += f" um {subject}"
-            entities["subject"] = subject
+        if prompt == 'fá að tala':
+            if contact:
+                prompt += f" við {contact}"
+                entities["contact"] = contact
+            else:
+                prompt += f" við einhvern"
+            if subject:
+                prompt += f" um {subject}"
+                entities["subject"] = subject
         out_text = f"Afsakaðu, ég er nýr og enn að læra. Er það rétt skilið hjá mér að þú viljir {prompt}?"
         buttons = [{'title': 'Já',
                     'payload': f'/{intent_name}'+json.dumps(entities)},
@@ -89,10 +93,26 @@ class ActionDeactivateLoop(Action):
         domain: "DomainDict",
     ) -> List[Dict[Text, Any]]:
         """"""
-
-        dispatcher.utter_message("Ég hætti þá leitinni og við getum byrjað upp á nýtt ef þú vilt. Afsakaðu vesenið.")
-
+        validation_fails = tracker.get_slot('validation_fails')
+        if validation_fails >= 3:
+            dispatcher.utter_message(
+                text="Því miður skil ég þetta ekki. Ég verð að hætta leitinni og byrja upp á nýtt.")
+        else:
+            dispatcher.utter_message(
+                text="Ég hætti þá leitinni og við getum byrjað upp á nýtt ef þú vilt. Afsakaðu vesenið.")
         return [AllSlotsReset()]
+
+
+class ActionDefaultFallback(Action):
+    def name(self) -> Text:
+        return "action_default_fallback"
+
+    def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_message(
+            text="Því miður get ég ekki hjálpað þér með þetta. Ég sendi þig áfram á þjónustufulltrúa.")
+        # pause tracker
+        # undo last user interaction
+        return [ConversationPaused(), UserUtteranceReverted()]
 
 
 class ActionGetInfoForContact(Action):
@@ -153,11 +173,14 @@ class ValidateRequestContactForm(FormValidationAction):
             domain: "DomainDict",
     ) -> List[Text]:
         updated_slots = domain_slots.copy()
-        if tracker.slots.get("subject"):
-            updated_slots.remove("contact")
-        elif tracker.slots.get("contact"):
-            updated_slots.remove("subject")
-        return updated_slots
+        if tracker.slots.get("validation_fails") > 3:
+            return []
+        else:
+            if tracker.slots.get("subject"):
+                updated_slots.remove("contact")
+            elif tracker.slots.get("contact"):
+                updated_slots.remove("subject")
+            return updated_slots
 
     @staticmethod
     def subject_list() -> List[Text]:
@@ -180,13 +203,16 @@ class ValidateRequestContactForm(FormValidationAction):
             domain: DomainDict,
     ) -> Dict[Text, Any]:
         """Validate subject value."""
-
-        if slot_value.title() in self.subject_list():
-            return {'subject': slot_value}
-        else:
-            dispatcher.utter_message(text=f"Því miður fann ég engar upplýsingar um {slot_value}."
-                                          f"Er það örugglega rétt skrifað?")
-            return {'subject': None}
+        validation_fails = tracker.get_slot('validation_fails')
+        if slot_value:
+            if slot_value.title() in self.subject_list():
+                return {'subject': slot_value}
+            else:
+                validation_fails += 1
+                return {'subject': None, 'subject_found_but_not_validated': True,
+                        'validation_fails': validation_fails}
+        validation_fails += 1
+        return {'subject': None, 'validation_fails': validation_fails}
 
     def validate_contact(self,
         slot_value: Any,
@@ -197,6 +223,7 @@ class ValidateRequestContactForm(FormValidationAction):
         """Validate contact value."""
 
         candidates = []
+        validation_fails = tracker.get_slot('validation_fails')
         if tracker.get_slot('contacts_found'):
             contacts = tracker.get_slot('contacts')
         else:
@@ -208,13 +235,15 @@ class ValidateRequestContactForm(FormValidationAction):
                 for part_name in contact.split():
                     if name == part_name or name == contact:
                         candidates.append(contact)
+
         candidates = [*set(candidates)]
         if len(candidates) == 1:
             return {'contact': candidates[0]}
         elif len(candidates) > 1:
-            # for candidate in candidates:
-            #     dispatcher.utter_message(candidate)
-            return {'contact': None, 'contacts_found': True,
-                    'contacts': candidates}
+            validation_fails += 1
+            contact_string = ",".join(candidates)
+            return {'contact': None, 'contacts_found': True, 'contacts': candidates,
+                    'contacts_string': contact_string, 'validation_fails': validation_fails}
         else:
-            return {'contact': None}
+            validation_fails += 1
+            return {'contact': None, 'validation_fails': validation_fails,}

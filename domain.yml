@@ -50,6 +50,24 @@ slots:
     initial_value: []
     mappings:
     - type: custom
+  contacts_string:
+    type: text
+    influence_conversation: False
+    initial_value: ''
+    mappings:
+    - type: custom
+  subject_found_but_not_validated:
+    type: bool
+    influence_conversation: False
+    initial_value: False
+    mappings:
+    - type: custom
+  validation_fails:
+    type: float
+    influence_conversation: False
+    initial_value: 0
+    mappings:
+    - type: custom
 responses:
   utter_out_of_scope:
   - text: Ég biðst forláts, en ég ræð ekki við svona beiðnir. Þú getur prófað að biðja mig um hjálp við að ná í starfsfólk Akraneskaupstaðar.
@@ -64,8 +82,8 @@ responses:
   - text: Þetta skildi ég ekki.
   - text: Ég skildi þetta því miður ekki.
   - text: Ertu til í að umorða þetta?
-  utter_default:
-  - text: Því miður get ég þá ekki hjálpað þér.
+  utter_anything_else:
+  - text: Var það eitthvað fleira?
   utter_chitchat/ask_name:
   - text: Ég heiti Sæmi og er spjallmenni Akraneskaupstaðar. Gaman að kynnast þér.
   utter_chitchat/ask_weather:
@@ -77,6 +95,34 @@ responses:
   utter_faq/ask_kennitala:
   - text: Kennitala Akraneskaupstaðar er 410169-4449
   utter_ask_subject:
+  - condition:
+      - type: slot
+        name: subject_found_but_not_validated
+        value: True
+    text: Ég fann því miður engar upplýsingar um {subject}. Þú getur reynt að umorða spurninguna eða valið málaflokk.
+    buttons:
+      - title: "Skipulagsmál"
+        payload: '/request_contact{{"subject":"Skipulagsmál"}}'
+      - title: "Garðamál"
+        payload: '/request_contact{{"subject":"Garðamál"}}'
+      - title: "Byggingarmál"
+        payload: '/request_contact{{"subject":"Byggingarmál"}}'
+      - title: "Skólamál"
+        payload: '/request_contact{{"subject":"Skólamál"}}'
+      - title: "Stjórnsýslumál"
+        payload: '/request_contact{{"subject":"Stjórnsýslumál"}}'
+      - title: "Launamál"
+        payload: '/request_contact{{"subject":"Launamál"}}'
+      - title: "Fjármál"
+        payload: '/request_contact{{"subject":"Fjármál"}}'
+      - title: "Bókhaldsmál"
+        payload: '/request_contact{{"subject":"Bókhaldsmál"}}'
+      - title: "Velferðarmál"
+        payload: '/request_contact{{"subject":"Velferðarmál"}}'
+      - title: "Félagsþjónusta"
+        payload: '/request_contact{{"subject":"Félagsþjónusta"}}'
+      - title: "Dýraeftirlit"
+        payload: '/request_contact{{"subject":"Dýraeftirlit"}}'
   - text: Um hvað viltu tala, segirðu? Þú getur reynt að umorða spurninguna eða valið málaflokk.
     buttons:
     - title: "Skipulagsmál"
@@ -106,7 +152,7 @@ responses:
       - type: slot
         name: contacts_found
         value: True
-    text: Ég fann fleiri en einn starfsmann með þessu nafni, hvern eftirtaldra ertu að reyna að ná í? {contacts}
+    text: Ég fann fleiri en einn starfsmann með þessu nafni, hvern eftirtaldra ertu að reyna að ná í? {contacts_string}
   - text: Ég fann því miður engan með þessu nafni. Við hvern viltu tala, segirðu?
     buttons:
     - title: "Skipulagsmál"
@@ -150,10 +196,12 @@ actions:
 - utter_slots_values
 - utter_submit
 - utter_thank
+- utter_anything_else
 - action_get_contact_info
 - validate_request_contact_form
 - action_deactivate_loop
 - action_default_ask_affirmation
+- action_default_fallback
 forms:
   request_contact_form:
     ignored_intents:
@@ -165,5 +213,6 @@ forms:
     - out_of_scope
     - no_intent
     required_slots:
-    - contact
     - subject
+    - contact
+    - email_or_phone
