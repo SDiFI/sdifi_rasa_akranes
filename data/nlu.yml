@@ -24,6 +24,26 @@ nlu:
     - Blessaður
     - Blessuð
     - daginn
+    - hæ
+    - hæ!
+    - hæhæ
+    - Hæhæ!
+    - Hi
+    - hi
+    - góðan daginn
+    - góðan dag
+    - dagin
+    - daginn meistari
+    - Daginn meistari
+    - halló
+    - Hello
+    - hellú
+    - komdu sæll
+    - komdu sæll og blessaður
+    - Komdu sæll
+    - blessaður
+    - blessuð
+    - blessaður meistari
 - intent: bye
   examples: |
     - Bless bless!
@@ -33,6 +53,25 @@ nlu:
     - Sjáumst síðar.
     - Vertu sæll
     - Vertu sæl
+    - bles
+    - blessbless
+    - bæ
+    - bæ!
+    - BÆ
+    - sjáumst
+    - sjáumst seinna
+    - nú segi ég bless
+    - bæbæ
+    - Bæææ
+    - vertu þá blessaður
+    - bless sæmi
+    - sjáusmst Sæmi
+    - sjáumst!
+    - bless bless sæmi
+    - við sjáumst þá bara
+    - heyrumst
+    - Heyrumst
+    - heyrumst sæmi minn
 - intent: thank
   examples: |
     - Takk!
@@ -40,27 +79,134 @@ nlu:
     - Þakka þér
     - Takk fyrir
     - Bestu þakkir!
+    - takk!
+    - takk
+    - takk kærlea!
+    - þakka þér
+    - takk fyrir
+    - bestu þakkir!
+    - takk meistari
+    - þakka þér meistari
+    - þakka þér kærlega fyrir þetta sæmi
+    - takk sæmi minn
+    - bestu þakkir sæmi
+    - Takk fyrir meistari
+    - bestu þakkir
+    - Takk fyrir mig
+    - takk fyrir hjálpina vinur
+    - takk fyrir mig!
+    - Takk takk
+    - þakka þér fyrir hjálpina
+    - takk fyrir mig meistari
+    - takkfyrir þetta
 - intent: chitchat/ask_name
   examples: |
     - Hvað heitir þú?
     - hvað heitir þú
     - heitir þú eitthvað?
+    - hvað heitiru
+    - hæ hvað heitir þú
+    - ert þú með nafn
+    - hvað er nafnið þitt
+    - hvað á ég að kalla þig
+    - á ég að kalla þig eitthvað
+    - góðan daginn hvað heitir þú
+    - blessaður hvað heitir þú eiginlega
+    - Hvað á ég að kalla þig
+    - Hvað heitiru
+    - hæ hvað heitir þú?
+    - nafnið hjá þér?
+    - Halló hvað heitir þú?
+    - hvað ert þú kallaður
+    - Heitir þú Sæmi?
+    - Heitir þú eitthvað?
+    - blessaður hvað heitirui
+    - hvað heitir þú eiginlega
+    - heitir þú sæmi
+    - viltu segja mér hvað þú heitir
+    - ert þetta þú sæmi
+    - ert þú sæmi
 - intent: chitchat/ask_weather
   examples: |
     - hvernig er veðrið?
     - Hvernig er veðrið í dag?
     - hvernig er veðrið á Akranesi?
     - er gott veður á Skaganum?
+    - hæ hvernig finnst þér veðrið
+    - hvernig er veðrið núna
+    - getur þú sagt mér hvernig veðrið er núna á Akranesi?
+    - getur þú sagt mér hvernig veðrið er núna
+    - er gott veður núna
+    - Er gott veður núna á skaganum
+    - hversu gtt er veðroð
+    - hversu gott er veðrið núna
+    - er núna gott veður
+    - Er rok á skaganum?
+    - Er logn á skaganum núna
+    - Er alltaf rok og rigning á Skaganum
+    - er rok og rigning á akranesi
+    - er alltaf vindur á skaganum
+    - er alltaf rok á skaganum?
+    - af hverju er aldrei gott veður á skaganum
+    - af hverju er aldrei gott veður á akranesi
+    - segðu mér hvernig veðrið er núna
+    - hæ hvernig er veðrið
+    - daginn, hvernig er veðrið á akraensi í dag
+    - daginn, hvernig viðrar á akranesi núna
 - intent: faq/ask_population
   examples: |
     - hvað búa margir á Akranesi?
     - hvað búa margir á Skaganum?
     - Hvað búa margir hérna?
+    - Hvað búa margir Akranesi
+    - hvað eru margir á akranesi
+    - hver er fóslksfjöldinn á akraneisi
+    - Fólksfjöldi Akraneskaupstaður
+    - Hvað búa margir á Akranesi?
+    - getur þú sagt mér hversu margir búa hérna á Akranesi?
+    - hvað eru margir sem búa á Akresni
+    - havð búa mrargir hérna á Skaganum
+    - Hvað búa margir á Skaganum
+    - Getur þú sagt mér hvað búa margir á skaganum
+    - hversu margir búa á Akranesi
+    - eru margir sem búa á skaganum
+    - hvað búa mörg þúsund manns á skaganum
+    - hvað búa mörg þúsund manns á akranesi?
+    - Eru margir sem búa í Akranesbæ
+    - geturu sagt mér hvað búa margir hér
+    - hvað búa margir hérna
+    - mig langar að vita vhað búa margir á akranesi
+    - eru margir sem búa á skaganum?
+    - eru margir sem búa á Akranesi?
+    - hvað er margt fólk á Skaganum?
+    - margir á Skagnum
 - intent: faq/ask_location
   examples: |
     - hvar er Akranes?
     - hvar á landinu er akranes?
     - hvar er Skaginn?
+    - hvað á landinu er skaginn
+    - Hvar er Skaginn?
+    - Hvar er akranesbær?
+    - hvar á landinu er ákranesibær
+    - hvernig kemst ég á akranesi
+    - hvernig kemst ég á skagann
+    - getur þú sagt mér hvar Akranes er?
+    - Getur þú sagt mér hvar Akraneskaupstaður er
+    - getur þú sagt mér hvað skaginn er
+    - hvar á landinu er Akranesbær?
+    - er Akranes á íslandi?
+    - er skaginn á íslandi
+    - er akranes á vesturlandi
+    - er skaginn á vestulandi?
+    - hvar á landinu er akranesbær
+    - hvar á landinu er Akraneskaupstaður?
+    - mig langar að vita hvar akranes er
+    - veistu hvar akranes er
+    - hvar er akranes sæmi
+    - veistu hvar skaginn er sæmi?
+    - Veistu hvar skaginn er?
+    - geturu sagt mér hvar akranes er
 - intent: faq/ask_kennitala
   examples: |
     - hver er kennitala
@@ -68,6 +214,27 @@ nlu:
     - hver er kennitalan hjá bænum
     - mig vantar kennitöluna hjá bænum
     - kennitala
+    - daginn ég þarf að fá kennitölu bæjarsins
+    - getur þú sagt mér kennitöluna hjá akranesbæ
+    - kennitala Akranes
+    - kennitala Akraneskaupstaður
+    - mig vantar kennitölu akranesbæjar
+    - Kennitala Akranes
+    - getur þú sagt mér kennitöluna bænum
+    - daginn hver er kt bæjarins
+    - vantar kt hjá bænum bakk
+    - kennitöluna hjá bænum takk
+    - veistu kt hjá bænum
+    - veistu kennitöluna hjá bænum?
+    - kt hjá bænum takk
+    - ég þarf kt jhjá bænum
+    - ég þarf kennitölu jjá bænum
+    - gefðu mér kt akranesbæ
+    - kennitala akranes
+    - kt akranes
+    - gefðu mér kennitöluna á bæinn
+    - veistu kennitöluna hjá akranesibæ
+    - veistu kt hjá akranesibæ
 - intent: stop
   examples: |
     - hætta
@@ -75,18 +242,67 @@ nlu:
     - stop
     - ég vil hætta
     - hætta núna
+    - hættu
+    - hvernig hætti ég
+    - Hætta
+    - Ég vil hætta núna
+    - ég vil hætta við
+    - hætta við leit takk
+    - hættu núna
+    - ég vil hætta við leitina
+    - mig langar að hætta við
+    - get ég hætt við
+    - get ég byrjað upp á nýtt
+    - ég vil hætta og byrja upp á nýtt takk
+    - get ég hætt
+    - byrja aftur
+    - byrja upp á nýtt
+    - hætta stop
+    - Ég þarf að hætta og byrja aftur
+    - Get ég hætt?
+    - STopp núna
+    - hætta takk
+- intent: affirm
+  examples: |
+    - já
+    - Já
+    - ja
+    - Ja
+    - Já þakka þér
+    - já takk
+    - Já eitt enn
+    - já ég er með aðra spurningu
+    - jaáá
+- intent: deny
+  examples: |
+    - nei
+    - Nei
+    - nei takk
+    - Nei takk
+    - Nei þakka þér
+    - nei takk þetta er komið
+    - alls ekki
+    - Alls ekki
+    - Ekkert meira
+    - ekkert meira
+    - ekkret
+    - ekkert
+    - Nei ekki meira fyrir mig
+    - nei ekkert fleira
+    - Nei búinn
+    - neibbs
 - intent: request_contact
   examples: |
     - hver sér um [kaffið hérna](subject)?
-    - hver sér um [launamál]{"entity": "subject", "value": "Stjórnsýslumál"}?
-    - hver sér um [skólamál]{"entity": "subject", "value": "Skólamál"}?
-    - hver sér um [lóðirnar]{"entity": "subject", "value": "Skipulagsmál"}?
-    - hver sér um að [keyra út mat til aldraðra]{"entity": "subject", "value": "Velferðarmál"}
+    - hver sér um [launamál]{"entity": "subject", "value": "Stj\u00f3rns\u00fdslum\u00e1l"}?
+    - hver sér um [skólamál]{"entity": "subject", "value": "Sk\u00f3lam\u00e1l"}?
+    - hver sér um [lóðirnar]{"entity": "subject", "value": "Skipulagsm\u00e1l"}?
+    - hver sér um að [keyra út mat til aldraðra]{"entity": "subject", "value": "Velfer\u00f0arm\u00e1l"}
     - mig vantar að tala við einhvern um [lífið](subject)
-    - mig vantar að tala við einhvern um [sorphirðu]{"entity": "subject", "value": "Skipulagsmál"}
+    - mig vantar að tala við einhvern um [sorphirðu]{"entity": "subject", "value": "Skipulagsm\u00e1l"}
     - þarf að tala við einhvern um [símann minn](subject)
-    - ég þarf að tala við einhvern um [leikskóla]{"entity": "subject", "value": "Skólamál"}
-    - ég þarf að tala við einhvern um [frí í leikskólanum]{"entity": "subject", "value": "Skólamál"}
+    - ég þarf að tala við einhvern um [leikskóla]{"entity": "subject", "value": "Sk\u00f3lam\u00e1l"}
+    - ég þarf að tala við einhvern um [frí í leikskólanum]{"entity": "subject", "value": "Sk\u00f3lam\u00e1l"}
     - Hvernig næ ég í [Sævar Frey Þráinsson](contact)
     - Hvernig get ég haft samband við [Valgerði Janusdóttur](contact)
     - Hvar get ég nálgast [Svölu Hreinsdóttur](contact)
@@ -107,19 +323,19 @@ nlu:
     - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Sævari Frey Þráinssyni](contact)
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Valgerði Janusdóttur](contact)?
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [Svölu Hreinsdóttur](contact)?
-    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu Ásmundsdóttur](contact) á [Velferðarsviði]{"entity": "subject", "value": "Velferðarmál"}?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu Ásmundsdóttur](contact) á [Velferðarsviði]{"entity": "subject", "value": "Velfer\u00f0arm\u00e1l"}?
     - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Sævari Frey](contact)
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Valgerði](contact)?
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [Svölu](contact)?
-    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu](contact) á [Velferðarsviði]{"entity": "subject", "value": "Velferðarmál"}?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu](contact) á [Velferðarsviði]{"entity": "subject", "value": "Velfer\u00f0arm\u00e1l"}?
     - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [sævari frey þráinssyni](contact)
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [valgerði janusdóttur](contact)?
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [svölu hreinsdóttur](contact)?
-    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [ástu jónu ásmundsdóttur](contact) á [Velferðarmálarsviði]{"entity": "subject", "value": "Velferðarmál"}?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [ástu jónu ásmundsdóttur](contact) á [Velferðarmálarsviði]{"entity": "subject", "value": "Velfer\u00f0arm\u00e1l"}?
     - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [sævari frey](contact)
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [valgerði](contact)?
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [svölu](contact)?
-    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [ástu jónu](contact) á [Velferðarsviði]{"entity": "subject", "value": "Velferðarmál"}?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [ástu jónu](contact) á [Velferðarsviði]{"entity": "subject", "value": "Velfer\u00f0arm\u00e1l"}?
     - Hvað er [netfangið]{"entity": "email_or_phone", "value": "email"} hjá [Sævari Frey Þráinssyni](contact)
     - Hvar get ég sent [póst]{"entity": "email_or_phone", "value": "email"} á [Valgerði Janusdóttur](contact)
     - Hvað er [tölvupóstfangið]{"entity": "email_or_phone", "value": "email"} hjá [Svölu Hreinsdóttur](contact)
@@ -136,16 +352,72 @@ nlu:
     - Hvar get ég sent [póst]{"entity": "email_or_phone", "value": "email"} á [valgerði](contact)
     - Hvað er [tölvupóstfangið]{"entity": "email_or_phone", "value": "email"} hjá [svölu](contact)
     - [email](email_or_phone) hjá [ástu jónu](contact)?
-    - mig langar að tala um [dýrahald]{"entity": "subject", "value": "Dýraeftirlit"}
+    - mig langar að tala um [dýrahald]{"entity": "subject", "value": "D\u00fdraeftirlit"}
     - mig langar að tala um [tónlist](subject)
     - [svölu hreins](contact)
+    - /request_contact{"subject":"Fjármál"}
+    - mig langar að tala við [manneskju](contact)
+    - /request_contact{"subject":"Dýraeftirlit"}
+    - ég þarf að tala við [svölu](contact)
+    - mig vantar númerið hjá [sigga](contact) [jóns](contact)
+    - hver er [launafulltrúi](contact)
+    - ég vil tala við einhvern um frí í [skólanum](subject)
+    - hver sér um málefni [skólans](subject)
+    - get ég talaðvið einvhern um [skólapláss](subject)
+    - frí í [leikskólanum](subject)
+    - er einhver sem sér um [Leikjanámskeið](subject) hér í bænum?
+    - [Leikskólar](subject) í bænum
+    - hvar er hægt að bóka í [frístund](subject)
+    - hver er yfir [frístundinni](subject)
+    - hver sér um [byggingarmál](subject)
+    - hver er [byggingarfulltrúi](subject)?
+    - [byggja](subject) [skúr](subject)
+    - hver sér um [lóðamál](subject)
+    - ég vil tala um [lóðaleigu](subject)
+    - hvern er hægt að tala við um [lóðaleigusamninga](subject)
+    - [aldraðir](subject) í bænum
+    - hver er yfir [öldruðum](subject)
+    - Góðan dagin. Hver sér um [félagsstarf](subject) [aldraðra](subject) hér á Akranesi?
+    - þarf að tala við þann sem er yfir [barnavernd](subject)
+    - hver er yfir þjónustu við [fatlaðra](subject)
+    - þarf að ná sambandi við [dagforeldra](subject)
+    - Halló. Hver eryfir [dagforeldrum](subject)? Vantar pláss.
+    - [dagmóðir](subject)
+    - [dagmæður](subject) á akranesi
+    - er [dagmamma](subject) í bænum?
+    - þarf að nálgast lista yfir [dagmömmur](subject)
+    - hver sér um [dýraeftirlit](subject)??!
+    - hver sér um [dýramál](subject) í bænum
+    - þarf að tala við einhvern um eftirlit með [dýrum](subject)
+    - [Dýrahald](subject) í Akraneskaupstað
+    - [hundar](subject) í bænum
+    - tala við einhvern um [rusl](subject)
+    - hvern tala við um [sorptunnu](subject)
+    - Hvern tala ég við um [losun](subject) [sorptunnu](subject)?
+    - vantar að fá nýja [ruslatunnu](subject)
+    - hægt að tala við einhvern um [snjómokstur](subject)!!
+    - [mokstur](subject) á götum
+    - tala um [stjórnsýslumál](subject)
+    - hver er yfir [persónuvernd](subject)
+    - hvern er hægt að tala við um [fjármál](subject) bæjarsin
+    - [bókari](subject) hjá bænum
+    - hver sér um [bókhald](subject)
+    - tala um [reikningar](subject) hjá bænum
+    - Góðan daginn. Ég þarf að tala við þann sem er yfir [félagsþjónustu](subject) á Akranesi.
+    - [félagsleg](subject) [aðstoð](subject) hjá Akranesbæ
+    - [garðarnir](subject) hérna í bænum
+    - [græn](subject) [svæði](subject) akranes
+    - er [vinnuskóli](subject) í sumar
+    - [Vinnuskólinn](subject)
+    - hver er yfir [unglingavinnu](subject) hjá bænum
+    - hver sér um [táningavinnu](subject) í sumar
 - intent: inform
   examples: |
-    - [skólamál]{"entity": "subject", "value": "Skólamál"}
-    - [sorphirðumál]{"entity": "subject", "value": "Skipulagsmál"}
-    - [ruslið]{"entity": "subject", "value": "Skipulagsmál"}
-    - [laun]{"entity": "subject", "value": "Stjórnsýslumál"}
-    - [launamál]{"entity": "subject", "value": "Stjórnsýslumál"}
+    - [skólamál]{"entity": "subject", "value": "Sk\u00f3lam\u00e1l"}
+    - [sorphirðumál]{"entity": "subject", "value": "Skipulagsm\u00e1l"}
+    - [ruslið]{"entity": "subject", "value": "Skipulagsm\u00e1l"}
+    - [laun]{"entity": "subject", "value": "Stj\u00f3rns\u00fdslum\u00e1l"}
+    - [launamál]{"entity": "subject", "value": "Stj\u00f3rns\u00fdslum\u00e1l"}
     - [bankið í ofnunum](subject)
     - [svölu](contact)
     - [ástu jónu](contact)
@@ -160,32 +432,31 @@ nlu:
     - [netfang]{"entity": "email_or_phone", "value": "email"}
     - [email](email_or_phone) takk
     - ég vil fá [netfangið]{"entity": "email_or_phone", "value": "email"}
-    - [símanúmer]{"entity": "email_or_phone", "value": "phone"}
     - [bæði]{"entity": "email_or_phone", "value": "both"}
     - ég vil fá [bæði]{"entity": "email_or_phone", "value": "both"} takk
     - gefðu mér [bæði]{"entity": "email_or_phone", "value": "both"}
     - [alveg sama]{"entity": "email_or_phone", "value": "both"}
-- synonym: Stjórnsýslumál
-  examples: |
-    - stjórnsýslumál
-    - persónuvernd
+    - [símanúmer]{"entity": "email_or_phone", "value": "phone"}, takk
+    - [síma]{"entity": "email_or_phone", "value": "phone"}
+    - [Leikskólapláss](subject)
+    - ég þarf að tala um að fá [byggingaleyfi](subject)
+    - [barnaverndarmál](subject)
+    - [búsetuþjónustu](subject) [fatlaðra](subject)
+    - [búseta](subject) [fatlaðra](subject)
+    - [skráning](subject) [hunda](subject)
+    - [kettir](subject)
+    - [skráning](subject) [katta](subject)
+    - [garða](subject)
 - synonym: Launamál
   examples: |
     - launamál
     - laun
     - launafulltrúi
-- synonym: Fjármál
-  examples: |
-    - fjármál
-- synonym: Bókhaldsmál
-  examples: |
-    - bókari
-    - bókhald
-    - reikningar
 - synonym: Skólamál
   examples: |
     - skólamál
     - leikskóla
+    - frí í leikskólanum
     - skólanum
     - skólans
     - skólapláss
@@ -195,70 +466,48 @@ nlu:
     - Leikskólar
     - frístund
     - frístundinni
-- synonym: Skipulagsmál
-  examples: |
-    - sorphirðu
-    - sorphirðumál
-    - ruslið
-    - rusl
-    - sorptunnu
-    - losun sorptunnu
-    - ruslatunnu
-    - snjómokstur
-    - mokstur
 - synonym: Byggingarmál
   examples: |
+    - lóðirnar
     - byggingarmál
     - byggingarfulltrúi
     - byggingaleyfi
-    - byggja skúr
     - lóðamál
-    - lóðirnar
     - lóðaleigu
     - lóðaleigusamninga
-- synonym: Garðamál
-  examples: |
-    - garðarnir
-    - garða
-    - græn svæði
-    - vinnuskóli
-    - Vinnuskólinn
-    - unglingavinnu
-    - táningavinna
+    - byggja
+    - skúr
 - synonym: Velferðarmál
   examples: |
     - keyra út mat til aldraðra
+    - Velferðarsviði
     - Velferðarmálarsviði
     - aldraðir
     - öldruðum
-    - félagsstarf aldraðra
     - barnavernd
     - barnaverndarmál
-    - búsetuþjónustu fatlaðra
-    - búseta fatlaðra
-    - þjónustu við fatlaða
-    - dagforeldra
     - dagforeldrum
-    - dagforeldrar
     - dagmóðir
     - dagmæður
     - dagmamma
     - dagmömmur
-- synonym: Félagsþjónusta
+    - fatlaðra
+    - búseta
+    - búsetuþjónustu
+    - félagsstarf
+    - aldraðra
+- synonym: Skipulagsmál
   examples: |
-    - félagsþjónustu
-    - félagsleg aðstoð
-- synonym: Dýraeftirlit
-  examples: |
-    - dýraeftirlit
-    - dýramál
-    - eftirlit með dýrum
-    - dýrahald
-    - Dýrahald
-    - hundar
-    - skráning hunda
-    - kettir
-    - skráning katta
+    - sorphirðu
+    - sorphirðuna
+    - sorphirðumál
+    - ruslið
+    - rusl
+    - sorptunnu
+    - ruslatunnu
+    - snjómokstur
+    - mokstur
+    - losun
 - synonym: phone
   examples: |
     - númerið
@@ -273,6 +522,50 @@ nlu:
     - póst
     - tölvupóstfangið
     - tölvupóst
+    - netfang
+- synonym: Dýraeftirlit
+  examples: |
+    - dýrahald
+    - dýraeftirlit
+    - dýramál
+    - Dýrahald
+    - hundar
+    - kettir
+    - skráning
+    - katta
+    - hunda
+    - dýrum
+- synonym: both
+  examples: |
+    - bæði
+    - alveg sama
+- synonym: Stjórnsýslumál
+  examples: |
+    - stjórnsýslumál
+    - persónuvernd
+- synonym: Fjármál
+  examples: |
+    - fjármál
+- synonym: Bókhaldsmál
+  examples: |
+    - bókari
+    - bókhald
+    - reikningar
+- synonym: Garðamál
+  examples: |
+    - garðarnir
+    - garða
+    - vinnuskóli
+    - Vinnuskólinn
+    - unglingavinnu
+    - táningavinnu
+    - græn
+    - svæði
+- synonym: Félagsþjónusta
+  examples: |
+    - félagsþjónustu
+    - félagsleg
+    - aðstoð
 - lookup: contact
   examples: |
     - Sigurður Páll Harðarson
