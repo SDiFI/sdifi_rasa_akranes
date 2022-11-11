@@ -1,0 +1,18 @@
+version: "3.1"
+ 
+stories:
+ 
+- story: Respond to greeting.
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: Respond to thank you.
+  steps:
+  - intent: thank
+  - action: utter_thank
+
+- story: Respond to goodbye.
+  steps:
+  - intent: bye
+  - action: utter_bye

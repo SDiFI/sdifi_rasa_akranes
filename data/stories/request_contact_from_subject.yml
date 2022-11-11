@@ -1,0 +1,170 @@
+version: "3.1"
+
+stories:
+
+#- story: Story 1, Nothing recognised, fallback
+#  steps:
+#    - intent: request_contact
+#    - action: request_contact_form
+#    - active_loop: request_contact_form
+#    - slot_was_set:
+#      - call_default_fallback: True
+#    - action: action_deactivate_loop
+#    - active_loop: null
+#    - action: action_default_fallback
+
+- story: Story 0, Form stopped
+  steps:
+  - intent: request_contact
+  - action: request_contact_form
+  - active_loop: request_contact_form
+  - intent: stop
+  - action: action_deactivate_loop
+  - active_loop: null
+
+- story: Story 11, subject never validates, loop deactivated
+  steps:
+  - intent: request_contact
+    entities:
+    - subject: skógí
+  - slot_was_set:
+    - subject: skógí
+  - action: request_contact_form
+  - active_loop: request_contact_form
+  - slot_was_set:
+    - subject: null
+  - slot_was_set:
+    - subject_found_but_not_validated: true
+  - slot_was_set:
+    - validation_fails: 1
+  - slot_was_set:
+    - subject: null
+  - slot_was_set:
+    - subject_found_but_not_validated: true
+  - slot_was_set:
+    - validation_fails: 1
+  - slot_was_set:
+    - requested_slot: subject
+  - intent: inform
+    entities:
+    - subject: skógí
+  - slot_was_set:
+    - subject: skógí
+  - action: request_contact_form
+  - slot_was_set:
+    - subject: null
+  - slot_was_set:
+    - subject_found_but_not_validated: true
+  - slot_was_set:
+    - validation_fails: 2
+  - slot_was_set:
+    - requested_slot: subject
+  - intent: inform
+    entities:
+    - subject: skógí
+  - slot_was_set:
+    - subject: skógí
+  - action: request_contact_form
+  - slot_was_set:
+    - subject: null
+  - slot_was_set:
+    - subject_found_but_not_validated: true
+  - slot_was_set:
+    - validation_fails: 3
+  - slot_was_set:
+    - requested_slot: subject
+  - intent: inform
+    entities:
+    - subject: skógí
+  - slot_was_set:
+    - subject: skógí
+  - action: request_contact_form
+  - action: action_deactivate_loop
+
+- story: Story 12, subject fails to validate, buttons help
+  steps:
+  - intent: request_contact
+    entities:
+    - contact: grasið
+  - slot_was_set:
+    - contact: grasið
+  - action: request_contact_form
+  - active_loop: request_contact_form
+  - slot_was_set:
+    - contact: null
+  - slot_was_set:
+    - validation_fails: 1
+  - slot_was_set:
+    - call_default_fallback: false
+  - slot_was_set:
+    - contact: null
+  - slot_was_set:
+    - validation_fails: 1
+  - slot_was_set:
+    - call_default_fallback: false
+  - slot_was_set:
+    - requested_slot: subject
+  - intent: request_contact
+    entities:
+    - subject: Garðamál
+  - slot_was_set:
+    - subject: Garðamál
+  - action: request_contact_form
+  - slot_was_set:
+    - subject: Garðamál
+  - slot_was_set:
+    - requested_slot: email_or_phone
+  - intent: inform
+    entities:
+    - email_or_phone: phone
+  - slot_was_set:
+    - email_or_phone: phone
+  - action: request_contact_form
+  - slot_was_set:
+    - email_or_phone: phone
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_slots_values
+  - action: action_get_contact_info
+  - action: utter_anything_else
+
+- story: Story 13, subject validated first time
+  steps:
+  - intent: request_contact
+    entities:
+    - subject: Skipulagsmál
+  - slot_was_set:
+    - subject: Skipulagsmál
+  - action: request_contact_form
+  - active_loop: request_contact_form
+  - slot_was_set:
+    - subject: Skipulagsmál
+  - slot_was_set:
+    - requested_slot: email_or_phone
+  - slot_was_set:
+    - subject: Skipulagsmál
+  - slot_was_set:
+    - requested_slot: email_or_phone
+  - intent: inform
+    entities:
+    - email_or_phone: email
+  - slot_was_set:
+    - email_or_phone: email
+  - action: request_contact_form
+  - slot_was_set:
+    - email_or_phone: email
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_slots_values
+  - action: action_get_contact_info
+  - action: utter_anything_else
+
+

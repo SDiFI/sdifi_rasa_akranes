@@ -1,0 +1,301 @@
+version: "3.1"
+ 
+stories:
+
+- story: Form stopped
+  steps:
+  - intent: request_contact
+  - action: request_contact_form
+  - active_loop: request_contact_form
+  - intent: stop
+  - action: action_deactivate_loop
+  - active_loop: null
+
+- story: Story 14, contact validated first time
+  steps:
+  - intent: request_contact
+    entities:
+    - contact: svölu hreinsdóttur
+  - slot_was_set:
+    - contact: svölu hreinsdóttur
+  - action: request_contact_form
+  - active_loop: request_contact_form
+  - slot_was_set:
+    - contact: Svala Hreinsdóttir
+  - slot_was_set:
+    - requested_slot: email_or_phone
+  - slot_was_set:
+    - contact: Svala Hreinsdóttir
+  - slot_was_set:
+    - requested_slot: email_or_phone
+  - intent: inform
+    entities:
+    - email_or_phone: phone
+  - slot_was_set:
+    - email_or_phone: phone
+  - action: request_contact_form
+  - slot_was_set:
+    - email_or_phone: phone
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_slots_values
+  - action: action_get_contact_info
+  - action: utter_anything_else
+
+- story: Story 15, contact fails to validate, user tries again and succeeds
+  steps:
+  - intent: request_contact
+    entities:
+    - contact: svölu hreins
+  - slot_was_set:
+    - contact: svölu hreins
+  - action: request_contact_form
+  - active_loop: request_contact_form
+  - slot_was_set:
+    - contact: null
+  - slot_was_set:
+    - validation_fails: 1
+  - slot_was_set:
+    - contact: null
+  - slot_was_set:
+    - validation_fails: 1
+  - slot_was_set:
+    - requested_slot: contact
+  - intent: inform
+    entities:
+    - contact: svölu hreinsdóttur
+  - slot_was_set:
+    - contact: svölu hreinsdóttur
+  - action: request_contact_form
+  - slot_was_set:
+    - contact: Svala Hreinsdóttir
+  - slot_was_set:
+    - requested_slot: email_or_phone
+  - intent: inform
+    entities:
+    - email_or_phone: email
+  - slot_was_set:
+    - email_or_phone: email
+  - action: request_contact_form
+  - slot_was_set:
+    - email_or_phone: email
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_slots_values
+  - action: action_get_contact_info
+  - action: utter_anything_else
+
+- story: Story 16, contact never validates, fallback
+  steps:
+  - intent: request_contact
+    entities:
+    - contact: svölu hreins
+  - slot_was_set:
+    - contact: svölu hreins
+  - action: request_contact_form
+  - active_loop: request_contact_form
+  - slot_was_set:
+    - contact: null
+  - slot_was_set:
+    - validation_fails: 1
+  - slot_was_set:
+    - contact: null
+  - slot_was_set:
+    - validation_fails: 1
+  - slot_was_set:
+    - requested_slot: contact
+  - intent: request_contact
+    entities:
+    - contact: svölu hreins
+  - slot_was_set:
+    - contact: svölu hreins
+  - action: request_contact_form
+  - slot_was_set:
+    - contact: null
+  - slot_was_set:
+    - validation_fails: 2
+  - slot_was_set:
+    - requested_slot: contact
+  - intent: request_contact
+    entities:
+    - contact: svölu hreins
+  - slot_was_set:
+    - contact: svölu hreins
+  - action: request_contact_form
+  - slot_was_set:
+    - contact: null
+  - slot_was_set:
+    - validation_fails: 3
+  - slot_was_set:
+    - requested_slot: contact
+  - intent: request_contact
+  - action: action_deactivate_loop
+
+- story: Story 17, validates email/phone immediately, asks again for contact
+  steps:
+  - intent: request_contact
+    entities:
+    - email_or_phone: phone
+    - contact: steina adolfs
+  - slot_was_set:
+    - contact: steina adolfs
+  - slot_was_set:
+    - email_or_phone: phone
+  - action: request_contact_form
+  - active_loop: request_contact_form
+  - slot_was_set:
+    - contact: null
+  - slot_was_set:
+    - email_or_phone: phone
+  - slot_was_set:
+    - validation_fails: 1
+  - slot_was_set:
+    - contact: null
+  - slot_was_set:
+    - email_or_phone: phone
+  - slot_was_set:
+    - validation_fails: 1
+  - slot_was_set:
+    - requested_slot: contact
+  - intent: inform
+    entities:
+    - contact: steinar adolfsson
+  - slot_was_set:
+    - contact: steinar adolfsson
+  - action: request_contact_form
+  - slot_was_set:
+    - contact: Steinar Adolfsson
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_slots_values
+  - action: action_get_contact_info
+  - action: utter_anything_else
+
+- story: Story 18, email/phone validated first time, contact never gets validated, fallback
+  steps:
+  - intent: request_contact
+    entities:
+    - email_or_phone: phone
+    - contact: steina adolfs
+  - slot_was_set:
+    - contact: steina adolfs
+  - slot_was_set:
+    - email_or_phone: phone
+  - action: request_contact_form
+  - active_loop: request_contact_form
+  - slot_was_set:
+    - contact: null
+  - slot_was_set:
+    - email_or_phone: phone
+  - slot_was_set:
+    - validation_fails: 1
+  - slot_was_set:
+    - contact: null
+  - slot_was_set:
+    - email_or_phone: phone
+  - slot_was_set:
+    - validation_fails: 1
+  - slot_was_set:
+    - requested_slot: contact
+  - intent: inform
+    entities:
+    - contact: steina adolfs
+  - slot_was_set:
+    - contact: steina adolfs
+  - action: request_contact_form
+  - slot_was_set:
+    - contact: null
+  - slot_was_set:
+    - validation_fails: 2
+  - slot_was_set:
+    - requested_slot: contact
+  - intent: inform
+    entities:
+    - contact: steina adolfs
+  - slot_was_set:
+    - contact: steina adolfs
+  - action: request_contact_form
+  - slot_was_set:
+    - contact: null
+  - slot_was_set:
+    - validation_fails: 3
+  - slot_was_set:
+    - requested_slot: contact
+  - intent: inform
+    entities:
+    - contact: steina adolfs
+  - slot_was_set:
+    - contact: steina adolfs
+  - action: action_deactivate_loop
+
+- story: Story 19, email/phone and contact validated first time
+  steps:
+  - intent: request_contact
+    entities:
+    - email_or_phone: phone
+    - contact: steinar adolfsson
+  - slot_was_set:
+    - contact: steinar adolfsson
+  - slot_was_set:
+    - email_or_phone: phone
+  - action: request_contact_form
+  - active_loop: request_contact_form
+  - slot_was_set:
+    - contact: Steinar Adolfsson
+  - slot_was_set:
+    - email_or_phone: phone
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_slots_values
+  - action: action_get_contact_info
+  - action: utter_anything_else
+
+- story: User greets, asks for contact, faq interruption
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: request_contact
+      entities:
+        - contact: Valgerði Janusdóttur
+    - slot_was_set:
+        - contact: Valgerði Janusdóttur
+    - action: request_contact_form
+    - active_loop: request_contact_form
+    - slot_was_set:
+        - contact: Valgerður Janusdóttir
+    - slot_was_set:
+        - requested_slot: email_or_phone
+    - intent: faq
+    - action: utter_faq
+    - action: request_contact_form
+    - slot_was_set:
+        - requested_slot: email_or_phone
+    - intent: inform
+      entities:
+        - email_or_phone: phone
+    - slot_was_set:
+        - email_or_phone: phone
+    - action: request_contact_form
+    - slot_was_set:
+        - email_or_phone: phone
+    - slot_was_set:
+        - requested_slot: null
+    - active_loop: null
+    - action: utter_submit
+    - action: utter_slots_values
+    - action: action_get_contact_info
+    - action: utter_anything_else
