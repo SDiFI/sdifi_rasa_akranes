@@ -294,15 +294,15 @@ nlu:
 - intent: request_contact
   examples: |
     - hver sér um [kaffið hérna](subject)?
-    - hver sér um [launamál]{"entity": "subject", "value": "Stj\u00f3rns\u00fdslum\u00e1l"}?
-    - hver sér um [skólamál]{"entity": "subject", "value": "Sk\u00f3lam\u00e1l"}?
-    - hver sér um [lóðirnar]{"entity": "subject", "value": "Skipulagsm\u00e1l"}?
-    - hver sér um að [keyra út mat til aldraðra]{"entity": "subject", "value": "Velfer\u00f0arm\u00e1l"}
+    - hver sér um [launamál]{"entity": "subject", "value": "Stjórnsýslumál"}?
+    - hver sér um [skólamál]{"entity": "subject", "value": "Skólamál"}?
+    - hver sér um [lóðirnar]{"entity": "subject", "value": "Skipulagsmál"}?
+    - hver sér um að [keyra út mat til aldraðra]{"entity": "subject", "value": "Velferðarmál"}
     - mig vantar að tala við einhvern um [lífið](subject)
-    - mig vantar að tala við einhvern um [sorphirðu]{"entity": "subject", "value": "Skipulagsm\u00e1l"}
+    - mig vantar að tala við einhvern um [sorphirðu]{"entity": "subject", "value": "Skipulagsmál"}
     - þarf að tala við einhvern um [símann minn](subject)
-    - ég þarf að tala við einhvern um [leikskóla]{"entity": "subject", "value": "Sk\u00f3lam\u00e1l"}
-    - ég þarf að tala við einhvern um [frí í leikskólanum]{"entity": "subject", "value": "Sk\u00f3lam\u00e1l"}
+    - ég þarf að tala við einhvern um [leikskóla]{"entity": "subject", "value": "Skólamál"}
+    - ég þarf að tala við einhvern um [frí í leikskólanum]{"entity": "subject", "value": "Skólamál"}
     - Hvernig næ ég í [Sævar Frey Þráinsson](contact)
     - Hvernig get ég haft samband við [Valgerði Janusdóttur](contact)
     - Hvar get ég nálgast [Svölu Hreinsdóttur](contact)
@@ -323,19 +323,19 @@ nlu:
     - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Sævari Frey Þráinssyni](contact)
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Valgerði Janusdóttur](contact)?
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [Svölu Hreinsdóttur](contact)?
-    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu Ásmundsdóttur](contact) á [Velferðarsviði]{"entity": "subject", "value": "Velfer\u00f0arm\u00e1l"}?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu Ásmundsdóttur](contact) á [Velferðarsviði]{"entity": "subject", "value": "Velferðarmál"}?
     - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Sævari Frey](contact)
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Valgerði](contact)?
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [Svölu](contact)?
-    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu](contact) á [Velferðarsviði]{"entity": "subject", "value": "Velfer\u00f0arm\u00e1l"}?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Ástu Jónu](contact) á [Velferðarsviði]{"entity": "subject", "value": "Velferðarmál"}?
     - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [sævari frey þráinssyni](contact)
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [valgerði janusdóttur](contact)?
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [svölu hreinsdóttur](contact)?
-    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [ástu jónu ásmundsdóttur](contact) á [Velferðarmálarsviði]{"entity": "subject", "value": "Velfer\u00f0arm\u00e1l"}?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [ástu jónu ásmundsdóttur](contact) á [Velferðarmálarsviði]{"entity": "subject", "value": "Velferðarmál"}?
     - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [sævari frey](contact)
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [valgerði](contact)?
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [svölu](contact)?
-    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [ástu jónu](contact) á [Velferðarsviði]{"entity": "subject", "value": "Velfer\u00f0arm\u00e1l"}?
+    - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [ástu jónu](contact) á [Velferðarsviði]{"entity": "subject", "value": "Velferðarmál"}?
     - Hvað er [netfangið]{"entity": "email_or_phone", "value": "email"} hjá [Sævari Frey Þráinssyni](contact)
     - Hvar get ég sent [póst]{"entity": "email_or_phone", "value": "email"} á [Valgerði Janusdóttur](contact)
     - Hvað er [tölvupóstfangið]{"entity": "email_or_phone", "value": "email"} hjá [Svölu Hreinsdóttur](contact)
@@ -352,7 +352,7 @@ nlu:
     - Hvar get ég sent [póst]{"entity": "email_or_phone", "value": "email"} á [valgerði](contact)
     - Hvað er [tölvupóstfangið]{"entity": "email_or_phone", "value": "email"} hjá [svölu](contact)
     - [email](email_or_phone) hjá [ástu jónu](contact)?
-    - mig langar að tala um [dýrahald]{"entity": "subject", "value": "D\u00fdraeftirlit"}
+    - mig langar að tala um [dýrahald]{"entity": "subject", "value": "Dýraeftirlit"}
     - mig langar að tala um [tónlist](subject)
     - [svölu hreins](contact)
     - /request_contact{"subject":"Fjármál"}
@@ -413,11 +413,11 @@ nlu:
     - hver sér um [táningavinnu](subject) í sumar
 - intent: inform
   examples: |
-    - [skólamál]{"entity": "subject", "value": "Sk\u00f3lam\u00e1l"}
-    - [sorphirðumál]{"entity": "subject", "value": "Skipulagsm\u00e1l"}
-    - [ruslið]{"entity": "subject", "value": "Skipulagsm\u00e1l"}
-    - [laun]{"entity": "subject", "value": "Stj\u00f3rns\u00fdslum\u00e1l"}
-    - [launamál]{"entity": "subject", "value": "Stj\u00f3rns\u00fdslum\u00e1l"}
+    - [skólamál]{"entity": "subject", "value": "Skólamál"}
+    - [sorphirðumál]{"entity": "subject", "value": "Skipulagsmál"}
+    - [ruslið]{"entity": "subject", "value": "Skipulagsmál"}
+    - [laun]{"entity": "subject", "value": "Stjórnsýslumál"}
+    - [launamál]{"entity": "subject", "value": "Stjórnsýslumál"}
     - [bankið í ofnunum](subject)
     - [svölu](contact)
     - [ástu jónu](contact)
