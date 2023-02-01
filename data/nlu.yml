@@ -505,6 +505,7 @@ nlu:
     - síma
     - símanúmer
     - símann
+    - sími
 - synonym: email
   examples: |
     - netfangið

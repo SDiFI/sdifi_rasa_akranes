@@ -51,6 +51,8 @@ def get_info_for_contact(contact: str) -> list:
         contact = Person(name=str(r['name']), phone=str(r['phone']), email=str(r['email']), title=str(r['title']))
         if contact.phone == 'None':
             contact.phone = '499-1000'
+        if contact.email == 'None':
+            contact.email = None
         contacts.append(contact)
     return contacts
 
@@ -63,6 +65,8 @@ def get_contact_from_subject(subject: str) -> list:
         contact = Person(name=str(r['name']), phone=str(r['phone']), email=str(r['email']), title=str(r['title']))
         if contact.phone == 'None':
             contact.phone = '499-1000'
+        if contact.email == 'None':
+            contact.email = None
         contacts.append(contact)
     return contacts
 
@@ -75,5 +79,7 @@ def get_name_for_title(title: str) -> list:
         contact = Person(name=str(r['name']), phone=str(r['phone']), email=str(r['email']), title=str(r['title']))
         if contact.phone == 'None':
             contact.phone = '499-1000'
+        if contact.email == 'None':
+            contact.email = None
         contacts.append(contact)
     return contacts

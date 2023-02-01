@@ -182,7 +182,7 @@ class ActionGetInfoForContact(Action):
                 if r.email:
                     dispatcher.utter_message(response="utter_phone_and_mail", name=full_contact, phone=r.phone, email=r.email)
                 else:
-                    dispatcher.utter_message(response="utter_no_email", name=full_contact, phone=r.phone)
+                    dispatcher.utter_message(response="utter_phone", name=full_contact, phone=r.phone)
 
         # We want to keep track of the contact for the conversation, the other slots, however, might cause confusion
         # if kept, e.g. because of a mismatch between 'title' and 'contact' given different questions.
