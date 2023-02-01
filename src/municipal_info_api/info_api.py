@@ -36,8 +36,8 @@ def get_valid_subjects() -> list:
 def get_info_for_contact(contact: str) -> list:
     """Find the contact info for persons that match 'contact'. First, we try to find a match of the 'contact'
      as is, either a first name, first names or a full name. If nothing is found, we check if the 'contact'
-     is missing a middle name or abbreviating it, e.g. 'Lilja Sturlaugsdóttir' should give us results
-     for 'Lilja Lind Sturlaugsdóttir', as should 'Lilja L. Sturlaugsdóttir'."""
+     is missing a middle name or abbreviating it, e.g. 'Anna Árnadóttir' should give us results
+     for 'Anna Jóna Árnadóttir', as should 'Anna J. Árnadóttir'."""
 
     query = sparql_queries.get_info_for_contact_query(contact)
     result = GRAPH.query(query)

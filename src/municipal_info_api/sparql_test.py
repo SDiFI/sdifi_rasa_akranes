@@ -42,7 +42,7 @@ class TestSparql(unittest.TestCase):
 
     def test_info_for_contact_missing_middle_name(self):
         """Get the contact information for a certain contact, given the first of two first names and the
-        family name. Example: 'Lilja Sturlaugsdóttir' should find 'Lilja Lind Sturlaugsdóttir'"""
+        family name. Example: 'Anna Árnadóttir' should find 'Anna Jóna Árnadóttir'"""
 
         result = info_api.get_info_for_contact('Anna Árnadóttir')
         self.assertEqual(1, len(result))
@@ -51,7 +51,7 @@ class TestSparql(unittest.TestCase):
 
     def test_info_for_contact_abbreviated_names(self):
         """Get the contact information for a certain contact, given the first of two first names and the
-        family name. Example: 'Lilja Sturlaugsdóttir' should find 'Lilja Lind Sturlaugsdóttir'"""
+        family name. Example: 'Anna J Árnadóttir' should find 'Anna Jóna Árnadóttir'"""
 
         result = info_api.get_info_for_contact('Anna J. Árnadóttir')
         self.assertEqual(1, len(result))

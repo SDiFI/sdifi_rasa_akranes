@@ -36,7 +36,7 @@ stories:
   - action: utter_greet
   - intent: who_is
     entities:
-      - contact: "Sævar"
+      - contact: "Jón"
   - action: action_get_whois
   - slot_was_set:
       - contact: "Jón Sigurðsson"
