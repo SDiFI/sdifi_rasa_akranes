@@ -131,7 +131,7 @@ responses:
   utter_chitchat/ask_name:
   - text: Ég heiti Jóakim og er spjallmenni Andabæjar. Gaman að kynnast þér.
   utter_chitchat/ask_weather:
-  - text: Það er alltaf rjómablíða á Skaganum!
+  - text: Það er alltaf rjómablíða í Andabæ!
   utter_faq/ask_population:
   - text: Það búa tæplega þúsund manns í Andabæ.
   utter_faq/what_do_you_know:
