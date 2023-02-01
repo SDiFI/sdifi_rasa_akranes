@@ -12,7 +12,7 @@ ENV PYTHONPATH "${PYTHONPATH}:/app/src/municipal_info_api"
 
 WORKDIR /app
 
-EXPOSE 5005
+EXPOSE 5055
 
 # Switch back to non-root to run code
 USER 1001
