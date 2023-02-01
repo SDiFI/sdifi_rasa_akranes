@@ -1,0 +1,9 @@
+# For actions
+islenska
+rdflib
+
+# Rasa dependencies
+rasa==3.4.2
+rasa-sdk==3.4.0
+transformers
+pytest==7.2.1
