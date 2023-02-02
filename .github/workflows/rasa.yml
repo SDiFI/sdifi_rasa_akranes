@@ -12,14 +12,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Rasa Train and Test GitHub Action
-        uses: RasaHQ/rasa-train-test-gha@main
+      - name: Install dependencies
+        run: |
+          python3 -m venv venv
+          source venv/bin/activate
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Run PyTest
+        run: |
+          source venv/bin/activate
+          export PYTHONPATH="`pwd`/src/municipal_info_api"
+          pytest -v --junitxml=report.xml .
+      - name: Publish PyTest Report
+        uses: mikepenz/action-junit-report@v3
+        if: always() # always run even if the previous step fails
         with:
+          report_paths: 'report.xml'
+      - name: Rasa Train and Test
+        # Use our own fork of the seemingly unmaintained RasaHQ gha
+        uses: SDiFI/rasa-train-test-gha@sdifi
+        with:
+          rasa_version: '3.4.2'
           data_validate: true # Validates domain and data files to check for possible mistakes
           rasa_train: true # Run rasa train
           rasa_test: true # Run rasa test
-          test_args: --fail-on-prediction-errors # Fail pipeline when test fails
+          test_args: --fail-on-predicion-errors # Fail pipeline when test fails
           test_type: all # Run both 'core' and 'nlu' tests
+          # In order to add a PR comment with summary
+          # a GH Token has to be pass to the GH action
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload model
         if: github.ref == 'refs/heads/master'
         uses: actions/upload-artifact@master
@@ -29,7 +50,8 @@ jobs:
       - name: Store test results
         uses: actions/upload-artifact@v2
         with:
-          name: test-results
+          name: test-results and model
           path: |
+            models
             results
             reports

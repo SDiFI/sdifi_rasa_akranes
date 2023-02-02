@@ -1,0 +1,12 @@
+event_broker:
+  type: "pika"
+  url: rabbit
+  port: 5672  # change if your RabbitMQ service is exposed on a different port
+  username: "user"  # if customized, value of the RABBITMQ_USERNAME environment variable
+  password: ${RABBITMQ_PASSWORD}
+  queues:
+    - "rasa_events"
+
+action_endpoint:
+  url: "http://action_server:5055/webhook"
+

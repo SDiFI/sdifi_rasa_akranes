@@ -4,9 +4,8 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir rdflib==6.1.1
 RUN pip install --no-cache-dir --default-timeout=100 islenska==0.4.5
 RUN mkdir -p /app/src
-COPY src/ /app/src
-COPY data/offices_staff.rdf /app/offices_staff.rdf
 COPY actions/actions.py /app/actions/actions.py
+COPY src/ /app/src
 
 ENV PYTHONPATH "${PYTHONPATH}:/app/src/municipal_info_api"
 
