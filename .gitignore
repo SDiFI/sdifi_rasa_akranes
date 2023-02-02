@@ -1,5 +1,4 @@
-.gitignore
-.git/
+.env
 .idea/
 .rasa/
 db/
@@ -7,3 +6,4 @@ logs/
 models/
 results/
 venv/
+__pycache__/

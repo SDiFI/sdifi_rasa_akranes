@@ -1,3 +1,0 @@
-[submodule "src/akranes_info_api"]
-	path = src/akranes_info_api
-	url = git@github.com:SDiFI/akranes_info_api.git

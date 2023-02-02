@@ -1,0 +1,63 @@
+version: "3.1"
+
+stories:
+
+- story: Respond to greeting.
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: Respond to thank you.
+  steps:
+  - intent: thank
+  - action: utter_thank
+
+- story: Respond to goodbye.
+  steps:
+  - intent: bye
+  - action: utter_bye
+
+- story: Get name for title
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: who_is
+    entities:
+      - title: "bæjarstjóri"
+  - action: action_get_whois
+  - slot_was_set:
+      - contact: "Jón Sigurðsson"
+  - intent: thank
+  - action: utter_thank
+
+- story: Get title for name
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: who_is
+    entities:
+      - contact: "Jón"
+  - action: action_get_whois
+  - slot_was_set:
+      - contact: "Jón Sigurðsson"
+  - intent: thank
+  - action: utter_thank
+
+- story: Get name for title and then number
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: who_is
+    entities:
+      - title: "bæjarstjóri"
+  - action: action_get_whois
+  - slot_was_set:
+      - contact: "Jón Sigurðsson"
+  - intent: request_contact
+    entities:
+      - pronoun: "honum"
+  - action: request_contact_form
+  - action: action_get_contact_info
+  - active_loop: null
+  - intent: thank
+  - action: utter_thank

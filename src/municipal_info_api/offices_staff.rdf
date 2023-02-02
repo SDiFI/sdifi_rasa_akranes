@@ -1,0 +1,379 @@
+<rdf:RDF
+  xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:org="https://www.w3.org/TR/vocab-org"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dbo="http://dbpedia.org/ontology/"
+  xml:base='https://grammatek.com/munic/andabaer#'
+  >
+
+<rdf:Description rdf:about="https://grammatek.com/munic/andabaer">
+    <rdf:type rdf:resource="https://www.w3.org/TR/vocab-org/#org:Organization"/>
+    <skos:prefLabel xml:lang="is">Andabær</skos:prefLabel>
+    <dbo:url>https://is.wikipedia.org/wiki/Andabær</dbo:url>
+    <org:hasSite>Skrifstofa Andabæjar</org:hasSite>
+    <org:hasUnit>https://grammatek.com/munic/andabaer/Skipulags-ogumhverfissvið</org:hasUnit>
+    <org:hasUnit>https://grammatek.com/munic/andabaer/Skóla-ogfrístundasvið</org:hasUnit>
+    <org:hasUnit>https://grammatek.com/munic/andabaer/Stjórnsýslu-ogfjármálasvið</org:hasUnit>
+    <org:hasUnit>https://grammatek.com/munic/andabaer/Velferðar-ogmannréttindasvið</org:hasUnit>
+    <org:hasPost>https://grammatek.com/munic/andabaer#bæjarstjóri</org:hasPost>
+  </rdf:Description>
+
+<rdf:Description rdf:about="https://grammatek.com/munic/andabaer#bæjarstjóri">
+    <rdf:type rdf:resource="https://www.w3.org/TR/vocab-org/#class-post"/>
+    <skos:prefLabel xml:lang="is">Bæjarstjóri</skos:prefLabel>
+    <dbo:url>https://www.andabaer.is/stjornsysla/stjornskipulag/baejarstjori</dbo:url>
+    <org:postIn>https://grammatek.com/munic/andabaer</org:postIn>
+    <org:heldBy>https://grammatek.com/munic/andabaer#JonSigurdsson</org:heldBy>
+  </rdf:Description>
+
+<rdf:Description rdf:about="https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar">
+    <rdf:type rdf:resource="https://www.w3.org/TR/vocab-org/#org:Site"/>
+    <skos:prefLabel xml:lang="is">Skrifstofa Andabæjar</skos:prefLabel>
+    <org:siteOf>https://grammatek.com/munic/andabaer</org:siteOf>
+    <vcard:hasTelephone rdf:parseType="Resource">
+        <vcard:hasValue>499 1000</vcard:hasValue>
+      </vcard:hasTelephone>
+     <vcard:hasAddress rdf:parseType="Resource">
+  	 <vcard:street-address>Dalbraut 4</vcard:street-address>
+  	 <vcard:locality>Andabær</vcard:locality>
+  	 <vcard:postal-code>999</vcard:postal-code>
+      </vcard:hasAddress>
+  </rdf:Description>
+
+<rdf:Description rdf:about="https://grammatek.com/munic/andabaer/Skipulags-ogumhverfisráð">
+    <rdf:type rdf:resource="https://www.w3.org/TR/vocab-org/#org:OrganizationalUnit"/>
+    <skos:prefLabel xml:lang="is">Skipulags- og umhverfisráð</skos:prefLabel>
+    <dbo:url>https://www.andabaer.is/stjornsysla/stjornkerfi/skipulags-og-umhverfisrad</dbo:url>
+    <org:unitOf>https://grammatek.com/munic/andabaer</org:unitOf>
+    <org:hasMember>https://grammatek.com/munic/andabaer#SigurdurGudmundsson</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#OlafurKristjansson</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#AnnaGudmundsdottir</org:hasMember>
+
+  </rdf:Description>
+
+<rdf:Description rdf:about="https://grammatek.com/munic/andabaer/Skipulags-ogumhverfissvið">
+    <rdf:type rdf:resource="https://www.w3.org/TR/vocab-org/#org:OrganizationalUnit"/>
+    <skos:prefLabel xml:lang="is">Skipulags- og umhverfissvið</skos:prefLabel>
+    <dbo:url>https://www.andabaer.is/stjornsysla/stjornskipulag/skipulags-og-umhverfissvid</dbo:url>
+    <org:unitOf>https://grammatek.com/munic/andabaer</org:unitOf>
+    <org:hasSubOrganization>https://grammatek.com/munic/andabaer/Ahaldahus</org:hasSubOrganization>
+    <org:hasMember>https://grammatek.com/munic/andabaer#GudmundurGunnarsson</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#GunnarOlafsson</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#SigridurKristinGunnarsdottir</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#KristinMargretOlafsdottir</org:hasMember>
+    <org:purpose></org:purpose>
+  </rdf:Description>
+
+<rdf:Description rdf:about="https://grammatek.com/munic/andabaer/Skóla-ogfrístundasvið">
+    <rdf:type rdf:resource="https://www.w3.org/TR/vocab-org/#org:OrganizationalUnit"/>
+    <skos:prefLabel xml:lang="is">Skóla- og frístundasvið</skos:prefLabel>
+    <dbo:url>https://www.andabaer.is/stjornsysla/stjornskipulag/skola-og-fristundasvid</dbo:url>
+    <org:unitOf>https://grammatek.com/munic/andabaer</org:unitOf>
+    <org:hasMember>https://grammatek.com/munic/andabaer#MargretEinarsdottir</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#HelgaGudmundsdottir</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#SigrunMagnusdottir</org:hasMember>
+  </rdf:Description>
+
+<rdf:Description rdf:about="https://grammatek.com/munic/andabaer/Stjórnsýslu-ogfjármálasvið">
+    <rdf:type rdf:resource="https://www.w3.org/TR/vocab-org/#org:OrganizationalUnit"/>
+    <skos:prefLabel xml:lang="is">Stjórnsýslu- og fjármálasvið</skos:prefLabel>
+    <dbo:url>https://www.andabaer.is/stjornsysla/stjornskipulag/stjornsyslu-og-fjarmalasvid</dbo:url>
+    <org:unitOf>https://grammatek.com/munic/andabaer</org:unitOf>
+    <org:hasMember>https://grammatek.com/munic/andabaer#KristjanStefansson</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#IngibjorgKristjansdottir</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#AsdisGudmundsdóttir</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#IngibjorgStefansdottir</org:hasMember>
+  </rdf:Description>
+
+<rdf:Description rdf:about="https://grammatek.com/munic/andabaer/Velferðar-ogmannréttindasvið">
+    <rdf:type rdf:resource="https://www.w3.org/TR/vocab-org/#org:OrganizationalUnit"/>
+    <skos:prefLabel xml:lang="is">Velferðar- og mannréttindasvið</skos:prefLabel>
+    <dbo:url>https://www.andabaer.is/stjornsysla/stjornskipulag/velferdar-og-mannrettindasvid</dbo:url>
+    <org:unitOf>https://grammatek.com/munic/andabaer</org:unitOf>
+    <org:hasMember>https://grammatek.com/munic/andabaer#MariaJohannsdottir</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#JohannaElinBjornsdottir</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#AnnaJonaArnadottir</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#KatrinBjarnadottir</org:hasMember>
+  </rdf:Description>
+
+<rdf:Description rdf:about="https://grammatek.com/munic/andabaer/Skrifstofabæjarstjóra">
+    <rdf:type rdf:resource="https://www.w3.org/TR/vocab-org/#org:OrganizationalUnit"/>
+    <skos:prefLabel xml:lang="is">Skrifstofa bæjarstjóra</skos:prefLabel>
+    <dbo:url>https://www.andabaer.is/stjornsysla/stjornskipulag/skrifstofa-baejarstjora</dbo:url>
+    <org:unitOf>https://grammatek.com/munic/andabaer</org:unitOf>
+    <org:hasMember>https://grammatek.com/munic/andabaer#GudbjorgHelgadottir</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#AstaHalldorsdottir</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#HildurHallsdottir</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#ErlaJonsdottir</org:hasMember>
+  </rdf:Description>
+
+<rdf:Description rdf:about="https://grammatek.com/munic/andabaer/Áhaldahús">
+    <rdf:type rdf:resource="https://www.w3.org/TR/vocab-org/#org:OrganizationalUnit"/>
+    <skos:prefLabel xml:lang="is">Áhaldahús</skos:prefLabel>
+    <dbo:url>https://www.andabaer.is/stjornsysla/sima-og-netfangaskra/viewBranch/63</dbo:url>
+    <org:subOrganizationOf>https://grammatek.com/munic/Skipulags-ogumhverfissvid</org:subOrganizationOf>
+    <org:hasMember>https://grammatek.com/munic/andabaer#GunnarOlafsson</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#KristinnGislason</org:hasMember>
+    <org:hasMember>https://grammatek.com/munic/andabaer#RagnarHelgiÞorsteinsson</org:hasMember>
+  </rdf:Description>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#JonSigurdsson">
+      <org:holds>https://grammatek.com/munic/andabaer#baejarstjori</org:holds>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Sigurðsson</foaf:familyName>
+      <foaf:firstName>Jón</foaf:firstName>
+      <foaf:name>Jón Sigurðsson</foaf:name>
+      <foaf:title>bæjarstjóri</foaf:title>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#SigurdurGudmundsson">
+      <foaf:mbox>sigurdur.gudmundsson@andabaer.is</foaf:mbox>
+      <org:headOf>https://grammatek.com/munic/andabaer/Skipulags-ogumhverfisrad</org:headOf>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Guðmundsson</foaf:familyName>
+      <foaf:firstName>Sigurður</foaf:firstName>
+      <foaf:name>Sigurður Guðmundsson</foaf:name>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#GudmundurGunnarsson">
+      <foaf:mbox>gudmundur.gunnarsson@andabaer.is</foaf:mbox>
+      <org:headOf>https://grammatek.com/munic/andabaer/Skipulags-ogumhverfissvið</org:headOf>
+      <foaf:title>sviðsstjóri skipulags- og umhverfissviðs</foaf:title>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Gunnarsson</foaf:familyName>
+      <foaf:firstName>Guðmundur</foaf:firstName>
+      <foaf:name>Guðmundur Gunnarsson</foaf:name>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#GunnarOlafsson">
+      <foaf:mbox>gunnar.olafsson@andabaer.is</foaf:mbox>
+      <org:memberOf>https://grammatek.com/munic/andabaer/Skipulags-ogumhverfissvid</org:memberOf>
+      <org:headOf>https://grammatek.com/munic/andabaer/Ahaldahus</org:headOf>
+      <org:reportsTo>https://grammatek.com/munic/andabaer#GudmundurGunnarsson</org:reportsTo>
+      <foaf:title>rekstrarstjóri áhaldahúss</foaf:title>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Ólafsson</foaf:familyName>
+      <foaf:firstName>Gunnar</foaf:firstName>
+      <foaf:name>Gunnar Ólafsson</foaf:name>
+      <vcard:hasTelephone rdf:parseType="Resource">
+        <vcard:hasValue>499 1054</vcard:hasValue>
+      </vcard:hasTelephone>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#SigridurKristinGunnarsdottir">
+      <foaf:mbox>sigridurkg@andabaer.is</foaf:mbox>
+      <org:memberOf>https://grammatek.com/munic/andabaer/Skipulags-ogumhverfissvid</org:memberOf>
+      <org:reportsTo>https://grammatek.com/munic/andabaer#GudmundurGunnarsson</org:reportsTo>
+      <foaf:title>þjónustufulltrúi</foaf:title>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Gunnarsdóttir</foaf:familyName>
+      <foaf:firstName>Sigríður Kristín</foaf:firstName>
+      <foaf:name>Sigríður Kristín Gunnarsdóttir</foaf:name>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#KristinMargretOlafsdottir">
+      <foaf:mbox>kristinmo@andabaer.is</foaf:mbox>
+      <org:memberOf>https://grammatek.com/munic/andabaer/Skipulags-ogumhverfissvid</org:memberOf>
+      <org:reportsTo>https://grammatek.com/munic/andabaer#GudmundurGunnarsson</org:reportsTo>
+      <foaf:title>fulltrúi</foaf:title>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Ólafsdóttir</foaf:familyName>
+      <foaf:firstName>Kristín Margrét</foaf:firstName>
+      <foaf:name>Kristín Margrét Ólafsdóttir</foaf:name>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#MargretEinarsdottir">
+      <foaf:mbox>skoliogfristund@andabaer.is</foaf:mbox>
+      <org:headOf>https://grammatek.com/munic/andabaer/Skola-ogfristundasvid</org:headOf>
+      <foaf:title>sviðsstjóri Skóla- og frístundasviðs</foaf:title>
+      <org:role>Skólamál</org:role>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Einarsdóttir</foaf:familyName>
+      <foaf:firstName>Margrét</foaf:firstName>
+      <foaf:name>Margrét Einarsdóttir</foaf:name>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#HelgaGudmundsdottir">
+      <foaf:mbox>helga.gudmundsdottir@andabaer.is</foaf:mbox>
+      <org:memberOf>https://grammatek.com/munic/andabaer/Skola-ogfristundasvid</org:memberOf>
+      <org:reportsTo>https://grammatek.com/munic/andabaer#MargretEinarsdottir</org:reportsTo>
+      <foaf:title>talmeinafræðingur</foaf:title>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Guðmundsdóttir</foaf:familyName>
+      <foaf:firstName>Helga</foaf:firstName>
+      <foaf:name>Helga Guðmundsdóttir</foaf:name>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#SigrunMagnusdottir">
+      <foaf:mbox>sigrunm@andabaer.is</foaf:mbox>
+      <org:memberOf>https://grammatek.com/munic/andabaer/Skola-ogfrístundasvið</org:memberOf>
+      <org:reportsTo>https://grammatek.com/munic/andabaer#MargretEinarsdottir</org:reportsTo>
+      <foaf:title>verkefnastjóri</foaf:title>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Magnúsdóttir</foaf:familyName>
+      <foaf:firstName>Sigrún</foaf:firstName>
+      <foaf:name>Sigrún Magnúsdóttir</foaf:name>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#KristjanStefansson">
+      <foaf:mbox>kristjans@andabaer.is</foaf:mbox>
+      <org:headOf>https://grammatek.com/munic/andabaer/Stjornsyslu-ogfjarmálasvid</org:headOf>
+      <foaf:title>sviðsstjóri stjórnsýslu- og fjármálasviðs og persónuverndarfulltrúi</foaf:title>
+      <org:role>Stjórnsýslumál</org:role>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Stefánsson</foaf:familyName>
+      <foaf:firstName>Kristján</foaf:firstName>
+      <foaf:name>Kristján Stefánsson</foaf:name>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#IngibjorgKristjansdottir">
+      <foaf:mbox>ingibjorg@andabaer.is</foaf:mbox>
+      <org:memberOf>https://grammatek.com/munic/andabaer/Stjornsyslu-ogfjarmálasvid</org:memberOf>
+      <org:reportsTo>https://grammatek.com/munic/andabaer#KristjanStefansson</org:reportsTo>
+      <foaf:title>launafulltrúi</foaf:title>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Kristjánsdóttir</foaf:familyName>
+      <foaf:firstName>Ingibjörg</foaf:firstName>
+      <foaf:name>Ingibjörg Kristjánsdóttir</foaf:name>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#AsdisGudmundsdóttir">
+      <foaf:mbox>asdis.gudmundsdottir@andabaer.is</foaf:mbox>
+      <org:memberOf>https://grammatek.com/munic/andabaer/Stjornsyslu-ogfjarmálasvid</org:memberOf>
+      <org:reportsTo>https://grammatek.com/munic/andabaer#KristjanStefansson</org:reportsTo>
+      <foaf:title>deildarstjóri launadeildar Andabæjar.</foaf:title>
+      <org:role>Launamál</org:role>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Guðmundsdóttir</foaf:familyName>
+      <foaf:firstName>Ásdís</foaf:firstName>
+      <foaf:name>Ásdís Guðmundsdóttir</foaf:name>
+      <vcard:hasTelephone rdf:parseType="Resource">
+        <vcard:hasValue>499 1015</vcard:hasValue>
+      </vcard:hasTelephone>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#IngibjorgStefansdottir">
+      <foaf:mbox>ingibjorgs@andabaer.is</foaf:mbox>
+      <org:memberOf>https://grammatek.com/munic/andabaer/Stjornsyslu-ogfjarmálasvid</org:memberOf>
+      <org:reportsTo>https://grammatek.com/munic/andabaer#KristjanStefansson</org:reportsTo>
+      <foaf:title>innheimtufulltrúi og gjaldkeri í fjárreiðudeild</foaf:title>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Stefánsdóttir</foaf:familyName>
+      <foaf:firstName>Ingibjörg</foaf:firstName>
+      <foaf:name>Ingibjörg Stefánsdóttir</foaf:name>
+      <vcard:hasTelephone rdf:parseType="Resource">
+        <vcard:hasValue>499 1019</vcard:hasValue>
+      </vcard:hasTelephone>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#MariaJohannsdottir">
+      <foaf:mbox>maria.johannsdottir@andabaer.is</foaf:mbox>
+      <org:headOf>https://grammatek.com/munic/andabaer/Velferdar-ogmannrettindasvid</org:headOf>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:title>sviðsstjóri velferðar- og mannréttindasviðs</foaf:title>
+      <org:role>Velferðarmál</org:role>
+      <foaf:familyName>Jóhannsdóttir</foaf:familyName>
+      <foaf:firstName>María</foaf:firstName>
+      <foaf:name>María Jóhannsdóttir</foaf:name>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#JohannaElinBjornsdottir">
+      <org:memberOf>https://grammatek.com/munic/andabaer/Velferdar-ogmannrettindasvid</org:memberOf>
+      <org:reportsTo>https://grammatek.com/munic/andabaer#MariaJohannsdottir</org:reportsTo>
+      <foaf:title>félagsráðgjafi</foaf:title>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Björnsdóttir</foaf:familyName>
+      <foaf:firstName>Jóhanna Elín</foaf:firstName>
+      <foaf:name>Jóhanna Elín Björnsdóttir</foaf:name>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#AnnaJonaArnadottir">
+      <foaf:mbox>anna.jona@andabaer.is</foaf:mbox>
+      <org:memberOf>https://grammatek.com/munic/andabaer/Velferdar-ogmannrettindasvid</org:memberOf>
+      <org:reportsTo>https://grammatek.com/munic/andabaer#MariaJohannsdottir</org:reportsTo>
+      <foaf:title>félagsráðgjafi</foaf:title>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Árnadóttir</foaf:familyName>
+      <foaf:firstName>Anna Jóna</foaf:firstName>
+      <foaf:name>Anna Jóna Árnadóttir</foaf:name>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#KatrinBjarnadottir">
+      <foaf:mbox>katrinb@andabaer.is</foaf:mbox>
+      <org:memberOf>https://grammatek.com/munic/andabaer/Velferdar-ogmannrettindasvid</org:memberOf>
+      <org:reportsTo>https://grammatek.com/munic/andabaer#MariaJohannsdottir</org:reportsTo>
+      <foaf:title>ráðgjafaþroskaþjálfi</foaf:title>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Bjarnadóttir</foaf:familyName>
+      <foaf:firstName>Katrín</foaf:firstName>
+      <foaf:name>Katrín Bjarnadóttir</foaf:name>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#GudbjorgHelgadottir">
+      <foaf:mbox>gudbjorgh@andabaer.is</foaf:mbox>
+      <org:memberOf>https://grammatek.com/munic/andabaer/Skrifstofabaejarstjora</org:memberOf>
+      <foaf:title>matráður</foaf:title>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Helgadóttir</foaf:familyName>
+      <foaf:firstName>Guðbjörg</foaf:firstName>
+      <foaf:name>Guðbjörg Helgadóttir</foaf:name>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#AstaHalldorsdottir">
+      <foaf:mbox>astah@andabaer.is</foaf:mbox>
+      <org:memberOf>https://grammatek.com/munic/andabaer/Skrifstofabaejarstjora</org:memberOf>
+      <foaf:title>verkefnastjóri skjalamála</foaf:title>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Halldórsdóttir</foaf:familyName>
+      <foaf:firstName>Ásta</foaf:firstName>
+      <foaf:name>Ásta Halldórsdóttir</foaf:name>
+      <vcard:hasTelephone rdf:parseType="Resource">
+        <vcard:hasValue>499 1102</vcard:hasValue>
+      </vcard:hasTelephone>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#HildurHallsdottir">
+      <foaf:mbox>hildur@andabaer.is</foaf:mbox>
+      <org:memberOf>https://grammatek.com/munic/andabaer/Skrifstofabaejarstjora</org:memberOf>
+      <foaf:title>mannauðsstjóri</foaf:title>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar</org:basedAt>
+      <foaf:familyName>Hallsdóttir</foaf:familyName>
+      <foaf:firstName>Hildur</foaf:firstName>
+      <foaf:name>Hildur Hallsdóttir</foaf:name>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#ErlaJonsdottir">
+      <foaf:mbox>erla.jonsdottir@andabaer.is</foaf:mbox>
+      <org:memberOf>https://grammatek.com/munic/andabaer/Skrifstofabaejarstjora</org:memberOf>
+      <foaf:title>þjónustufulltrúi</foaf:title>
+      <org:basedAt>https://grammatek.com/munic/andabaer/SkrifstofaAndabaejarr</org:basedAt>
+      <foaf:familyName>Jónsdóttir</foaf:familyName>
+      <foaf:firstName>Erla</foaf:firstName>
+      <foaf:name>Erla Jónsdóttir</foaf:name>
+      <vcard:hasTelephone rdf:parseType="Resource">
+        <vcard:hasValue>499 1104</vcard:hasValue>
+      </vcard:hasTelephone>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#KristinnGislason">
+      <org:memberOf>https://grammatek.com/munic/andabaer/Ahaldahus</org:memberOf>
+      <org:reportsTo>https://grammatek.com/munic/andabaer#GunnarOlafsson</org:reportsTo>
+      <foaf:title>iðnaðarmaður</foaf:title>
+      <foaf:familyName>Gíslason</foaf:familyName>
+      <foaf:firstName>Kristinn</foaf:firstName>
+      <foaf:name>Kristinn Gíslason</foaf:name>
+    </foaf:Person>
+
+<foaf:Person rdf:about="https://grammatek.com/munic/andabaer#RagnarHelgiÞorsteinsson">
+      <org:memberOf>https://grammatek.com/munic/andabaer/Ahaldahus</org:memberOf>
+      <org:reportsTo>https://grammatek.com/munic/andabaer#GunnarOlafsson</org:reportsTo>
+      <foaf:title>starfsmaður</foaf:title>
+      <foaf:familyName>Þorsteinsson</foaf:familyName>
+      <foaf:firstName>Ragnar Helgi</foaf:firstName>
+      <foaf:name>Ragnar Helgi Þorsteinsson</foaf:name>
+    </foaf:Person>
+
+</rdf:RDF>
