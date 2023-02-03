@@ -1,0 +1,102 @@
+version: "3.4"
+
+x-rabbitmq-credentials: &rabbitmq-credentials
+  RABBITMQ_HOST: "rabbit"
+  RABBITMQ_USERNAME: "user"
+  RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD}
+
+volumes:
+  postgres-data:
+  rabbitmq-data:
+
+services:
+  rasa:
+    # This Rasa instance needs an already trained model
+    restart: unless-stopped
+    image: "rasa/rasa:${RASA_VERSION}-full"
+    volumes:
+      - ./config/endpoints-docker-compose.yml:/app/endpoints.yml
+      - ./config/credentials.yml:/app/credentials.yml
+      - ./config.yml:/app/config.yml
+      - ./models:/app/models
+    expose:
+      - "5005"
+    command: >
+      run
+      -vv
+      --port 5005
+      --enable-api
+      --cors "*"
+      --auth-token '${RASA_TOKEN}'
+      --credentials /app/credentials.yml
+    depends_on:
+      - rabbit
+      - db
+    environment:
+      <<: *rabbitmq-credentials
+      DB_HOST: "db"
+      DB_PORT: "5432"
+      DB_USER: "${DB_USER:-admin}"
+      DB_PASSWORD: "${DB_PASSWORD}"
+      DB_LOGIN_DB: "${DB_LOGIN_DB:-rasa}"
+      RASA_TOKEN: ${RASA_TOKEN}
+      RASA_MODEL_PULL_INTERVAL: 10
+      RABBITMQ_QUEUE: "rasa_events"
+      RASA_TELEMETRY_ENABLED: ${RASA_TELEMETRY_ENABLED:-false}
+      RASA_ENVIRONMENT: "production"
+      DB_DATABASE: "tracker"
+      MPLCONFIGDIR: "/tmp/.matplotlib"
+      DEBUG_MODE: "true"
+
+  db:
+    restart: unless-stopped
+    image: "bitnami/postgresql:14"
+    expose:
+      - "5432"
+    environment:
+      POSTGRESQL_USERNAME: "${DB_USER:-admin}"
+      POSTGRESQL_PASSWORD: "${DB_PASSWORD}"
+      POSTGRESQL_DATABASE: "${DB_DATABASE:-rasa}"
+    volumes:
+      - postgres-data:/bitnami/postgresql
+
+  rabbit:
+    restart: unless-stopped
+    image: "bitnami/rabbitmq:3.9.12"
+    environment:
+      <<: *rabbitmq-credentials
+      RABBITMQ_DISK_FREE_RELATIVE_LIMIT: "0.1"
+    volumes:
+      - rabbitmq-data:/bitnami
+    expose:
+      - "5672"
+
+  nginx:
+    # Nginx is used as the entry-point reverse proxy
+    restart: unless-stopped
+    image: "nginx:1.20"
+    ports:
+      - "8180:8180"
+    volumes:
+      - ./certs:/etc/certs
+      - ./docker/web/nginx-main.conf:/etc/nginx/nginx.conf
+      - ./docker/web/nginx-app.conf:/etc/nginx/templates/app.conf.template
+      - ./docker/web/html:/usr/share/nginx/html
+    environment:
+      RASA_USER_APP: "action_server:5055"
+      RASA_HOST: "rasa:5005"
+    depends_on:
+      - rasa
+
+  action_server:
+    # This is the only service that needs to be built via docker-compose build
+    container_name: 'action_server'
+    build:
+      context: .
+      dockerfile: ./docker/sdk/Dockerfile
+    image: ${REGISTRY_URL:-}sdifi_akranes_sdk:${APPLICATION_VERSION:-latest}
+    restart: unless-stopped
+    expose:
+      - "5055"
+    depends_on:
+      - rasa
