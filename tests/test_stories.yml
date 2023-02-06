@@ -1,0 +1,239 @@
+version: "3.1"
+
+stories:
+      - story: A greeting story test
+        steps:
+          - user: |
+              halló
+            intent: greet
+          - action: utter_greet
+
+      - story: A thank you story test
+        steps:
+          - user: |
+              takk kærlega
+            intent: thank
+          - action: utter_thank
+
+      - story: A good bye story test
+        steps:
+          - user: |
+              bless í bili
+            intent: bye
+          - action: utter_bye
+
+      - story: An out of scope test in data
+        steps:
+          - user: |
+              Er jólasveinninn til?
+            intent: out_of_scope
+          - action: utter_out_of_scope
+
+      - story: An out of scope test not in data
+        steps:
+          - user: |
+              panta pizzu
+            intent: out_of_scope
+          - action: utter_out_of_scope
+
+      - story: No input test
+        steps:
+          - user: |
+
+            intent: no_intent
+          - action: utter_ask_rephrase
+
+      - story: Activate two-stage fallback
+        steps:
+          - user: |
+              /nlu_fallback
+            intent: nlu_fallback
+          - action: action_two_stage_fallback
+          - active_loop: action_two_stage_fallback
+
+      - story: What do you know test
+        steps:
+          - user: |
+              hvað veistu
+            intent: faq
+          - action: utter_faq
+
+      - story: Which questions test
+        steps:
+          - user: |
+              að hverju get ég spurt
+            intent: faq
+          - action: utter_faq
+
+      - story: How many test
+        steps:
+          - user: |
+              hvað búa margir í Andabæ
+            intent: faq
+          - action: utter_faq
+
+      - story: How many not in data test
+        steps:
+          - user: |
+              hvað eiga margir heima í Andabæ
+            intent: faq
+          - action: utter_faq
+
+      - story: Simple request name for title test
+        steps:
+          - user: |
+              hver er [bæjarstjóri](title)
+            intent: who_is
+          - slot_was_set:
+              - title: bæjarstjóri
+          - action: action_get_whois
+
+      - story: Simple request title for name test
+        steps:
+          - user: |
+              hver er [Erla](contact)
+            intent: who_is
+          - slot_was_set:
+              - contact: Erla
+          - action: action_get_whois
+
+      - story: Simple request contact test
+        steps:
+          - intent: request_contact
+            user: |-
+              hvernig næ ég í [guðmund](contact)?
+          - slot_was_set:
+              - contact: guðmund
+          - action: request_contact_form
+          - active_loop: request_contact_form
+          - slot_was_set:
+              - contact: Guðmundur Gunnarsson
+          - slot_was_set:
+              - requested_slot: null
+          - active_loop: null
+          - action: action_get_contact_info
+
+      - story: Request contact test, user mentions phone preference and only phone number is returned
+        steps:
+          - intent: request_contact
+            user: |-
+              get ég fengið [símanúmer]{"entity": "email_or_phone", "value": "phone"} hjá [erlu](contact)
+          - slot_was_set:
+              - contact: erlu
+          - slot_was_set:
+              - email_or_phone: phone
+          - action: request_contact_form
+          - active_loop: request_contact_form
+          - slot_was_set:
+              - contact: Erla Jónsdóttir
+          - slot_was_set:
+              - requested_slot: null
+          - slot_was_set:
+              - email_or_phone: phone
+          - active_loop: null
+          - action: action_get_contact_info
+
+      - story: Request contact test, user mentions email preference and only email info is returned
+        steps:
+          - intent: request_contact
+            user: |-
+              [tölvupóst]{"entity": "email_or_phone", "value": "email"} hjá [maríu jóhannsdóttur](contact)
+          - slot_was_set:
+              - contact: maríu jóhannsdóttur
+          - slot_was_set:
+              - email_or_phone: email
+          - action: request_contact_form
+          - active_loop: request_contact_form
+          - slot_was_set:
+              - contact: María Jóhannsdóttir
+          - slot_was_set:
+              - requested_slot: null
+          - slot_was_set:
+              - email_or_phone: email
+          - active_loop: null
+          - action: action_get_contact_info
+
+      - story: Activate request contact with inform and submit form test
+        steps:
+          - intent: inform
+            user: |-
+               [Jón](contact)
+          - slot_was_set:
+              - contact: Jón
+          - slot_was_set:
+              - email_or_phone: email
+          - action: request_contact_form
+          - active_loop: request_contact_form
+          - slot_was_set:
+              - contact: Jón Sigurðsson
+          - slot_was_set:
+              - requested_slot: null
+          - slot_was_set:
+              - email_or_phone: email
+          - active_loop: null
+          - action: action_get_contact_info
+
+      - story: Ask for name for title and then telephone for that name
+        steps:
+          - intent: who_is
+            user: |-
+              hver er [gjaldkeri](title)
+          - action: action_get_whois
+          - intent: request_contact
+            user: |-
+              hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [henni](pronoun)
+          - slot_was_set:
+              - contact: Ingibjörg Stefánsdóttir
+          - slot_was_set:
+              - email_or_phone: phone
+          - action: request_contact_form
+          - active_loop: request_contact_form
+          - slot_was_set:
+              - contact: Ingibjörg Stefánsdóttir
+          - slot_was_set:
+              - requested_slot: null
+          - slot_was_set:
+              - email_or_phone: phone
+          - active_loop: null
+          - action: action_get_contact_info
+
+      - story: Ask for name for title and then telephone for that name, continued with e-mail
+        steps:
+          - intent: who_is
+            user: |-
+              hver er [gjaldkeri](title)
+          - action: action_get_whois
+          - intent: request_contact
+            user: |-
+              hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [henni](pronoun)
+          - slot_was_set:
+              - contact: Ingibjörg Stefánsdóttir
+          - slot_was_set:
+              - email_or_phone: phone
+          - action: request_contact_form
+          - active_loop: request_contact_form
+          - slot_was_set:
+              - contact: Ingibjörg Stefánsdóttir
+          - slot_was_set:
+              - requested_slot: null
+          - slot_was_set:
+              - email_or_phone: phone
+          - active_loop: null
+          - action: action_get_contact_info
+          - intent: request_contact
+            user: |-
+              en [tölvupóstur]{"entity": "email_or_phone", "value": "email"}
+          - slot_was_set:
+              - contact: Ingibjörg Stefánsdóttir
+          - slot_was_set:
+              - email_or_phone: email
+          - action: request_contact_form
+          - active_loop: request_contact_form
+          - slot_was_set:
+              - contact: Ingibjörg Stefánsdóttir
+          - slot_was_set:
+              - requested_slot: null
+          - slot_was_set:
+              - email_or_phone: email
+          - active_loop: null
+          - action: action_get_contact_info
