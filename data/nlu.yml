@@ -272,6 +272,8 @@ nlu:
     - Ég þarf að tala við [Önnu Jónu Árnadóttur](contact)
     - Hvernig næ ég í [Jón](contact)
     - Hvernig næ ég í [Önnu](contact)
+    - hvernig næ ég í [jón](contact)?
+    - hvernig næ ég í [önnu](contact)?
     - Hvernig get ég haft samband við [Margréti](contact)
     - Hvar get ég nálgast [Maríu](contact)
     - Ég þarf að tala við [Önnu Jónu](contact)
@@ -283,7 +285,6 @@ nlu:
     - Ég þarf að tala við [önnu jónu árnadóttur](contact)
     - Ég þarf að tala við [önnu j árnadóttur](contact)
     - Ég þarf að tala við [Önnu J](contact)
-    - Hvernig næ ég í [jón](contact)
     - Hvernig get ég haft samband við [margréti](contact)
     - Hvar get ég nálgast [maríu](contact)
     - Ég þarf að tala við [önnu jónu](contact)
