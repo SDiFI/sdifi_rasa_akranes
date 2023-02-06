@@ -111,7 +111,7 @@ The following command runs tests for the SPARQL queries and Rasa actions:
 pytest .
 ```
 
-The SPARQL query tests are located [here](src/municipal_info_api/sparql_test.py`) and action tests
+The SPARQL query tests are located [here](src/municipal_info_api/sparql_test.py) and action tests
 [here](tests/test_actions.py).
 
 ###  Talk to Rasa via web widget
