@@ -458,15 +458,6 @@ nlu:
     - Leikskólar
     - frístund
     - frístundinni
-- synonym: Byggingarmál
-  examples: |
-    - byggingarmál
-    - byggingaleyfi
-    - lóðamál
-    - lóðaleigu
-    - lóðaleigusamninga
-    - byggja
-    - skúr
 - synonym: Velferðarmál
   examples: |
     - keyra út mat til aldraðra
@@ -486,18 +477,6 @@ nlu:
     - búsetuþjónustu
     - félagsstarf
     - aldraðra
-- synonym: Skipulagsmál
-  examples: |
-    - sorphirðu
-    - sorphirðuna
-    - sorphirðumál
-    - ruslið
-    - rusl
-    - sorptunnu
-    - ruslatunnu
-    - snjómokstur
-    - mokstur
-    - losun
 - synonym: phone
   examples: |
     - númerið
@@ -515,18 +494,6 @@ nlu:
     - tölvupóst
     - netfang
     - tölvupóstur
-- synonym: Dýraeftirlit
-  examples: |
-    - dýrahald
-    - dýraeftirlit
-    - dýramál
-    - Dýrahald
-    - hundar
-    - kettir
-    - skráning
-    - katta
-    - hunda
-    - dýrum
 - synonym: both
   examples: |
     - bæði
@@ -535,27 +502,6 @@ nlu:
   examples: |
     - stjórnsýslumál
     - persónuvernd
-- synonym: Fjármál
-  examples: |
-    - fjármál
-- synonym: Bókhaldsmál
-  examples: |
-    - bókhald
-    - reikningar
-- synonym: Garðamál
-  examples: |
-    - garðarnir
-    - garða
-    - vinnuskóli
-    - Vinnuskólinn
-    - unglingavinnu
-    - táningavinnu
-    - græn svæði
-- synonym: Félagsþjónusta
-  examples: |
-    - félagsþjónustu
-    - félagsleg
-    - aðstoð
 - lookup: contact
   examples: |
     - Guðmundur Gunnarsson
