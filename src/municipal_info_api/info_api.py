@@ -1,10 +1,12 @@
 import os
-from rdflib import Graph
+
+import requests
 
 import sparql_queries
 
-STAFF_RDF = "{}/offices_staff.rdf".format(os.path.dirname(__file__))
-GRAPH = Graph().parse(STAFF_RDF)
+FUSEKI_HOST = os.environ.get('FUSEKI_NETWORK_HOST', 'fuseki')
+FUSEKI_PORT = os.environ.get('FUSEKI_NETWORK_PORT', '3030')
+db_url = f'http://{FUSEKI_HOST}:{FUSEKI_PORT}/ds/query'
 
 
 class Person:
@@ -16,21 +18,28 @@ class Person:
         self.title = title
 
 
+
+
 def get_all_names() -> list:
     query = sparql_queries.get_all_names_query()
-    result = GRAPH.query(query)
+    response = requests.post(db_url, data={'query': query})
+    results = response.json()['results']['bindings']
     contacts = []
-    for r in result:
-        contacts.append(str(r['name']))
+    for r in results:
+        contacts.append(r['name']['value'])
     return contacts
+
 
 def get_valid_subjects() -> list:
     query = sparql_queries.get_all_roles_query()
-    result = GRAPH.query(query)
+    response = requests.post(db_url, data={'query': query})
+    results = response.json()['results']['bindings']
     contacts = []
-    for r in result:
-        contacts.append(str(r['role']))
+    for r in results:
+        contacts.append(r['role']['value'])
     return contacts
+
+
 
 
 def get_info_for_contact(contact: str) -> list:
@@ -40,46 +49,65 @@ def get_info_for_contact(contact: str) -> list:
      for 'Anna Jóna Árnadóttir', as should 'Anna J. Árnadóttir'."""
 
     query = sparql_queries.get_info_for_contact_query(contact)
-    result = GRAPH.query(query)
+    response = requests.post(db_url, data={'query': query})
+    results = response.json()['results']['bindings']
     # Try another query if we don't have any results, however, only if we have more than one
     # tokens in 'contact'. Querying with one token will not get another result than the above query.
-    if not result and len(contact.split()) > 1:
+    if not results and len(contact.split()) > 1:
         query = sparql_queries.get_info_for_contact_abbreviated_name_query(contact)
-        result = GRAPH.query(query)
+        response = requests.post(db_url, data={'query': query})
+        results = response.json()['results']['bindings']
     contacts = []
-    for r in result:
-        contact = Person(name=str(r['name']), phone=str(r['phone']), email=str(r['email']), title=str(r['title']))
-        if contact.phone == 'None':
-            contact.phone = '499-1000'
-        if contact.email == 'None':
-            contact.email = None
+    for r in results:
+        if 'phone' in r:
+            phone = r['phone']['value']
+        else:
+            phone = '499-1000'
+        if 'email' in r:
+            email = r['email']['value']
+        else:
+            email = None
+        contact = Person(name=r['name']['value'], phone=phone,
+                         email=email, title=r['title']['value'])
         contacts.append(contact)
     return contacts
 
 
 def get_contact_from_subject(subject: str) -> list:
     query = sparql_queries.get_contact_from_subject_query(subject)
-    result = GRAPH.query(query)
+    response = requests.post(db_url, data={'query': query})
+    results = response.json()['results']['bindings']
     contacts = []
-    for r in result:
-        contact = Person(name=str(r['name']), phone=str(r['phone']), email=str(r['email']), title=str(r['title']))
-        if contact.phone == 'None':
-            contact.phone = '499-1000'
-        if contact.email == 'None':
-            contact.email = None
+    for r in results:
+        if 'phone' in r:
+            phone = r['phone']['value']
+        else:
+            phone = '499-1000'
+        if 'email' in r:
+            email = r['email']['value']
+        else:
+            email = None
+        contact = Person(name=r['name']['value'], phone=phone,
+                         email=email, title=r['title']['value'])
         contacts.append(contact)
     return contacts
 
 
 def get_name_for_title(title: str) -> list:
     query = sparql_queries.get_names_for_title_query(title)
-    result = GRAPH.query(query)
+    response = requests.post(db_url, data={'query': query})
+    results = response.json()['results']['bindings']
     contacts = []
-    for r in result:
-        contact = Person(name=str(r['name']), phone=str(r['phone']), email=str(r['email']), title=str(r['title']))
-        if contact.phone == 'None':
-            contact.phone = '499-1000'
-        if contact.email == 'None':
-            contact.email = None
+    for r in results:
+        if 'phone' in r:
+            phone = r['phone']['value']
+        else:
+            phone = get_office_phone_number()
+        if 'email' in r:
+            email = r['email']['value']
+        else:
+            email = None
+        contact = Person(name=r['name']['value'], phone=phone,
+                         email=email, title=r['title']['value'])
         contacts.append(contact)
     return contacts

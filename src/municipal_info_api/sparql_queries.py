@@ -16,6 +16,7 @@ def get_rdf_prefix() -> str:
             PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
             PREFIX foaf: <http://xmlns.com/foaf/0.1/>
             PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+            PREFIX dbo: <http://dbpedia.org/ontology/>
             PREFIX akranes: <https://grammatek.com/munic/akranes/>
             """
 
@@ -156,7 +157,7 @@ def get_contact_from_subject_query(subject: str) -> str:
      match of 'subject' as org:role."""
 
     query = """
-            SELECT ?email ?name ?phone ?title
+            SELECT DISTINCT ?email ?name ?phone ?title
             WHERE {
                 ?entity rdf:type foaf:Person .
                 ?entity org:role ?role FILTER (?role = '""" + subject + """') .
