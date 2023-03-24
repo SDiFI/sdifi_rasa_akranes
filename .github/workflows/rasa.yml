@@ -4,7 +4,13 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: '*'
+env:
+  RASA_VERSION: 3.4.2
+  FUSEKI_VERSION: 4.7.0
+  FUSEKI_NETWORK_HOST: localhost
+  FUSEKI_NETWORK_PORT: 3030
+  DEBUG_MODE: true
 
 jobs:
   training-testing:
@@ -18,8 +24,14 @@ jobs:
           source venv/bin/activate
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Start containers
+        run: |
+          docker-compose -f "docker-compose.yml" build
+          docker-compose -f "docker-compose.yml" -f "fuseki_override_template.yml" up -d fuseki
       - name: Run PyTest
         run: |
+          docker ps
+          echo "FUSEKI_NETWORK_HOST:FUSEKI_NETWORK_PORT: $FUSEKI_NETWORK_HOST:$FUSEKI_NETWORK_PORT"
           source venv/bin/activate
           export PYTHONPATH="`pwd`/src/municipal_info_api"
           pytest -v --junitxml=report.xml .
@@ -41,6 +53,8 @@ jobs:
           # In order to add a PR comment with summary
           # a GH Token has to be pass to the GH action
           github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Stop containers
+        run: docker-compose -f "docker-compose.yml" down
       - name: Upload model
         if: github.ref == 'refs/heads/master'
         uses: actions/upload-artifact@master
