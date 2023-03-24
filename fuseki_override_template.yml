@@ -1,0 +1,9 @@
+version: "3.4"
+
+services:
+
+  fuseki:
+    ports:
+      - "3030:3030"
+    volumes:
+      - fuseki-data:/fuseki/databases/DB2
