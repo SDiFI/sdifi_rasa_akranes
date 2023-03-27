@@ -5,6 +5,7 @@ session_config:
 intents:
 - request_contact
 - who_is
+- waste_bin_collection
 - faq:
     is_retrieval_intent: true
 - greet
@@ -24,6 +25,7 @@ entities:
 - subject
 - title
 - pronoun
+- place
 slots:
   contact:
     type: text
@@ -55,6 +57,12 @@ slots:
     mappings:
     - type: from_entity
       entity: email_or_phone
+  place:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: place
   contacts_found:
     type: bool
     influence_conversation: False

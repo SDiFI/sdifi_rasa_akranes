@@ -61,3 +61,17 @@ stories:
   - active_loop: null
   - intent: thank
   - action: utter_thank
+
+- story: Get waste bin collection info
+  steps:
+  - intent: waste_bin_collection
+  - action: action_get_waste_bin_collection_info
+
+- story: Get waste bin collection info for particular street
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: waste_bin_collection
+    entities:
+      - place: "Varptorfu"
+  - action: action_get_waste_bin_collection_info

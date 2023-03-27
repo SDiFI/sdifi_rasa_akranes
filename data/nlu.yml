@@ -394,6 +394,41 @@ nlu:
     - en hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá henni(pronoun)
     - er [hún](pronoun) líka með [netfang]{"entity": "email_or_phone", "value": "email"}
     - er [hann](pronoun) líka með [tölvupóst]{"entity": "email_or_phone", "value": "email"}
+
+  intent: waste_bin_collection
+  examples: |
+    - hvenær er ruslið sótt
+    - hvenær er ruslið sótt?
+    - hvenær er ruslið tekið?
+    - hvenær takið þið ruslið
+    - hvenær sækið þið ruslið?
+    - hvenær eru tunnurnar sóttar?
+    - halló, ætlið þið einhverntímann að sækja ruslið 
+    - mig langar að vita hvenær ruslaföturnar eru sóttar
+    - mig langar að vita hvenær ruslatunnurnar eru sóttar
+    - hvenær er næst sótt ruslið í [aðalgötu](place)
+    - hvenær er næst sótt ruslið á [varptorfu](place)
+    - hvenær er ruslið sótt á [holtið](place)?
+    - hvenær er ruslið næst sótt á [andabraut](place)
+    - hvenær er ruslið næst sótt í [miðbænum](place)
+    - hvenær takið þið ruslatunnurnar á [braut](place)?
+    - taka ruslatunnur [aðalgötu](place)
+    - taka ruslafötur [aðalgata](place)
+    - sækja ruslið á [Varptorfu](place)
+    - sækja ruslið í [varptorfu](place)
+    - hvenær eru ruslatunnurnar sóttar á [Andabraut](place)
+    - hvenær er sorphirða ég bý á [Gæsaholti](place) 10
+    - Góðan daginn, hvenær á næst að sækja ruslið fyrir [Varptorfu](place) 111?
+    - Góðan daginn, hvenær er næst sorphirða fyrir götuna [Gæsaholt](place)?
+    - Góðan daginn, hvenær er næst sorphirða fyrir götuna [Andabraut](place)
+    - en í [aðalgötu](place)?
+    - en á [andabraut](place)?
+    - en á [gæsaholt](place)?
+    - hvað með á [holtinu](place)?
+    - hvað með á [brautinni](place)?
+    - en hvenær eru þær sóttar á [andabraut](place)?
+    - en hvenær eru þær sóttar á [varptorfu](place)?
+
 - intent: inform
   examples: |
     - [skólamál]{"entity": "subject", "value": "Skólamál"}
