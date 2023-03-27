@@ -237,3 +237,33 @@ stories:
               - email_or_phone: email
           - active_loop: null
           - action: action_get_contact_info
+
+      - story: Get general waste bin collection info
+        steps:
+          - intent: greet
+            user: |-
+              daginn
+          - action: utter_greet
+          - intent: waste_bin_collection
+            user: |-
+              hvenær er ruslið sótt
+          - action: action_get_waste_bin_collection_info
+
+      - story: Get waste bin collection info for particular street, then another one directly after
+        steps:
+          - intent: greet
+            user: |-
+              Góðan dag
+          - action: utter_greet
+          - intent: waste_bin_collection
+            user: |-
+              hvenær eru tunnurnar næst sóttar á [varptorfu](place)?
+          - slot_was_set:
+              - place: varptorfu
+          - action: action_get_waste_bin_collection_info
+          - intent: waste_bin_collection
+            user: |-
+              en hvenær á [andabraut](place)?
+          - slot_was_set:
+              - place: andabraut
+          - action: action_get_waste_bin_collection_info

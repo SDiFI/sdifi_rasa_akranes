@@ -95,6 +95,15 @@ class TestSparql(unittest.TestCase):
                 found_subject = True
         self.assertTrue(found_subject)
 
+    def test_get_general_waste_bin_collection_info(self):
+        result = info_api.get_general_waste_bin_collection_info()
+        self.assertTrue(len(result) == 2)
+        self.assertTrue(hasattr(result[0], "place"))
+
+    def test_get_waste_bin_collection_info(self):
+        result = info_api.get_waste_bin_collection_info('holtið')
+        self.assertTrue(hasattr(result[0], "start_time"))
+
 
 if __name__ == '__main__':
     unittest.main()
