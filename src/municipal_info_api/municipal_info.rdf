@@ -376,4 +376,94 @@
       <foaf:name>Ragnar Helgi Þorsteinsson</foaf:name>
     </foaf:Person>
 
-</rdf:RDF>
+<!-- waste calendar -->
+  <rdf:Description rdf:about="https://grammatek.com/munic/andabaer/wastecal">
+       <rdf:type rdf:resource="https://grammatek.com/munic/andabaer#AbstractMunicipalEntity" />
+       <skos:prefLabel xml:lang="is">Sorphirðudagatal</skos:prefLabel>
+       <dbo:url>https://www.andabaer.is/static/files/7.Umhverfi/sorphirda/andabaer-2022.pdf</dbo:url>
+  </rdf:Description>
+   <dbo:Event rdf:about="https://grammatek.com/munic/andabaer#waste59">
+                   <skos:prefLabel>sorphirða</skos:prefLabel>
+                   <dbo:url>https://www.andabaer.is/thjonusta/umhverfi/sorphirda-og-endurvinnsla</dbo:url>
+                   <dbo:startDateTime>2023-11-07T00:00:00^^xsd:dateTime</dbo:startDateTime>
+                   <dbo:endDateTime>2023-11-09T00:00:00^^xsd:dateTime</dbo:endDateTime>
+                   <skos:hiddenLabel>gata</skos:hiddenLabel>
+                   <skos:hiddenLabel>braut</skos:hiddenLabel>
+                   <skos:hiddenLabel>brautina</skos:hiddenLabel>
+                   <skos:hiddenLabel>götu</skos:hiddenLabel>
+                   <skos:hiddenLabel>götuna</skos:hiddenLabel>
+                   <rdfs:comment>Götur, Brautir (Miðbær)</rdfs:comment>
+                 </dbo:Event>
+         <dbo:Event rdf:about="https://grammatek.com/munic/andabaer#waste60">
+             <skos:prefLabel>sorphirða</skos:prefLabel>
+             <dbo:url>https://www.andabaer.is/thjonusta/umhverfi/sorphirda-og-endurvinnsla</dbo:url>
+             <dbo:startDateTime>2023-11-09T00:00:00^^xsd:dateTime</dbo:startDateTime>
+             <dbo:endDateTime>2023-11-11T00:00:00^^xsd:dateTime</dbo:endDateTime>
+             <skos:hiddenLabel>holt</skos:hiddenLabel>
+             <skos:hiddenLabel>holtið</skos:hiddenLabel>
+             <skos:hiddenLabel>holtinu</skos:hiddenLabel>
+             <skos:hiddenLabel>torfa</skos:hiddenLabel>
+             <skos:hiddenLabel>torfu</skos:hiddenLabel>
+             <rdfs:comment>Holt, Torfur (Ytri-Andabær)</rdfs:comment>
+           </dbo:Event>
+ <dbo:Event rdf:about="https://grammatek.com/munic/andabaer#waste61">
+                   <skos:prefLabel>sorphirða</skos:prefLabel>
+                   <dbo:url>https://www.andabaer.is/thjonusta/umhverfi/sorphirda-og-endurvinnsla</dbo:url>
+                   <dbo:startDateTime>2023-11-21T00:00:00^^xsd:dateTime</dbo:startDateTime>
+                   <dbo:endDateTime>2023-11-23T00:00:00^^xsd:dateTime</dbo:endDateTime>
+                   <skos:hiddenLabel>gata</skos:hiddenLabel>
+                   <skos:hiddenLabel>braut</skos:hiddenLabel>
+                   <skos:hiddenLabel>brautina</skos:hiddenLabel>
+                   <skos:hiddenLabel>götu</skos:hiddenLabel>
+                   <skos:hiddenLabel>götuna</skos:hiddenLabel>
+                   <rdfs:comment>Götur, Brautir (Miðbær)</rdfs:comment>
+                 </dbo:Event>
+         <dbo:Event rdf:about="https://grammatek.com/munic/andabaer#waste62">
+             <skos:prefLabel>sorphirða</skos:prefLabel>
+             <dbo:url>https://www.andabaer.is/thjonusta/umhverfi/sorphirda-og-endurvinnsla</dbo:url>
+             <dbo:startDateTime>2023-11-23T00:00:00^^xsd:dateTime</dbo:startDateTime>
+             <dbo:endDateTime>2023-11-25T00:00:00^^xsd:dateTime</dbo:endDateTime>
+              <skos:hiddenLabel>holt</skos:hiddenLabel>
+             <skos:hiddenLabel>holtið</skos:hiddenLabel>
+             <skos:hiddenLabel>holtinu</skos:hiddenLabel>
+             <skos:hiddenLabel>torfa</skos:hiddenLabel>
+             <skos:hiddenLabel>torfu</skos:hiddenLabel>
+             <rdfs:comment>Holt, Torfur (Ytri-Andabær)</rdfs:comment>
+           </dbo:Event>
+ <dbo:Event rdf:about="https://grammatek.com/munic/andabaer#waste63">
+                   <skos:prefLabel>sorphirða</skos:prefLabel>
+                   <dbo:url>https://www.andabaer.is/thjonusta/umhverfi/sorphirda-og-endurvinnsla</dbo:url>
+                   <dbo:startDateTime>2023-12-05T00:00:00^^xsd:dateTime</dbo:startDateTime>
+                   <dbo:endDateTime>2023-12-07T00:00:00^^xsd:dateTime</dbo:endDateTime>
+                   <skos:hiddenLabel>gata</skos:hiddenLabel>
+                   <skos:hiddenLabel>braut</skos:hiddenLabel>
+                   <skos:hiddenLabel>brautina</skos:hiddenLabel>
+                   <skos:hiddenLabel>götu</skos:hiddenLabel>
+                   <skos:hiddenLabel>götuna</skos:hiddenLabel>
+                   <rdfs:comment>Götur, Brautir (Miðbær)</rdfs:comment>
+                 </dbo:Event>
+         <dbo:Event rdf:about="https://grammatek.com/munic/andabaer#waste64">
+             <skos:prefLabel>sorphirða</skos:prefLabel>
+             <dbo:url>https://www.andabaer.is/thjonusta/umhverfi/sorphirda-og-endurvinnsla</dbo:url>
+             <dbo:startDateTime>2023-12-07T00:00:00^^xsd:dateTime</dbo:startDateTime>
+             <dbo:endDateTime>2023-12-09T00:00:00^^xsd:dateTime</dbo:endDateTime>
+              <skos:hiddenLabel>holt</skos:hiddenLabel>
+             <skos:hiddenLabel>holtið</skos:hiddenLabel>
+             <skos:hiddenLabel>holtinu</skos:hiddenLabel>
+             <skos:hiddenLabel>torfa</skos:hiddenLabel>
+             <skos:hiddenLabel>torfu</skos:hiddenLabel>
+             <rdfs:comment>Holt, Torfur (Ytri-Andabær)</rdfs:comment>
+           </dbo:Event>
+<dbo:Event rdf:about="https://grammatek.com/munic/andabaer#waste65">
+                  <skos:prefLabel>sorphirða</skos:prefLabel>
+                  <dbo:url>https://www.andabaer.is/thjonusta/umhverfi/sorphirda-og-endurvinnsla</dbo:url>
+                  <dbo:startDateTime>2023-12-19T00:00:00^^xsd:dateTime</dbo:startDateTime>
+                  <dbo:endDateTime>2023-12-21T00:00:00^^xsd:dateTime</dbo:endDateTime>
+                  <skos:hiddenLabel>gata</skos:hiddenLabel>
+                   <skos:hiddenLabel>braut</skos:hiddenLabel>
+                   <skos:hiddenLabel>brautina</skos:hiddenLabel>
+                   <skos:hiddenLabel>götu</skos:hiddenLabel>
+                   <skos:hiddenLabel>götuna</skos:hiddenLabel>
+                   <rdfs:comment>Götur, Brautir (Miðbær)</rdfs:comment>
+                </dbo:Event>
+ </rdf:RDF>
