@@ -18,6 +18,12 @@ class Person:
         self.title = title
 
 
+class WasteBinInfo:
+    def __init__(self, start_time=None, end_time=None, place=None, place_prep=None):
+        self.start_time = start_time
+        self.end_time = end_time
+        self.place = place
+        self.place_prep = place_prep
 
 
 def get_all_names() -> list:
@@ -111,3 +117,62 @@ def get_name_for_title(title: str) -> list:
                          email=email, title=r['title']['value'])
         contacts.append(contact)
     return contacts
+
+
+# TODO: Replace this
+def format_date_time(date_time: str) -> str:
+    """Format datetime objects into human-readable output."""
+
+    year, month, rest = date_time.split('-')
+    day = rest[:2]
+    date_time_string = f"{day}.{month}"
+    return date_time_string
+
+
+def get_street_endings() -> list:
+    """Get all possible endings of street names."""
+
+    query = sparql_queries.get_street_endings_query()
+    response = requests.post(db_url, data={'query': query})
+    results = response.json()['results']['bindings']
+    return results
+
+
+def get_general_waste_bin_collection_info() -> list:
+    """Get time intervals for upcoming waste bin collection, all areas."""
+
+    collection_times = []
+    query = sparql_queries.get_general_waste_bin_collection_info_query()
+    response = requests.post(db_url, data={'query': query})
+    results = response.json()['results']['bindings']
+    for r in results:
+        start_time = format_date_time(r['starttime']['value'])
+        end_time = format_date_time(r['endtime']['value'])
+        times = WasteBinInfo(start_time=start_time, end_time=end_time, place=r['places']['value'], place_prep="á")
+        collection_times.append(times)
+    return collection_times[:2]
+
+
+def get_waste_bin_collection_info(place: str) -> list:
+    """Get time intervals for upcoming waste bin collection
+    for some area, based on ending of given street name."""
+
+    collection_times = []
+    street_endings = get_street_endings()
+    place_query = place
+    place_prep = "á"
+    for ending in street_endings:
+        if place.endswith(ending['place']['value']):
+            place_query = ending['place']['value']
+            if ending['place']['value'] in ['torfa', 'torfu', 'torfan', 'torfunni']:
+                place_prep = "í"
+            break
+    query = sparql_queries.get_waste_bin_collection_info_query(place_query)
+    response = requests.post(db_url, data={'query': query})
+    results = response.json()['results']['bindings']
+    for r in results:
+        start_time = format_date_time(r['starttime']['value'])
+        end_time = format_date_time(r['endtime']['value'])
+        times = WasteBinInfo(start_time=start_time, end_time=end_time, place=place, place_prep=place_prep)
+        collection_times.append(times)
+    return collection_times

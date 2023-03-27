@@ -169,3 +169,48 @@ def get_contact_from_subject_query(subject: str) -> str:
             }
             """
     return get_rdf_prefix() + query
+
+
+def get_general_waste_bin_collection_info_query() -> str:
+    """A query to extract the time intervals for the next upcoming
+    waste bin collections, all waste bin areas."""
+
+    query = """
+            SELECT ?starttime ?endtime ?places
+            WHERE {
+                ?entity rdf:type dbo:Event .
+                ?entity dbo:startDateTime ?starttime .
+                ?entity dbo:endDateTime ?endtime .
+                ?entity rdfs:comment ?places
+            }
+            """
+    return get_rdf_prefix() + query
+
+
+def get_waste_bin_collection_info_query(place: str) -> str:
+    """A query to extract the time intervals for the next upcoming
+    waste bin collections in a given place."""
+
+    query = """
+            SELECT ?starttime ?endtime ?place
+            WHERE {
+                ?entity rdf:type dbo:Event .
+                ?entity dbo:startDateTime ?starttime .
+                ?entity dbo:endDateTime ?endtime .
+                ?entity skos:hiddenLabel ?place FILTER regex(str(?place), '""" + place + """') .
+            }
+            """
+    return get_rdf_prefix() + query
+
+
+def get_street_endings_query() -> str:
+    """A query to extract all possible endings of street names in the graph."""
+
+    query = """
+            SELECT ?place
+            WHERE {
+                ?entity rdf:type dbo:Event .
+                ?entity skos:hiddenLabel ?place .
+            }
+            """
+    return get_rdf_prefix() + query
