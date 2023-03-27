@@ -37,6 +37,7 @@ import declension
 
 logger = logging.getLogger(__name__)
 
+
 class ActionDefaultAskAffirmation(Action):
     """Ask user for affirmation of intent, in case of low confidence."""
 
@@ -262,6 +263,44 @@ class ActionGetWhoIs(Action):
             name = final_contact
 
         return[SlotSet("contact", name), SlotSet("title", None)]
+
+
+class ActionGetWasteBinCollectionInfo(Action):
+    """Make call to knowledge base to find next waste bin collection times, either for Andabær in
+    general, or for some specified street."""
+
+    def name(self) -> Text:
+        return "action_get_waste_bin_collection_info"
+
+    def run(
+        self,
+        dispatcher: "CollectingDispatcher",
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+
+        place = tracker.get_slot('place')
+        if place:
+            place_dat = declension.get_declined_form(place, declension.DATIVE_SG)
+            res = info_api.get_waste_bin_collection_info(place)
+            if res:
+                r = res[0]
+                dispatcher.utter_message(response="utter_waste_bin_collection_info",
+                                         place_prep=r.place_prep, place=place_dat,
+                                         start_time=r.start_time, end_time=r.end_time)
+
+            else:
+                dispatcher.utter_message(response="utter_waste_bin_info_not_found", place=place_dat)
+                res = info_api.get_general_waste_bin_collection_info()
+                for r in res:
+                    dispatcher.utter_message(response="utter_waste_bin_collection_info", place=r.place,
+                                             start_time=r.start_time, end_time=r.end_time)
+        else:
+            res = info_api.get_general_waste_bin_collection_info()
+            for r in res:
+                dispatcher.utter_message(response="utter_waste_bin_collection_info", place=r.place,
+                                         start_time=r.start_time, end_time=r.end_time)
+        return [AllSlotsReset()]
 
 
 class ValidateRequestContactForm(FormValidationAction):

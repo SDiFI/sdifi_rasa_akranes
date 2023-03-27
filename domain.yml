@@ -169,6 +169,10 @@ responses:
       payload: '/request_contact{{"subject":"Launamál"}}'
     - title: "Velferðarmál"
       payload: '/request_contact{{"subject":"Velferðarmál"}}'
+  utter_waste_bin_collection_info:
+    - text: Ruslið verður næst sótt {place_prep} {place} milli {start_time} og {end_time}.
+  utter_waste_bin_info_not_found:
+    - text: Því miður veit ég ekki hvenær ruslið verður sótt á {place}.
   utter_ask_contact:
   - condition:
       - type: slot
@@ -201,6 +205,7 @@ actions:
 - utter_thank
 #- utter_anything_else
 - action_get_contact_info
+- action_get_waste_bin_collection_info
 - validate_request_contact_form
 - action_deactivate_loop
 - action_default_ask_affirmation
