@@ -77,7 +77,7 @@ ADD ./docker/fuseki/log4j2.properties .
 ADD ./docker/fuseki/ex.sparql .
 ADD ./docker/fuseki/db_init.sh ./scripts/db_init.sh
 ADD ./docker/fuseki/config.ttl ./configuration/config.ttl
-ADD ./src/municipal_info_api/offices_staff.rdf /fuseki/rdf/initial.rdf
+ADD ./src/municipal_info_api/municipal_info_api.rdf /fuseki/rdf/initial.rdf
 
 
 # Run as this user
