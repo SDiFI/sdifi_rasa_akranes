@@ -159,6 +159,10 @@ rasa run -vv --credentials config/credentials.yml --endpoints config/endpoints.y
 The following command runs tests for the SPARQL queries and Rasa actions:
 
 ```bash
+# If not exported already, see 'Running Rasa' section:
+export PYTHONPATH="`pwd`/src/municipal_info_api"
+export FUSEKI_NETWORK_HOST="localhost"
+
 pytest .
 ```
 
