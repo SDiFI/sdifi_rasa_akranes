@@ -102,7 +102,7 @@ def get_name_for_title(title: str) -> list:
         if 'phone' in r:
             phone = r['phone']['value']
         else:
-            phone = get_office_phone_number()
+            phone = '499-1000'
         if 'email' in r:
             email = r['email']['value']
         else:
