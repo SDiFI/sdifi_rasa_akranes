@@ -1,7 +1,6 @@
 FROM rasa/rasa-sdk:3.4.0
 USER root
 RUN pip install --upgrade pip
-RUN pip install --no-cache-dir rdflib==6.1.1
 RUN pip install --no-cache-dir --default-timeout=100 islenska==0.4.5
 RUN pip install --no-cache-dir requests==2.26.0
 
