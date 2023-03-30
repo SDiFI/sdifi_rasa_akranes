@@ -440,6 +440,70 @@ nlu:
     - hver er [Anna J](contact)
     - hver er [Anna J Árnadóttir](contact)
 
+- intent: ask_operator
+  examples: |
+    - Þjónustufulltrúi
+    - þjónustufulltrúi
+    - Þjónustufulltrúi takk
+    - Þjo´nustufulltrúi
+    - tala við þjónustufulltrúa
+    - Tala við þjónustufulltrúa
+    - Tala við Þjónustufulltrúa
+    - tala við starfsmann
+    - Gæti ég fengið að tala við þjónustufulltrúa
+    - gæti ég fengið að tala við þjónustufulltrúa
+    - get ég fengið að tala við manneskju
+    - get ég talað við manneskju
+    - get ég talað við starfsmann
+    - Ég vil tala við manneskju
+    - get ég fengið samband við þjónustufulltrúa
+    - get ég fengið samband við starfsmann
+    - er hægt að tala við manneskju
+    - er hægt að tala við manneskju?
+    - Gæti ég fengið að tala við raunverulega manneskju ?
+    - Gæti ég talað við manneskju
+    - má ég tala við manneskju
+    - getur þú beint spjallinu að þjónustufulltrúa
+    - geturðu tengt mig við þjónustufulltrúa
+    - geturðu tengt mig við þjónustuver
+    - geturðu tengt mig við starfsmann
+    - ég væri til í að fá samband við starfsmann
+    - ég væri til í að fá samband við manneskju
+    - mig langar að tala við alvöru manneskju
+    - mig langar að tala við starfsmann
+    - mig langar að tala við þjónustufulltrúa
+    - manneskja
+    - manneskju
+    - Tala við manneskju
+    - Tala við manneskju?
+    - þarf að tala við alvöru manneskur
+    - þarf að vera hægt að tala við manneskju líka
+    
+- intent: ask_joke
+  examples: |
+    - kanntu brandara?
+    - kantu að sgeja brandara
+    - kanntu einhverja brandara?
+    - kanntu að djóka
+    - komdu með brandara
+    - Segðu mér brandara!
+    - Segðu mér grín!
+    - komdu með grín!
+    - komdu með djók
+    - segðu mér eitthvað fyndið
+    - segðu eitthvað fyndið
+    - Komdu með eitthvað fyndið!
+    - komdu nú með eitthacð fyndið grín handa mér
+    - komdu nú með eitthacð fyndið grín
+    - mig langar að heyra brandara
+    - mig langar að heyra eitthvcað fyndið frá þér
+    - ertu búinn að læra brandara
+    - kanntu annan
+    - kanntu ekki betri brandara en þetta
+    - segðu mér annan
+    - brandarakall
+
+
 - synonym: Launamál
   examples: |
     - launamál
