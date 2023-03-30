@@ -102,6 +102,7 @@ services:
     command: chown -R 1000:1000 /tmp/fuseki-data
       
   fuseki:
+    container_name: 'fuseki_server'
     # These final two services are the only ones that need to be built via docker-compose build
     build:
       context: .

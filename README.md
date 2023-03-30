@@ -42,7 +42,7 @@ docker-compose up
 To test availability of the Fuseki server, try the following command that runs a query inside the fuseki container:
 
 ``` bash
-docker exec -it sdifi_rasa_akranes-fuseki-1 bin/rsparql --query ex.sparql --service=http://localhost:3030/ds/query
+docker exec -it fuseki_server bin/rsparql --query ex.sparql --service=http://localhost:3030/ds/query
 ```
 
 It should return something like:
