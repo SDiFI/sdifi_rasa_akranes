@@ -198,6 +198,8 @@ Currently, the system can identify the following intents:
 * affirm (_já_, _já ég er með aðra spurningu_)
 * deny (_nei takk, þetta er komið_, _ekkert meira_)
 * request contact (_hvernig næ ég í X_, _mig vantar að ná í Y_, _hver sér um Z_)
+* ask joke (_kanntu brandara_, _segðu mér eitthvað fyndið_)
+* ask operator (_get ég fengið samband við þjónustufulltrúa_, _má ég tala við manneskju_)
 * inform (user answers to a question the bot needs to fill a slot)
 * out of scope input
 * no intent (empty input)
