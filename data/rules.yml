@@ -17,10 +17,20 @@ rules:
   - intent: bye
   - action: utter_bye
 
-- rule: Respond to out-of-scope request.
+- rule: Respond to out-of-scope request
   steps:
   - intent: out_of_scope
   - action: utter_out_of_scope
+
+- rule: Send to operator
+  steps:
+  - intent: ask_operator
+  - action: action_get_operator
+
+- rule: Tell joke
+  steps:
+  - intent: ask_joke
+  - action: utter_joke
 
 - rule: Two-stage fallback
   steps:
