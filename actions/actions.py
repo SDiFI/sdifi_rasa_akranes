@@ -264,6 +264,23 @@ class ActionGetWhoIs(Action):
         return[SlotSet("contact", name), SlotSet("title", None)]
 
 
+class ActionGetOperator(Action):
+    """Here is where some kind of human connection mechanism would be implemented."""
+    def name(self) -> Text:
+        return "action_get_operator"
+
+    def run(
+        self,
+        dispatcher: "CollectingDispatcher",
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(response="utter_operator")
+
+        return []
+
+
 class ValidateRequestContactForm(FormValidationAction):
     """Validate entities (subject or contact) extracted by request_contact form."""
 
