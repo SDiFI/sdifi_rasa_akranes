@@ -18,6 +18,7 @@ RABBITMQ_PASSWORD=<some_rabbitmq_passwd>  # Password to use for RabbitMQ
 DB_PASSWORD=<some_database_passwd>        # PostgreSQL password
 RASA_TELEMETRY_ENABLED=false              # Set to true in case you want to send anonymous usage data to Rasa
 DEBUG_MODE=true                           # Set to false, if you don't want lots of infomration from Rasa
+FUSEKI_VERSION=4.7.0
 ```
 
 Currently, the docker-compose setup is only meant for running a Rasa instance with an already trained model
@@ -28,8 +29,33 @@ inside `models/`
 After training, run the following commands: (docker-compose needs to be installed):
 
 ```bash
-docker-compose build    # this builds the action_server
+docker-compose build    # this builds the action_server, fuseki, etc.
+# This prepares the fuseki-data volume to import RDF data mounted as docker-volume. Please refer
+# to [docker-compose.yml](docker-compose.yml) service definition if you want to use a different RDF file as
+# initial DB
+docker-compose run --rm --entrypoint="sh /fuseki/scripts/db_init.sh /fuseki/rdf/initial.rdf" fuseki
+# This starts all services
+
 docker-compose up
+```
+
+To test availability of the Fuseki server, try the following command that runs a query inside the fuseki container:
+
+``` bash
+docker exec -it fuseki_server bin/rsparql --query ex.sparql --service=http://localhost:3030/ds/query
+```
+
+It should return something like:
+
+``` bash
+--------------------
+| role             |
+====================
+| "Skólamál"       |
+| "Stjórnsýslumál" |
+| "Launamál"       |
+| "Velferðarmál"   |
+--------------------
 ```
 
 ### Local development with Rasa
@@ -38,7 +64,7 @@ Currently, this approach is necessary to train a model, but is also similar to t
 documentation](https://rasa.com/docs/rasa/installation/environment-set-up). However, for a production setup this approach
 should not be used.
 
-Create a virtual environment and install all dependencies via the following command:
+Create a virtual environment (use Python 3.9, not 3.10) and install all dependencies via the following command:
 
 ``` bash
 python3 -m venv venv
@@ -90,11 +116,36 @@ placed into the subdirectory `results/`
 #### Running Rasa
 
 To start locally a standalone Rasa server, you need to start the action server in another terminal session as well. For
-actions, we need to add the directory `src/municipal_info_api` to the variable `PYTHONPATH`.
+actions, we need to add the directory `src/municipal_info_api` to the variable `PYTHONPATH`, and for querying the 
+Fuseki database, we need to add 'localhost' to the variable `FUSEKI_NETWORK_HOST`:
 
 ```bash
 export PYTHONPATH="`pwd`/src/municipal_info_api"
+export FUSEKI_NETWORK_HOST="localhost"
 python -m rasa_sdk --actions actions --port 5055
+```
+
+The Fuseki service needs to be up (and already built, see section on setup) and can be started on its own by running:
+
+```bash
+docker-compose up fuseki -d
+```
+
+Note that, when running a standalone Rasa server, in order to be able to update the RDF file used to initialise the 
+database, the file `fuseki_override_template.yml` needs to be renamed `docker-compose.override.yml` and the following
+lines in the file `docker-compose.yml` need to be uncommented:
+
+```bash
+# Under the 'fuseki' service section, towards the end of the file:
+
+
+#volumes:
+#  - fuseki-data:/fuseki/databases/DB2
+
+#depends_on:
+#  fuseki-init:
+#    condition: service_completed_successfully
+
 ```
 
 Start the Rasa server:
@@ -108,6 +159,10 @@ rasa run -vv --credentials config/credentials.yml --endpoints config/endpoints.y
 The following command runs tests for the SPARQL queries and Rasa actions:
 
 ```bash
+# If not exported already, see 'Running Rasa' section:
+export PYTHONPATH="`pwd`/src/municipal_info_api"
+export FUSEKI_NETWORK_HOST="localhost"
+
 pytest .
 ```
 
@@ -146,7 +201,7 @@ Currently, the system can identify the following intents:
 
 ## Knowledge base
 
-The knowledge base is stored in an RDF document (data/offices_staff.rdf) and uses the following ontologies:
+The knowledge base is initialised via an RDF document (`src/municipal_info_api/offices_staff.rdf`) and uses the following ontologies:
 
 * The Organization Ontology https://www.w3.org/TR/vocab-org/
 * The vCard Ontology https://www.w3.org/TR/vcard-rdf/ (NS: http://www.w3.org/2006/vcard/ns#)

@@ -8,6 +8,7 @@ x-rabbitmq-credentials: &rabbitmq-credentials
 volumes:
   postgres-data:
   rabbitmq-data:
+  fuseki-data:
 
 services:
   rasa:
@@ -87,9 +88,36 @@ services:
       RASA_HOST: "rasa:5005"
     depends_on:
       - rasa
+      
+  fuseki-init:
+    # this service is run just for the sake of changing fuseki-data volume
+    # to non-root user with uid:gid 1000:1000 which is then used inside
+    # fuseki
+    image: openjdk:17-alpine
+    user: root
+    group_add:
+      - '1000'
+    volumes:
+      - fuseki-data:/tmp/fuseki-data
+    command: chown -R 1000:1000 /tmp/fuseki-data
+      
+  fuseki:
+    container_name: 'fuseki_server'
+    # These final two services are the only ones that need to be built via docker-compose build
+    build:
+      context: .
+      dockerfile: ./docker/fuseki/Dockerfile
+    image: ${REGISTRY_URL:-}fuseki-${FUSEKI_VERSION}:${APPLICATION_VERSION:-latest}
+    ports:
+      - "3030:3030"
+    #volumes:
+    #  - fuseki-data:/fuseki/databases/DB2
+    # only needed, if we map a volume
+    #depends_on:
+    #  fuseki-init:
+    #    condition: service_completed_successfully
 
   action_server:
-    # This is the only service that needs to be built via docker-compose build
     container_name: 'action_server'
     build:
       context: .
@@ -99,4 +127,5 @@ services:
     expose:
       - "5055"
     depends_on:
+      - fuseki
       - rasa

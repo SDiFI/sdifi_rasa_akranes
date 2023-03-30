@@ -9,12 +9,12 @@ import json
 import logging
 
 from rasa_sdk import Action, Tracker, FormValidationAction
-from rasa_sdk.events import AllSlotsReset, SessionStarted, ActionExecuted, \
-    ConversationPaused, ConversationResumed, UserUtteranceReverted, SlotSet
+from rasa_sdk.events import AllSlotsReset, SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
-import info_api, declension
+import info_api
+import declension
 
 # class ActionSessionStart(Action):
 #     """Start every session by greeting the user."""
