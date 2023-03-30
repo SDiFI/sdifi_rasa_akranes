@@ -64,7 +64,7 @@ Currently, this approach is necessary to train a model, but is also similar to t
 documentation](https://rasa.com/docs/rasa/installation/environment-set-up). However, for a production setup this approach
 should not be used.
 
-Create a virtual environment and install all dependencies via the following command:
+Create a virtual environment (use Python 3.9, not 3.10) and install all dependencies via the following command:
 
 ``` bash
 python3 -m venv venv
