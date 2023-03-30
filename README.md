@@ -20,6 +20,7 @@ RASA_TELEMETRY_ENABLED=false              # Set to true in case you want to send
 DEBUG_MODE=true                           # Set to false, if you don't want lots of infomration from Rasa
 FUSEKI_VERSION=4.7.0
 ```
+You can also use the provided `.env.template` file as an example.
 
 Currently, the docker-compose setup is only meant for running a Rasa instance with an already trained model
 from the directory `./models`. To train a model, the local development method should be used before starting Rasa
@@ -30,7 +31,9 @@ After training, run the following commands: (docker-compose needs to be installe
 
 ```bash
 docker-compose build    # this builds the action_server, fuseki, etc.
-# This prepares the fuseki-data volume to import RDF data mounted as docker-volume. Please refer
+# This (optional) step prepares the fuseki-data volume to import RDF data mounted as docker-volume. By default, the
+# RDF database is already prepared with default contents of `src/municipal_info_api/offices_staff.rdf`. If you activate
+# the commented-out Fuseki DB volume, use the following snippet to prepare the volume with dummy data. Please refer
 # to [docker-compose.yml](docker-compose.yml) service definition if you want to use a different RDF file as
 # initial DB
 docker-compose run --rm --entrypoint="sh /fuseki/scripts/db_init.sh /fuseki/rdf/initial.rdf" fuseki
@@ -168,6 +171,11 @@ pytest .
 
 The SPARQL query tests are located [here](src/municipal_info_api/sparql_test.py) and action tests
 [here](tests/test_actions.py).
+
+### Integration with Masdif
+The Rasa server can be integrated with [Masdif](https://github.com/SDiFI/masdif). The provided docker-compose snippet
+[masdif_override_template.yml](masdif_override_template.yml) can be used to start the Rasa server and Masdif together.
+Please refer to the documentation of Masdif for further details.
 
 ###  Talk to Rasa via web widget
 
