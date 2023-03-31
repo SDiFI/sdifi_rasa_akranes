@@ -29,10 +29,10 @@
     <org:heldBy>https://grammatek.com/munic/andabaer#JonSigurdsson</org:heldBy>
   </rdf:Description>
 
-<rdf:Description rdf:about="https://grammatek.com/munic/andabaer/SkrifstofaAndabaejar">
-    <rdf:type rdf:resource="https://www.w3.org/TR/vocab-org/#org:Site"/>
+<org:Site rdf:about="https://grammatek.com/munic/akranes/SkrifstofaAndabaejar">
     <skos:prefLabel xml:lang="is">Skrifstofa Andabæjar</skos:prefLabel>
     <org:siteOf>https://grammatek.com/munic/andabaer</org:siteOf>
+    <foaf:mbox>andabaer@andabaer.is</foaf:mbox>
     <vcard:hasTelephone rdf:parseType="Resource">
         <vcard:hasValue>499 1000</vcard:hasValue>
       </vcard:hasTelephone>
@@ -41,7 +41,7 @@
   	 <vcard:locality>Andabær</vcard:locality>
   	 <vcard:postal-code>999</vcard:postal-code>
       </vcard:hasAddress>
-  </rdf:Description>
+ </org:Site>
 
 <rdf:Description rdf:about="https://grammatek.com/munic/andabaer/Skipulags-ogumhverfisráð">
     <rdf:type rdf:resource="https://www.w3.org/TR/vocab-org/#org:OrganizationalUnit"/>

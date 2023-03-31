@@ -18,8 +18,6 @@ class Person:
         self.title = title
 
 
-
-
 def get_all_names() -> list:
     query = sparql_queries.get_all_names_query()
     response = requests.post(db_url, data={'query': query})
@@ -40,6 +38,26 @@ def get_valid_subjects() -> list:
     return contacts
 
 
+def get_office_contact_info() -> list:
+    """Get the phone number and email of the main office."""
+    query = sparql_queries.get_office_contact_info_query()
+    response = requests.post(db_url, data={'query': query})
+    results = response.json()['results']['bindings']
+    contacts = []
+    for r in results:
+        contacts.append(Person(phone=r['phone']['value'], email=r['email']['value']))
+    return contacts
+
+
+def get_office_phone_number() -> str:
+    """Get phone number of main office, to be returned as default phone number in contact searches."""
+    query = sparql_queries.get_office_contact_info_query()
+    response = requests.post(db_url, data={'query': query})
+    results = response.json()['results']['bindings']
+    phone = ""
+    for r in results:
+        phone = r['phone']['value']
+    return phone
 
 
 def get_info_for_contact(contact: str) -> list:
@@ -62,7 +80,7 @@ def get_info_for_contact(contact: str) -> list:
         if 'phone' in r:
             phone = r['phone']['value']
         else:
-            phone = '499-1000'
+            phone = get_office_phone_number()
         if 'email' in r:
             email = r['email']['value']
         else:
@@ -82,7 +100,7 @@ def get_contact_from_subject(subject: str) -> list:
         if 'phone' in r:
             phone = r['phone']['value']
         else:
-            phone = '499-1000'
+            phone = get_office_phone_number()
         if 'email' in r:
             email = r['email']['value']
         else:
@@ -102,7 +120,7 @@ def get_name_for_title(title: str) -> list:
         if 'phone' in r:
             phone = r['phone']['value']
         else:
-            phone = '499-1000'
+            phone = get_office_phone_number()
         if 'email' in r:
             email = r['email']['value']
         else:

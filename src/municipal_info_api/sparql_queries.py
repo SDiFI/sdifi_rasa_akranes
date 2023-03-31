@@ -78,6 +78,21 @@ def get_all_roles_query() -> str:
     return get_rdf_prefix() + query
 
 
+def get_office_contact_info_query() -> str:
+    """A query to extract the email and telephone number for the main office."""
+
+    query = """
+            SELECT DISTINCT ?email ?phone
+            WHERE {
+                ?entity rdf:type org:Site .
+                ?entity foaf:mbox ?email .
+                ?entity vcard:hasTelephone [
+                vcard:hasValue ?phone ] .
+            }
+            """
+    return get_rdf_prefix() + query
+
+
 def get_info_for_contact_query(contact: str) -> str:
     """A query to extract full name, and both email
     and phone number where possible, from a foaf:Person

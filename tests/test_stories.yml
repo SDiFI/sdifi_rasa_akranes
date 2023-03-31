@@ -237,3 +237,24 @@ stories:
               - email_or_phone: email
           - active_loop: null
           - action: action_get_contact_info
+
+      - story: Get operator
+        steps:
+          - intent: ask_operator
+            user: |-
+              ég vil fá að tala við þjónustufulltrúa
+          - action: action_get_operator
+
+      - story: Get joke 1
+        steps:
+          - intent: ask_joke
+            user: |-
+              komdu með góðan brandara handa mér
+          - action: utter_joke
+
+      - story: Get joke 2
+        steps:
+          - intent: ask_joke
+            user: |-
+              kanntu að segja eitthvað fyndið
+          - action: utter_joke

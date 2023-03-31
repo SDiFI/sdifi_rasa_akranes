@@ -5,6 +5,8 @@ session_config:
 intents:
 - request_contact
 - who_is
+- ask_operator
+- ask_joke
 - faq:
     is_retrieval_intent: true
 - greet
@@ -183,6 +185,12 @@ responses:
   - text: Ég hætti þá leitinni og við getum byrjað upp á nýtt ef þú vilt. Afsakaðu vesenið.
   utter_validation_failed_fallback:
   - text: Því miður skil ég þetta ekki. Ég verð að hætta leitinni og byrja upp á nýtt.
+  utter_joke:
+  - text: Hvað borða vegan vampírur? Blóðappelsínur.
+  - text: Hvað gera köngulær þegar þeim leiðist? Hanga á vefnum!
+  - text: Hvað verður um ís sem er búinn að vera lengi í boxi? Hann kemst á endanum í form.
+  utter_operator:
+  - text: Ég get því miður ekki tengt þig við þjónustufulltrúa. Opnunartímar þjónustuvers eru mánudaga til föstudaga frá kl. 09:00 til 15:00. Sími {phone}, netfang {email}
 
 actions:
 - utter_bye
@@ -191,12 +199,15 @@ actions:
 - utter_greet
 - utter_ask_rephrase
 - utter_thank
+- utter_joke
+- utter_operator
 #- utter_anything_else
 - action_get_contact_info
 - validate_request_contact_form
 - action_deactivate_loop
 - action_default_ask_affirmation
 - action_get_whois
+- action_get_operator
 forms:
   request_contact_form:
     ignored_intents:
