@@ -1,0 +1,41 @@
+# This file should be used in combination with the docker-compose.yml file of Masdif, if you want to use this
+# project within the Masdif project. This file is not meant to be used on its own.
+#
+# In case you have mounted this project inside the subdirectory `rasa/`, you can start the overall project
+#  by running the following command:
+# cat docker-compose.yml rasa/masdif_override_template.yml | docker-compose -f - up
+#
+# Please make sure, that you have prepared all required environments and initializations beforehand. See the
+# README.md of both projects for more information.
+
+  fuseki-init:
+    # this service is run just for the sake of changing fuseki-data volume
+    # to a non-root user with uid:gid 1000:1000 which is then used inside
+    # fuseki
+    image: openjdk:17-alpine
+    user: root
+    group_add:
+      - '1000'
+    volumes:
+      - fuseki-data:/tmp/fuseki-data
+    command: chown -R 1000:1000 /tmp/fuseki-data
+
+  fuseki:
+    # These final two services are the only ones that need to be built via docker-compose build
+    build:
+      # adapt build context according to your project structure, the following context is used, if you have
+      # mounted this project inside the subdirectory `rasa/`
+      context: rasa/
+      dockerfile: ./docker/fuseki/Dockerfile
+    image: ${REGISTRY_URL:-}fuseki-${FUSEKI_VERSION}:${APPLICATION_VERSION:-latest}
+    expose:
+      - "3030"
+    networks:
+      - backend
+    #volumes:
+    #  - fuseki-data:/fuseki/databases/DB2
+    # only needed, if we map a volume. This is necessary, if you want to update the data in the fuseki
+    # container without losing the data after the container is removed.
+    #depends_on:
+    #  fuseki-init:
+    #    condition: service_completed_successfully
