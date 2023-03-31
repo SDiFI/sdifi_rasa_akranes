@@ -95,6 +95,12 @@ class TestSparql(unittest.TestCase):
                 found_subject = True
         self.assertTrue(found_subject)
 
+    def test_get_office_contact_info(self):
+        result = info_api.get_office_contact_info()
+        self.assertTrue(len(result) == 1)
+        self.assertEqual('499 1000', result[0].phone)
+        self.assertEqual('andabaer@andabaer.is', result[0].email)
+
 
 if __name__ == '__main__':
     unittest.main()
