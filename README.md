@@ -70,10 +70,7 @@ as follows:
 
 ``` bash
 # Go into the Fuseki container and delete the database
-docker exec -it sdifi_rasa_akranes_fuseki_1 ash
-# The database is in Data-0001, remove that folder
-/fuseki $ rm -r databases/DB2/Data-0001/
-/fuseki $ exit
+docker exec -it fuseki_server rm -rf databases/DB2/Data-0001/
 # Stop all containers so that we can perform the dataloading, then, similar as above, but with the /rdf directory mounted:
 docker-compose run --rm  -v $(pwd)/rdf:/fuseki/rdf/ --entrypoint="sh /fuseki/scripts/db_init.sh /fuseki/rdf/updated_kb.rdf" fuseki
 # Start the containers again
