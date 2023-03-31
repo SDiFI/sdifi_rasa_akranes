@@ -61,6 +61,24 @@ It should return something like:
 --------------------
 ```
 
+#### Replace the database
+
+If you need to change or add information in the knowledge base, you can do so by editing the RDF-file (or creating a new
+one), deleting the Fuseki database and replacing it with your new or updated data. Assuming there is a folder ```rdf/```
+in the project root folder containing a new RDF-file ```updated_kb.rdf```, the steps to replace the Fuseki database are 
+as follows:
+
+``` bash
+# Go into the Fuseki container and delete the database
+docker exec -it sdifi_rasa_akranes_fuseki_1 ash
+# The database is in Data-0001, remove that folder
+/fuseki $ rm -r databases/DB2/Data-0001/
+/fuseki $ exit
+# Stop all containers so that we can perform the dataloading, then, similar as above, but with the /rdf directory mounted:
+docker-compose run --rm  -v $(pwd)/rdf:/fuseki/rdf/ --entrypoint="sh /fuseki/scripts/db_init.sh /fuseki/rdf/updated_kb.rdf" fuseki
+# Start the containers again
+```
+
 ### Local development with Rasa
 
 Currently, this approach is necessary to train a model, but is also similar to the setup stated inside the official [Rasa
