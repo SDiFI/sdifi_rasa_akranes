@@ -276,7 +276,9 @@ class ActionGetOperator(Action):
         domain: "DomainDict",
     ) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(response="utter_operator")
+        res = info_api.get_office_contact_info()
+        r = res[0]
+        dispatcher.utter_message(response="utter_operator", phone=r.phone, email=r.email)
 
         return []
 
