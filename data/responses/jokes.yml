@@ -1,0 +1,6 @@
+version: "3.1"
+responses:
+utter_joke:
+  - text: Hvað borða vegan vampírur? Blóðappelsínur.
+  - text: Hvað gera köngulær þegar þeim leiðist? Hanga á vefnum!
+  - text: Hvað verður um ís sem er búinn að vera lengi í boxi? Hann kemst á endanum í form.
