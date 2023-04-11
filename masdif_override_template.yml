@@ -30,8 +30,6 @@
     image: ${REGISTRY_URL:-}fuseki-${FUSEKI_VERSION}:${APPLICATION_VERSION:-latest}
     expose:
       - "3030"
-    networks:
-      - backend
     #volumes:
     #  - fuseki-data:/fuseki/databases/DB2
     # only needed, if we map a volume. This is necessary, if you want to update the data in the fuseki

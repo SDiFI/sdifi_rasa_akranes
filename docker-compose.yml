@@ -20,6 +20,7 @@ services:
       - ./config/credentials.yml:/app/credentials.yml
       - ./config.yml:/app/config.yml
       - ./models:/app/models
+      - ./cache:/app/cache
     expose:
       - "5005"
     command: >
@@ -48,6 +49,7 @@ services:
       DB_DATABASE: "tracker"
       MPLCONFIGDIR: "/tmp/.matplotlib"
       DEBUG_MODE: "true"
+      TRANSFORMERS_CACHE: "/app/cache"
 
   db:
     restart: unless-stopped

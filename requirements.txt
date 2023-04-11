@@ -7,8 +7,8 @@ keras==2.8.0
 Keras-Preprocessing==1.1.2
 numpy==1.22.4
 pytest==7.2.1
-rasa==3.4.2
-rasa-sdk==3.4.0
+rasa==3.4.9
+rasa-sdk==3.4.1
 scikit-learn==0.24.2
 scipy==1.7.3
 spacy==3.2.5
@@ -17,3 +17,4 @@ tensorflow==2.8.4
 tensorflow-text==2.8.2
 transformers==4.13.0
 tokenizers==0.10.3
+websockets==10.0

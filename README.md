@@ -10,7 +10,7 @@ This is the recommended way to run Rasa in a production environment. Clone the r
 following contents set:
 
 ```bash
-RASA_VERSION=3.4.2                        # Rasa version to use, you should also set an appropriate Rasa SDK version
+RASA_VERSION=3.4.9                        # Rasa version to use, you should also set an appropriate Rasa SDK version
                                           # when building the action_server via docker/sdk/Dockerfile
                                           # in case the major or minor number changes
 RASA_TOKEN=<some_rasa_token>              # Access token for using the Restful API of Rasa
