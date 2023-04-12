@@ -1,6 +1,7 @@
 .env
 .idea/
 .rasa/
+cache/
 db/
 logs/
 models/
