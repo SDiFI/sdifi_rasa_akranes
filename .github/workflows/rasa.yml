@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: '*'
 env:
-  RASA_VERSION: 3.4.2
+  RASA_VERSION: 3.4.9
   FUSEKI_VERSION: 4.7.0
   FUSEKI_NETWORK_HOST: localhost
   FUSEKI_NETWORK_PORT: 3030
@@ -47,7 +47,7 @@ jobs:
         # Use our own fork of the seemingly unmaintained RasaHQ gha
         uses: SDiFI/rasa-train-test-gha@sdifi
         with:
-          rasa_version: '3.4.2'
+          rasa_version: ${{ env.RASA_VERSION }}
           data_validate: true # Validates domain and data files to check for possible mistakes
           rasa_train: true # Run rasa train
           rasa_test: true # Run rasa test
