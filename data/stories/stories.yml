@@ -30,6 +30,19 @@ stories:
   - intent: thank
   - action: utter_thank
 
+- story: Get name for subject
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: who_is
+    entities:
+      - subject: "áhaldahús"
+  - action: action_get_whois
+  - slot_was_set:
+      - contact: "Gunnar Ólafsson"
+  - intent: thank
+  - action: utter_thank
+
 - story: Get title for name
   steps:
   - intent: greet
