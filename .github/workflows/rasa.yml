@@ -51,24 +51,48 @@ jobs:
           data_validate: true # Validates domain and data files to check for possible mistakes
           rasa_train: true # Run rasa train
           rasa_test: true # Run rasa test
-          test_args: --fail-on-predicion-errors # Fail pipeline when test fails
+          test_args: --fail-on-prediction-errors # Fail pipeline when test fails
           test_type: all # Run both 'core' and 'nlu' tests
           # In order to add a PR comment with summary
           # a GH Token has to be pass to the GH action
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Stop containers
         run: docker-compose -f "docker-compose.yml" down
-      - name: Upload model
-        if: github.ref == 'refs/heads/master'
-        uses: actions/upload-artifact@master
+      - name: Upload Rasa model
+        if: github.ref_type == 'tag'
+        uses: actions/upload-artifact@v3
         with:
-          name: model
-          path: models
+          name: municipal_model_${{ github.ref_name }}
+          path: models/*
       - name: Store test results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: test-results and model
           path: |
             models
             results
             reports
+  create-release:
+    needs: training-testing
+    name: Create Release when tag is pushed
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        if: github.ref_type == 'tag'
+        uses: actions/download-artifact@v2
+        with:
+          name: municipal_model_${{ github.ref_name }}
+          path: models
+      - name: release
+        if: github.ref_type == 'tag'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: models/*
+          draft: false
+          tag_name: ${{ github.ref_name }}
+          name: municipal_model_${{ github.ref_name }}
+          body: |
+            This is a release of the Rasa model for the municipality of Andabær.
+            The model is trained on the data in the `data` folder.
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
