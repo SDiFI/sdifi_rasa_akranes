@@ -2,9 +2,11 @@ name: Train and test Rasa
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: '*'
+    branches:
+      - "**"
+    tags:
+      - "**"
+
 env:
   RASA_VERSION: 3.4.9
   FUSEKI_VERSION: 4.7.0
