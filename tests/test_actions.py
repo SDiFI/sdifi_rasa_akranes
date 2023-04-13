@@ -36,6 +36,29 @@ def test_get_who_is(
 @pytest.mark.parametrize(
     "subject, expected_events",
     [
+        ("rokktónlist",
+         [AllSlotsReset()]),
+        ("Velferðarmál",
+         [SlotSet("contact", "María Jóhannsdóttir"), SlotSet("title", None)])
+    ]
+)
+def test_get_who_is_from_subject(
+    tracker: Tracker,
+    dispatcher: CollectingDispatcher,
+    domain: DomainDict,
+    subject: Text,
+    expected_events: Any
+):
+    tracker.slots["subject"] = subject
+    action = actions.ActionGetWhoIs()
+    actual_events = action.run(dispatcher=dispatcher, tracker=tracker, domain=domain)
+
+    assert actual_events == expected_events
+
+
+@pytest.mark.parametrize(
+    "subject, expected_events",
+    [
         ("Bókmenntasaga",
          [AllSlotsReset()]),
         ("Launamál",

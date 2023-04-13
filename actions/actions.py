@@ -207,16 +207,21 @@ class ActionGetWhoIs(Action):
 
         title = tracker.get_slot('title')
         name = tracker.get_slot('contact')
+        subject = tracker.get_slot('subject')
         info_object = 'það sem þú spurðir um'
         final_contact = ''  # full name of a found contact
         res = [] # the results from the knowledge base
 
         logger.info(f"{self.name()} Name: {name}")
         logger.info(f"{self.name()} Title: {title}")
+        logger.info(f"{self.name()} Subject: {subject}")
 
         if title:
             info_object = title
             res = info_api.get_name_for_title(title)
+        elif subject:
+            info_object = subject
+            res = info_api.get_contact_from_subject(subject.title())
         elif name:
             info_object = name
             nom_names = declension.get_nominative_name(name.title())
