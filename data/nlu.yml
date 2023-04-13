@@ -254,11 +254,6 @@ nlu:
 
 - intent: request_contact
   examples: |
-    - hver sér um [launamál]{"entity": "subject", "value": "Launamál"}?
-    - hver sér um [skólamál]{"entity": "subject", "value": "Skólamál"}?
-    - hver sér um [lóðirnar]{"entity": "subject", "value": "Skipulagsmál"}?
-    - hver sér um að [keyra út mat til aldraðra]{"entity": "subject", "value": "Velferðarmál"}
-    - hver sér um [bókhald](subject)
     - mig vantar að tala við einhvern um [sorphirðu]{"entity": "subject", "value": "Skipulagsmál"}
     - þarf að tala við einhvern um [símann minn](subject)
     - ég þarf að tala við einhvern um [leikskóla]{"entity": "subject", "value": "Skólamál"}
@@ -299,6 +294,16 @@ nlu:
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [henni](pronoun)?
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [honum](pronoun)?
     - Hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [honum](pronoun)?
+    - hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} á bæjarskrifstofunni?
+    - hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá [byggingafulltrúa](title)
+    - Er skrifstofan með [netföng]{"entity": "email_or_phone", "value": "email"}
+    - hvað er [netfangið]{"entity": "email_or_phone", "value": "email"} hjá [byggingafulltrúa](title)
+    - Hvert er [netfang]{"entity": "email_or_phone", "value": "email"} hjá [gjaldkera](title)
+    - [netfang]{"entity": "email_or_phone", "value": "email"} [bæjarstjóra](title)
+    - [Netfang]{"entity": "email_or_phone", "value": "email"} [dýraeftirlitsfulltrúa](title) 
+    - [Netfang]{"entity": "email_or_phone", "value": "email"} starfsfólk
+    - [Netföng]{"entity": "email_or_phone", "value": "email"} [fulltrúa í nefndum](title)
+    - [netföng]{"entity": "email_or_phone", "value": "email"} [sveitarstjórnar](title)
     - [Símanúmer]{"entity": "email_or_phone", "value": "phone"} á [Önnu Jónu Árnadóttur](contact) á [Velferðarsviði]{"entity": "subject", "value": "Velferðarmál"}?
     - Mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Jóni](contact)
     - hvað er [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [Margréti](contact)?
@@ -334,58 +339,24 @@ nlu:
     - mig langar að tala um [dýrahald]{"entity": "subject", "value": "Dýraeftirlit"}
     - mig langar að tala um [tónlist](subject)
     - [maríu jóhanns](contact)
-    - /request_contact{"subject":"Fjármál"}
     - mig langar að tala við [manneskju](contact)
-    - /request_contact{"subject":"Dýraeftirlit"}
     - ég þarf að tala við [maríu](contact)
     - mig vantar [númerið]{"entity": "email_or_phone", "value": "phone"} hjá [kristni gísla](contact)
     - ég vil tala við einhvern um frí í [skólanum](subject)
-    - hver sér um málefni [skólans](subject)
     - get ég talaðvið einvhern um [skólapláss](subject)
-    - frí í [leikskólanum](subject)
-    - er einhver sem sér um [Leikjanámskeið](subject) hér í bænum?
-    - [Leikskólar](subject) í bænum
-    - hvar er hægt að bóka í [frístund](subject)
-    - hver er yfir [frístundinni](subject)
-    - hver sér um [byggingarmál](subject)
-    - [byggja](subject) [skúr](subject)
-    - hver sér um [lóðamál](subject)
     - ég vil tala um [lóðaleigu](subject)
     - hvern er hægt að tala við um [lóðaleigusamninga](subject)
-    - [aldraðir](subject) í bænum
-    - hver er yfir [öldruðum](subject)
-    - Góðan dagin. Hver sér um [félagsstarf aldraðra](subject) hér í Andabæ?
     - þarf að tala við þann sem er yfir [barnavernd](subject)
-    - hver er yfir þjónustu við [fatlaðra](subject)
     - þarf að ná sambandi við [dagforeldra](subject)
-    - Halló. Hver eryfir [dagforeldrum](subject)? Vantar pláss.
-    - [dagmóðir](subject)
-    - [dagmæður](subject) í andabæ
-    - er [dagmamma](subject) í bænum?
-    - þarf að nálgast lista yfir [dagmömmur](subject)
-    - hver sér um [dýraeftirlit](subject)??!
-    - hver sér um [dýramál](subject) í bænum
     - þarf að tala við einhvern um eftirlit með [dýrum](subject)
-    - [Dýrahald](subject) í Andabæ
-    - [hundar](subject) í bænum
     - tala við einhvern um [rusl](subject)
     - hvern tala við um [sorptunnu](subject)
     - Hvern tala ég við um [losun sorptunnu](subject)?
-    - vantar að fá nýja [ruslatunnu](subject)
     - hægt að tala við einhvern um [snjómokstur](subject)!!
-    - [mokstur](subject) á götum
     - tala um [stjórnsýslumál](subject)
-    - hver er yfir [persónuvernd](subject)
     - hvern er hægt að tala við um [fjármál](subject) bæjarsin
     - tala um [reikningar](subject) hjá bænum
     - Góðan daginn. Ég þarf að tala við þann sem er yfir [félagsþjónustu](subject) í Andabæ.
-    - [félagsleg aðstoð](subject) hjá Andabæ
-    - [garðarnir](subject) hérna í bænum
-    - [græn svæði](subject) andabær
-    - er [vinnuskóli](subject) í sumar
-    - [Vinnuskólinn](subject)
-    - hver er yfir [unglingavinnu](subject) hjá bænum
-    - hver sér um [táningavinnu](subject) í sumar
     - en [email]{"entity": "email_or_phone", "value": "email"}
     - en [tölvupóstur]{"entity": "email_or_phone", "value": "email"}
     - en [síminn]{"entity": "email_or_phone", "value": "phone"}
@@ -394,6 +365,7 @@ nlu:
     - en hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá henni(pronoun)
     - er [hún](pronoun) líka með [netfang]{"entity": "email_or_phone", "value": "email"}
     - er [hann](pronoun) líka með [tölvupóst]{"entity": "email_or_phone", "value": "email"}
+
 - intent: inform
   examples: |
     - [skólamál]{"entity": "subject", "value": "Skólamál"}
@@ -421,24 +393,71 @@ nlu:
     - hver er [bæjarstjóri](title) andabæjar
     - er [talmeinafræðingur](title) í bænum
     - hver er [gjaldkeri](title)
+    - Hver er [persónuverndarfulltrúi](title)
+    - hver er [sviðsstjóri skipulags- og umhverfissviðs](title)
+    - hver er [rekstrarstjóri áhaldahúss](title)
     - [byggingafulltrúi](title)
     - hver er [matráður](title) á skrifstofunni
     - er [dýraeftirlitsmaður](title) í andabæ
     - hver er [Jón](contact)
     - hver er [Sigrún](contact)
     - hver er [Guðmundur Gunnarsson](contact)
-    - vinnur [María](contact) hjá Andabæ
-    - vinnur [Ingibjörg](contact) hjá bænum
-    - vinnur [Ragnar H](contact) hjá bænum
-    - er [Gunnar Ólafsson](contact) starfsmaður Andabæjar
-    - er [Kristín M Ólafsdóttir](contact) starfsmaður Andabæjar
-    - er [Ásdís](contact) starfsmaður Andabæjar
     - hver er [Helga](contact)
     - hver er [Ásdís](contact)
     - hver er [Guðmundur](contact)
     - hver er [Anna Jóna](contact)
     - hver er [Anna J](contact)
     - hver er [Anna J Árnadóttir](contact)
+    - hvað heitir [bæjarstjóri](title)
+    - hvað heitir [bæjarstjóri](title) Andabæjar
+    - hvað heitir [jón](contact)
+    - Hvað heitir [skólastjórinn](title)
+    - vinnur [María](contact) hjá Andabæ
+    - vinnur [Ingibjörg](contact) hjá bænum
+    - vinnur [Ragnar H](contact) hjá bænum
+    - er [Gunnar Ólafsson](contact) starfsmaður Andabæjar
+    - er [Kristín M Ólafsdóttir](contact) starfsmaður Andabæjar
+    - er [Ásdís](contact) starfsmaður Andabæjar
+    - hver sér um [launamál]{"entity": "subject", "value": "Launamál"}?
+    - hver sér um [skólamál]{"entity": "subject", "value": "Skólamál"}?
+    - hver sér um [lóðirnar]{"entity": "subject", "value": "Skipulagsmál"}?
+    - hver sér um að [keyra út mat til aldraðra]{"entity": "subject", "value": "Velferðarmál"}
+    - hver sér um [bókhald](subject)
+    - hver sér um málefni [skólans](subject)
+    - er einhver sem sér um [Leikjanámskeið](subject) hér í bænum?
+    - hver er yfir [frístundinni](subject)
+    - hver sér um [byggingarmál](subject)
+    - hver sér um [lóðamál](subject)
+    - hver er yfir [öldruðum](subject)
+    - hver hefur með [áhaldahús](subject) að gera
+    - hver hefur með [skólamál](subject) að gera
+    - Góðan dagin. Hver sér um [félagsstarf aldraðra](subject) hér í Andabæ?
+    - hver er yfir þjónustu við [fatlaðra](subject)
+    - Halló. Hver eryfir [dagforeldrum](subject)? Vantar pláss.
+    - [dagmóðir](subject)
+    - [dagmæður](subject) í andabæ
+    - er [dagmamma](subject) í bænum?
+    - hverjir eru [dagforeldrar](subject) í bænum
+    - þarf að nálgast lista yfir [dagmömmur](subject)
+    - hver sér um [dýraeftirlit](subject)??!
+    - hver sér um [dýramál](subject) í bænum
+    - hver er yfir [persónuvernd](subject)
+    - hver er yfir [unglingavinnu](subject) hjá bænum
+    - hver sér um [táningavinnu](subject) í sumar
+    - [félagsleg aðstoð](subject) hjá Andabæ
+    - [garðarnir](subject) hérna í bænum
+    - [græn svæði](subject) andabær
+    - er [vinnuskóli](subject) í sumar
+    - [Vinnuskólinn](subject)
+    - [mokstur](subject) á götum
+    - [Dýrahald](subject) í Andabæ
+    - [hundar](subject) í bænum
+    - vantar að fá nýja [ruslatunnu](subject)
+    - [aldraðir](subject) í bænum
+    - frí í [leikskólanum](subject)
+    - [Leikskólar](subject) í bænum
+    - hvar er hægt að bóka í [frístund](subject)
+    - [byggja](subject) [skúr](subject)
 
 - intent: ask_operator
   examples: |
