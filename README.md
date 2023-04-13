@@ -17,8 +17,8 @@ RASA_TOKEN=<some_rasa_token>              # Access token for using the Restful A
 RABBITMQ_PASSWORD=<some_rabbitmq_passwd>  # Password to use for RabbitMQ
 DB_PASSWORD=<some_database_passwd>        # PostgreSQL password
 RASA_TELEMETRY_ENABLED=false              # Set to true in case you want to send anonymous usage data to Rasa
-DEBUG_MODE=true                           # Set to false, if you don't want lots of infomration from Rasa
-FUSEKI_VERSION=4.7.0
+DEBUG_MODE=true                           # Set to false, if you don't want lots of information from Rasa
+FUSEKI_VERSION=4.7.0                      # set version of Fuseki, the RDF knowledge base used in rasa actions
 ```
 You can also use the provided `.env.template` file as an example.
 
