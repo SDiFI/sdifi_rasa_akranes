@@ -21,13 +21,13 @@
     command: chown -R 1000:1000 /tmp/fuseki-data
 
   fuseki:
-    # These final two services are the only ones that need to be built via docker-compose build
     build:
       # adapt build context according to your project structure, the following context is used, if you have
       # mounted this project inside the subdirectory `rasa/`
       context: rasa/
       dockerfile: ./docker/fuseki/Dockerfile
     image: ${REGISTRY_URL:-}fuseki-${FUSEKI_VERSION}:${APPLICATION_VERSION:-latest}
+    restart: unless-stopped
     expose:
       - "3030"
     #volumes:
@@ -37,3 +37,18 @@
     #depends_on:
     #  fuseki-init:
     #    condition: service_completed_successfully
+
+  action_server:
+    build:
+      # adapt build context according to your project structure, the following context is used, if you have
+      # mounted this project inside subdirectory `rasa/`
+      context: rasa/
+      dockerfile: ./docker/sdk/Dockerfile
+    image: ${REGISTRY_URL:-}municipal_actions:${APPLICATION_VERSION:-latest}
+    restart: unless-stopped
+    expose:
+      - "5055"
+    depends_on:
+      - rasa
+    env_file:
+      - .env
