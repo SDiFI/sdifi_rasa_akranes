@@ -282,8 +282,14 @@ class ActionGetOperator(Action):
     ) -> List[Dict[Text, Any]]:
 
         res = info_api.get_office_contact_info()
-        r = res[0]
-        dispatcher.utter_message(response="utter_operator", phone=r.phone, email=r.email)
+        if res:
+            r = res[0]
+            if r.phone and r.email:
+                dispatcher.utter_message(response="utter_operator", phone=r.phone, email=r.email)
+            else:
+                dispatcher.utter_message(response="utter_operator_no_info")
+        else:
+            dispatcher.utter_message(response="utter_operator_no_info")
 
         return []
 
