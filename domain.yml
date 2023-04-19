@@ -191,6 +191,8 @@ responses:
   - text: Hvað verður um ís sem er búinn að vera lengi í boxi? Hann kemst á endanum í form.
   utter_operator:
   - text: Ég get því miður ekki tengt þig við þjónustufulltrúa. Opnunartímar þjónustuvers eru mánudaga til föstudaga frá kl. 09:00 til 15:00. Sími {phone}, netfang {email}
+  utter_operator_no_info:
+  - text: Ég get því miður ekki tengt þig við þjónustufulltrúa.
 
 actions:
 - utter_bye
