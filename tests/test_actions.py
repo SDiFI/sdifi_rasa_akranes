@@ -79,3 +79,21 @@ def test_get_info_for_contact(
     actual_events = action.run(dispatcher=dispatcher, tracker=tracker, domain=domain)
 
     assert actual_events == expected_events
+
+
+@pytest.mark.parametrize(
+    "expected_events",
+    [
+        ({})
+    ]
+)
+def test_get_motd(
+    tracker: Tracker,
+    dispatcher: CollectingDispatcher,
+    domain: DomainDict,
+    expected_events: Any
+):
+    action = actions.ActionGetMOTD()
+    actual_events = action.run(dispatcher=dispatcher, tracker=tracker, domain=domain)
+
+    assert actual_events == expected_events
