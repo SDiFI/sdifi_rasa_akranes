@@ -19,7 +19,7 @@
 
 ARG OPENJDK_VERSION=17
 ARG ALPINE_VERSION=3.15.0
-ARG JENA_VERSION=4.7.0
+ARG JENA_VERSION=4.8.0
 
 # Internal, passed between stages.
 ARG FUSEKI_DIR=/fuseki
@@ -53,7 +53,7 @@ RUN chmod a+x ./download.sh
 RUN ./download.sh --chksum sha1 "$JAR_URL"
 
 # Get binary distribution libraries
-RUN wget https://dlcdn.apache.org/jena/binaries/apache-jena-${JENA_VERSION}.tar.gz
+RUN wget http://archive.apache.org/dist/jena/binaries/apache-jena-${JENA_VERSION}.tar.gz
 RUN tar xvf apache-jena-${JENA_VERSION}.tar.gz --strip-components=1 && rm apache-jena-${JENA_VERSION}.tar.gz
 
 ## -- Alternatives to download : copy already downloaded.
