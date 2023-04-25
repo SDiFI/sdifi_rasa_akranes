@@ -17,6 +17,7 @@ intents:
     is_retrieval_intent: true
 - bye
 - thank
+- motd
 #- stop
 #- affirm
 #- deny
@@ -210,6 +211,7 @@ actions:
 - action_default_ask_affirmation
 - action_get_whois
 - action_get_operator
+- action_get_motd
 forms:
   request_contact_form:
     ignored_intents:
