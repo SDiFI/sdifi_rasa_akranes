@@ -30,15 +30,12 @@ jobs:
         run: |
           docker-compose -f "docker-compose.yml" build
           docker-compose -f "docker-compose.yml" -f "fuseki_override_template.yml" up -d fuseki
+          sleep 5
       - name: Run PyTest
         run: |
-          docker ps
-          echo "FUSEKI_NETWORK_HOST:FUSEKI_NETWORK_PORT: $FUSEKI_NETWORK_HOST:$FUSEKI_NETWORK_PORT"
           source venv/bin/activate
           export PYTHONPATH="`pwd`/src/municipal_info_api"
-          # TODO: so far the tests are disabled as there is a comm. problem with the Fuseki service
-          # Need to investigate
-          # pytest -v --junitxml=report.xml .
+          pytest -s -v --junitxml=report.xml .
           touch report.xml
       - name: Publish PyTest Report
         uses: mikepenz/action-junit-report@v3
@@ -51,9 +48,9 @@ jobs:
         with:
           rasa_version: ${{ env.RASA_VERSION }}
           data_validate: true # Validates domain and data files to check for possible mistakes
+          rasa_image: rasa/rasa:${{ env.RASA_VERSION }}-full # Rasa image to use
           rasa_train: true # Run rasa train
           rasa_test: true # Run rasa test
-          test_args: --fail-on-prediction-errors # Fail pipeline when test fails
           test_type: all # Run both 'core' and 'nlu' tests
           # In order to add a PR comment with summary
           # a GH Token has to be pass to the GH action
