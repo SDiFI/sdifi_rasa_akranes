@@ -7,35 +7,57 @@
 from typing import Any, Text, Dict, List
 import json
 import logging
+from datetime import date
+import yaml
 
 from rasa_sdk import Action, Tracker, FormValidationAction
-from rasa_sdk.events import AllSlotsReset, SlotSet
+from rasa_sdk.events import AllSlotsReset, SlotSet, BotUttered
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
 import info_api
 import declension
 
-# class ActionSessionStart(Action):
-#     """Start every session by greeting the user."""
-#     # TODO: Why doesn't this work? See error when webchat is opened: 'KeyError: 'message''
-#     def name(self) -> Text:
-#         return "action_session_start"
-#
-#     def run(
-#         self,
-#         dispatcher: "CollectingDispatcher",
-#         tracker: Tracker,
-#         domain: "DomainDict",
-#     ) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(template="utter_welcome")
-#         return [SessionStarted(), ActionExecuted("action_listen")]
-
 # TODO: consider creating object classes e.g. for contacts, so that we don't need to rely on the structure of the
 # TODO: sparql-query results in the actions (like 'r.name' etc.)
 
 logger = logging.getLogger(__name__)
+
+
+class ActionGetMOTD(Action):
+    """Retrieve mot-of-the-day greeting from external file."""
+
+    def name(self) -> Text:
+        return "action_get_motd"
+
+    async def run(
+        self,
+        dispatcher: "CollectingDispatcher",
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+
+        today = date.today()
+        language = tracker.get_slot('language')
+        motd_list = []
+        output_dict = {}
+        default_message_list = []
+        logger.info(f"{self.name()} retrieving MOTD for date: {today}")
+        with open('data/motd/motd.yml', 'r') as stream:
+            motd_dict = yaml.safe_load(stream)
+        for item in motd_dict['motd']:
+            if 'date_range' in item:
+                if item['date_range']['start'] <= today <= item['date_range']['end']:
+                    for message in item['messages'][language]:
+                        motd_list.append(message)
+            elif 'default' in item:
+                for message in item['messages'][language]:
+                    default_message_list.append(message)
+        if len(motd_list) != 0:
+            output_dict["motd"] = {"language": language, "motd": motd_list}
+        else:
+            output_dict["motd"] = {"language": language, "motd": default_message_list}
+        return [BotUttered(json.dumps(output_dict))]
 
 
 class ActionDefaultAskAffirmation(Action):

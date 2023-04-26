@@ -17,6 +17,7 @@ intents:
     is_retrieval_intent: true
 - bye
 - thank
+- motd
 #- stop
 #- affirm
 #- deny
@@ -26,6 +27,7 @@ entities:
 - subject
 - title
 - pronoun
+- language
 slots:
   contact:
     type: text
@@ -57,6 +59,12 @@ slots:
     mappings:
     - type: from_entity
       entity: email_or_phone
+  language:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: language
   contacts_found:
     type: bool
     influence_conversation: False
@@ -214,6 +222,7 @@ actions:
 - action_default_ask_affirmation
 - action_get_whois
 - action_get_operator
+- action_get_motd
 forms:
   request_contact_form:
     ignored_intents:
