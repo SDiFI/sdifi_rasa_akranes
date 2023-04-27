@@ -1,9 +1,15 @@
+import info_api
 import unittest
 
-import info_api
-
-
 class TestSparql(unittest.TestCase):
+
+    @classmethod
+    def setup_class(cls):
+        TestSparql.db_content = info_api.get_db('rdf')
+
+    @classmethod
+    def teardown_class(cls):
+        info_api.update_db(TestSparql.db_content, 'rdf')
 
     def test_info_for_contact(self):
         """Get the contact information for a certain contact, given the full name of the contact
@@ -101,6 +107,45 @@ class TestSparql(unittest.TestCase):
         self.assertEqual('499 1000', result[0].phone)
         self.assertEqual('andabaer@andabaer.is', result[0].email)
 
+    def test_download_db(self):
+        """Download the Fuseki db and see if we can retrieve it with all supported formats
+        but not with unknown formats."""
+
+        # Valid formats
+        for fmt in info_api.CONTENT_TYPES:
+            db = info_api.get_db(fmt)
+            self.assertTrue(len(db) > 1)
+
+        # Invalid formats
+        invalid_formats = ['text/plain', 'application/zip', 'application/x-turtle']
+        for fmt in invalid_formats:
+            # Should raise an exception
+            with self.assertRaises(Exception):
+                db = info_api.get_db(fmt)
+
+    def test_update_db(self):
+        """ Test updating db """
+        data_type = "turtle"
+        db = info_api.get_db(data_type)
+        self.assertTrue(len(db) > 1)
+
+        # update db with some dummy data, this will erase everything in the db,
+        # but make sure that we have saved the data beforehand and restore it here
+        # and in the teardown() method of the test class
+        data_string = """
+        @prefix ex: <http://example.org/> .
+        @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+        ex:subject1 rdf:type ex:Class1 .
+        ex:subject1 ex:property1 "Value1" .
+        """
+
+        info_api.update_db(data_string, data_type)
+        db_new = info_api.get_db(data_type)
+        self.assertTrue(len(db_new) < len(db))
+
+        # restore db with original data
+        info_api.update_db(db, data_type)
 
 if __name__ == '__main__':
     unittest.main()
