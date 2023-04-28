@@ -25,7 +25,11 @@ You can also use the provided `.env.template` file as an example.
 Currently, the docker-compose setup is only meant for running a Rasa instance with an already trained model
 from the directory `./models`. To train a model, the local development method should be used before starting Rasa
 in this way (see further down). Rasa always uses the model with the latest timestamp in case multiple model files exist
-inside `models/`
+inside `models/` You should also create a `cache/` folder inside your repo and change permissions with:
+
+```bash
+chmod 777 cache/
+```
 
 After training, run the following commands: (docker-compose needs to be installed):
 
@@ -75,6 +79,23 @@ docker exec -it fuseki_server rm -rf databases/DB2/Data-0001/
 docker-compose run --rm  -v $(pwd)/rdf:/fuseki/rdf/ --entrypoint="sh /fuseki/scripts/db_init.sh /fuseki/rdf/updated_kb.rdf" fuseki
 # Start the containers again
 ```
+
+### Trigger intent via endpoint
+
+With all servers up and running, all intents can be triggered via the ```trigger_intent``` endpoint of your Rasa
+conversation. For instance, we include an intent for retrieving the 'MOTD' (Message-of-the-day) greeting, which are 
+stored in the [motd.yml](data/motd/motd.yml) file. Different bot greetings are produced for different given dates and 
+languages. 
+
+This intent can be triggered, and English passed as the ```language``` entity, with a request like:
+
+``` bash
+curl -X POST http://localhost:5005/conversations/conversation_id/trigger_intent?token=RASA_TOKEN -H 'application/json' -d '{"name":"motd", "entities": {"language": "en-EN"}}' 
+```
+
+where ```conversation\_id``` is the id of your current conversation, found in the Rasa server, and ```RASA_TOKEN```
+is the one defined in your `.env` file.
+
 
 ### Local development with Rasa
 
@@ -224,6 +245,9 @@ Currently, the system can identify the following intents:
   * ask about the weather
 * faq:
   * population of Andabær
+  
+The intent 'motd' is also included, but has no training data as it is not meant to be 
+triggered through a message from the user (see 'Trigger intent via endpoint').
 
 ## Knowledge base
 
