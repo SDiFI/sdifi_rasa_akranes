@@ -17,7 +17,7 @@ rules:
   - intent: bye
   - action: utter_bye
 
-- rule: Return MOTD (Mot of the day)
+- rule: Return MOTD (Message of the day)
   steps:
   - intent: motd
   - action: action_get_motd

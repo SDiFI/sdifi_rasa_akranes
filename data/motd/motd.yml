@@ -7,7 +7,7 @@ motd:
         - Hallo! Montag ist ein frischer Start.
         - Womit kann ich Ihnen heute behilflich sein?
       is-IS:
-        - Hæ! Mánudagur er ný byrjun.
+        - Hæ! Mánudagur markar nýtt upphaf.
         - Hvað get ég hjálpað þér með í dag?
       en-EN:
         - Hello! Monday is a fresh start.
@@ -20,7 +20,7 @@ motd:
         - Hallo! Der Mai bringt Wachstum und Erneuerung.
         - Womit kann ich Ihnen heute behilflich sein?
       is-IS:
-        - Hæ! Maí færir vöxt og endurvæðingu.
+        - Hæ! Maí færir vöxt og endurnýjun.
         - Hvað get ég aðstoðað þig með í dag?
       en-EN:
         - Hello! May brings growth and renewal.
