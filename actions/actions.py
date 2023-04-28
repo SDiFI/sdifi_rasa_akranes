@@ -25,7 +25,8 @@ logger = logging.getLogger(__name__)
 
 
 class ActionGetMOTD(Action):
-    """Retrieve mot-of-the-day greeting from external file."""
+    """Retrieve message-of-the-day greeting from external file.
+    Only meant to be triggered remotely, not from a user message."""
 
     def name(self) -> Text:
         return "action_get_motd"
@@ -53,6 +54,8 @@ class ActionGetMOTD(Action):
             elif 'default' in item:
                 for message in item['messages'][language]:
                     default_message_list.append(message)
+        # If no messages are found for the current date,
+        # use the default message for the given language.
         if len(motd_list) != 0:
             output_dict["motd"] = {"language": language, "motd": motd_list}
         else:
