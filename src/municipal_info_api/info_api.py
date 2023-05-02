@@ -142,7 +142,7 @@ def get_name_for_title(title: str) -> list:
     return contacts
 
 
-def get_db(format_type, endpoint = FUSEKI_DATA_ENDPOINT):
+def get_db(format_type, endpoint=FUSEKI_DATA_ENDPOINT):
     """
     Retrieves DB from a Fuseki endpoint in the specified format and returns the data as a string.
     :param format_type: The desired format ('rdf', 'turtle', 'ntriples', 'jsonld', 'rdfjson', 'trig', or 'nquads') as a string
@@ -176,6 +176,7 @@ def get_db(format_type, endpoint = FUSEKI_DATA_ENDPOINT):
     else:
         raise Exception(f"Error: HTTP {response.status_code}: {response.text}")
 
+
 def is_utf8_encoded(byte_array):
     try:
         byte_array.decode('utf-8')
@@ -185,7 +186,8 @@ def is_utf8_encoded(byte_array):
     except AttributeError:
         return False
 
-def update_db(data_string, data_type, endpoint = FUSEKI_DATA_ENDPOINT):
+
+def update_db(data_string, data_type, endpoint=FUSEKI_DATA_ENDPOINT):
     """
     Sends db contents as string containing RDF data to a Fuseki endpoint using PUT, replacing the existing data.
 
