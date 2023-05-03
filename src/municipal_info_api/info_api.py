@@ -20,6 +20,7 @@ CONTENT_TYPES = {
         'jsonld': 'application/ld+json',
     }
 
+
 class Person:
     def __init__(self, name=None, phone=None, email=None, department=None, title=None):
         self.name = name
@@ -56,7 +57,12 @@ def get_office_contact_info() -> list:
     results = response.json()['results']['bindings']
     contacts = []
     for r in results:
-        contacts.append(Person(phone=r['phone']['value'], email=r['email']['value']))
+        contact = Person()
+        if 'phone' in r:
+            contact.phone = r['phone']['value']
+        if 'email'in r:
+            contact.email = r['email']['value']
+        contacts.append(contact)
     return contacts
 
 
@@ -67,7 +73,8 @@ def get_office_phone_number() -> str:
     results = response.json()['results']['bindings']
     phone = ""
     for r in results:
-        phone = r['phone']['value']
+        if 'phone' in r:
+            phone = r['phone']['value']
     return phone
 
 
