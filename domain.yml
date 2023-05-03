@@ -190,9 +190,13 @@ responses:
   - text: Hvað gera köngulær þegar þeim leiðist? Hanga á vefnum!
   - text: Hvað verður um ís sem er búinn að vera lengi í boxi? Hann kemst á endanum í form.
   utter_operator:
-  - text: Ég get því miður ekki tengt þig við þjónustufulltrúa. Opnunartímar þjónustuvers eru mánudaga til föstudaga frá kl. 09:00 til 15:00. Sími {phone}, netfang {email}
+  - text: Ég get því miður ekki tengt þig við þjónustufulltrúa. Opnunartímar þjónustuvers eru mánudaga til föstudaga frá kl. 09:00 til 15:00. Sími þjónustuvers er {phone} og netfangið er {email}
+  utter_operator_no_email:
+  - text: Ég get því miður ekki tengt þig við þjónustufulltrúa. Opnunartímar þjónustuvers eru mánudaga til föstudaga frá kl. 09:00 til 15:00. Sími þjónustuvers er {phone}.
+  utter_operator_no_phone:
+  - text: Ég get því miður ekki tengt þig við þjónustufulltrúa. Opnunartímar þjónustuvers eru mánudaga til föstudaga frá kl. 09:00 til 15:00. Netfang þjónustuvers er {email}.
   utter_operator_no_info:
-  - text: Ég get því miður ekki tengt þig við þjónustufulltrúa.
+  - text: Ég get því miður ekki tengt þig við þjónustufulltrúa. Opnunartímar þjónustuvers eru mánudaga til föstudaga frá kl. 09:00 til 15:00.
 
 actions:
 - utter_bye
