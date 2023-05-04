@@ -20,6 +20,7 @@ CONTENT_TYPES = {
         'jsonld': 'application/ld+json',
     }
 
+
 class Person:
     def __init__(self, name=None, phone=None, email=None, department=None, title=None):
         self.name = name
@@ -56,7 +57,12 @@ def get_office_contact_info() -> list:
     results = response.json()['results']['bindings']
     contacts = []
     for r in results:
-        contacts.append(Person(phone=r['phone']['value'], email=r['email']['value']))
+        contact = Person()
+        if 'phone' in r:
+            contact.phone = r['phone']['value']
+        if 'email'in r:
+            contact.email = r['email']['value']
+        contacts.append(contact)
     return contacts
 
 
@@ -67,7 +73,8 @@ def get_office_phone_number() -> str:
     results = response.json()['results']['bindings']
     phone = ""
     for r in results:
-        phone = r['phone']['value']
+        if 'phone' in r:
+            phone = r['phone']['value']
     return phone
 
 
@@ -142,7 +149,7 @@ def get_name_for_title(title: str) -> list:
     return contacts
 
 
-def get_db(format_type, endpoint = FUSEKI_DATA_ENDPOINT):
+def get_db(format_type, endpoint=FUSEKI_DATA_ENDPOINT):
     """
     Retrieves DB from a Fuseki endpoint in the specified format and returns the data as a string.
     :param format_type: The desired format ('rdf', 'turtle', 'ntriples', 'jsonld', 'rdfjson', 'trig', or 'nquads') as a string
@@ -176,6 +183,7 @@ def get_db(format_type, endpoint = FUSEKI_DATA_ENDPOINT):
     else:
         raise Exception(f"Error: HTTP {response.status_code}: {response.text}")
 
+
 def is_utf8_encoded(byte_array):
     try:
         byte_array.decode('utf-8')
@@ -185,7 +193,8 @@ def is_utf8_encoded(byte_array):
     except AttributeError:
         return False
 
-def update_db(data_string, data_type, endpoint = FUSEKI_DATA_ENDPOINT):
+
+def update_db(data_string, data_type, endpoint=FUSEKI_DATA_ENDPOINT):
     """
     Sends db contents as string containing RDF data to a Fuseki endpoint using PUT, replacing the existing data.
 

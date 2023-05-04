@@ -85,9 +85,9 @@ def get_office_contact_info_query() -> str:
             SELECT DISTINCT ?email ?phone
             WHERE {
                 ?entity rdf:type org:Site .
-                ?entity foaf:mbox ?email .
-                ?entity vcard:hasTelephone [
-                vcard:hasValue ?phone ] .
+                OPTIONAL {?entity foaf:mbox ?email .}
+                OPTIONAL {?entity vcard:hasTelephone [
+                    vcard:hasValue ?phone ] .}
             }
             """
     return get_rdf_prefix() + query
