@@ -185,10 +185,10 @@ def test_get_operator_no_phone(
 @pytest.mark.parametrize(
     "language, date, expected_events",
     [
-        ("de-DE", "2023-04-24",
-         [BotUttered('{"motd": {"language": "de-DE", '
-                     '"motd": ["Hallo! Montag ist ein frischer Start.", '
-                     '"Womit kann ich Ihnen heute behilflich sein?"]}}')]),
+        ("is-IS", "2023-04-24",
+         [BotUttered('{"motd": {"language": "is-IS", '
+                     '"motd": ["H\\u00e6! M\\u00e1nudagur markar n\\u00fdtt upphaf.", '
+                     '"Hva\\u00f0 get \\u00e9g hj\\u00e1lpa\\u00f0 \\u00fe\\u00e9r me\\u00f0 \\u00ed dag?"]}}')]),
         ("de-DE", "2023-05-05",
          [BotUttered('{"motd": {"language": "de-DE", '
                      '"motd": ["Hallo! Der Mai bringt Wachstum und Erneuerung.", '
