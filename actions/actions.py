@@ -60,7 +60,7 @@ class ActionGetMOTD(Action):
             output_dict["motd"] = {"language": language, "motd": motd_list}
         else:
             output_dict["motd"] = {"language": language, "motd": default_message_list}
-        return [BotUttered(json.dumps(output_dict))]
+        return [BotUttered(json.dumps(output_dict, ensure_ascii=False).encode('utf8').decode())]
 
 
 class ActionDefaultAskAffirmation(Action):
