@@ -1,0 +1,35 @@
+motd:
+  - date_range:
+      start: 2023-04-24
+      end: 2023-04-24
+    messages:
+      de-DE:
+        - Hallo! Montag ist ein frischer Start.
+        - Womit kann ich Ihnen heute behilflich sein?
+      is-IS:
+        - Hæ! Mánudagur markar nýtt upphaf.
+        - Hvað get ég hjálpað þér með í dag?
+      en-EN:
+        - Hello! Monday is a fresh start.
+        - What can I help you with today?
+  - date_range:
+      start: 2023-05-01
+      end: 2023-05-07
+    messages:
+      de-DE:
+        - Hallo! Der Mai bringt Wachstum und Erneuerung.
+        - Womit kann ich Ihnen heute behilflich sein?
+      is-IS:
+        - Hæ! Maí færir vöxt og endurnýjun.
+        - Hvað get ég aðstoðað þig með í dag?
+      en-EN:
+        - Hello! May brings growth and renewal.
+        - What can I assist you with today?
+  - default:
+    messages:
+      de-DE:
+        - Guten Tag! Ich bin Ihr Chatbot. Wie kann ich Ihnen heute helfen?
+      is-IS:
+        - Góðan dag! Ég er spjallforritið þitt. Hvernig get ég aðstoðað þig í dag?
+      en-EN:
+        - Good day! I'm your chatbot. How can I assist you today?

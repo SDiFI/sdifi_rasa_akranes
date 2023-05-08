@@ -17,6 +17,11 @@ rules:
   - intent: bye
   - action: utter_bye
 
+- rule: Return MOTD (Message of the day)
+  steps:
+  - intent: motd
+  - action: action_get_motd
+
 - rule: Respond to out-of-scope request
   steps:
   - intent: out_of_scope

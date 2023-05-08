@@ -1,12 +1,13 @@
 """Unit tests for custom actions."""
 import pytest
+from freezegun import freeze_time
 from typing import Text, Any
 from rdflib import Graph
 
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk import Tracker
 from rasa_sdk.types import DomainDict
-from rasa_sdk.events import SlotSet, AllSlotsReset
+from rasa_sdk.events import SlotSet, AllSlotsReset, BotUttered
 
 from actions import actions
 
@@ -179,3 +180,37 @@ def test_get_operator_no_phone(
     g.parse("./src/municipal_info_api/offices_staff.rdf")
     data = g.serialize(format="xml")
     info_api.update_db(data_string=data, data_type='RDF')
+
+
+@pytest.mark.parametrize(
+    "language, date, expected_events",
+    [
+        ("is-IS", "2023-04-24",
+         [BotUttered('{"motd": {"language": "is-IS", '
+                     '"motd": ["Hæ! Mánudagur markar nýtt upphaf.", '
+                     '"Hvað get ég hjálpað þér með í dag?"]}}')]),
+        ("de-DE", "2023-05-05",
+         [BotUttered('{"motd": {"language": "de-DE", '
+                     '"motd": ["Hallo! Der Mai bringt Wachstum und Erneuerung.", '
+                     '"Womit kann ich Ihnen heute behilflich sein?"]}}')]),
+        ("en-EN", "2023-04-27",
+         [BotUttered('{"motd": {"language": "en-EN", '
+                     '"motd": ["Good day! I\'m your chatbot. How can I assist you today?"]}}')])
+    ]
+)
+@pytest.mark.asyncio
+async def test_get_motd(
+        tracker: Tracker,
+        dispatcher: CollectingDispatcher,
+        domain: DomainDict,
+        language: Text,
+        date: Text,
+        expected_events: Any
+):
+    tracker.slots["language"] = language
+    freezer = freeze_time(date)
+    freezer.start()
+    actual_events = await actions.ActionGetMOTD().run(dispatcher=dispatcher, tracker=tracker, domain=domain)
+    freezer.stop()
+
+    assert actual_events == expected_events
