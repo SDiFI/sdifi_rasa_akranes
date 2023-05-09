@@ -14,7 +14,7 @@ pipeline:
 #   model_name: "convbert"
 #   model_weights: "jonfd/convbert-base-igc-is"
    model_name: "bert"
-   model_weights: "m3hrdadfi/icelandic-ner-bert"
+   model_weights: "grammatek/icelandic-ner-bert"
  - name: DIETClassifier
    epochs: 100
  - name: FallbackClassifier
