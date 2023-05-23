@@ -1,7 +1,7 @@
 # For actions
 islenska==0.4.6
 pyyaml==6.0
-requests==2.28.2
+requests==2.31.0
 
 # Rasa dependencies
 freezegun==1.2.2
