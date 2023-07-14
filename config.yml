@@ -20,6 +20,16 @@ pipeline:
  - name: FallbackClassifier
    threshold: 0.7
  - name: EntitySynonymMapper
+ - name: classifiers.bin_entity_extractor.BinEntityExtractor
+   match_training_data: true
+   match_all_entities: false
+   entity_mappings:
+     contact:
+       - ism
+       - gæl
+       - föð
+       - móð
+       - erm
  - name: ResponseSelector
    epochs: 100
    retrieval_intent: faq
