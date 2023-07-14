@@ -123,8 +123,13 @@ class BinEntityExtractor(GraphComponent, EntityExtractorMixin):
     def _match_entities(self, tokens: List) -> List:
         extracted_entities = []
         matched_tag = None
+        tag = None
+        stop_words = []
+        if self.component_config["use_stop_words"]:
+            stop_words = ['á', 'dag', 'tala']
         for token in tokens:
-            tag, confidence = self.bin_lookup_tag(token.text)
+            if token.text not in stop_words:
+                tag, confidence = self.bin_lookup_tag(token.text)
             if tag:
                 # Check whether the last token was also matched as an entity with the same tag,
                 # in that case assume a multi-word token and concatenate.

@@ -23,6 +23,7 @@ pipeline:
  - name: classifiers.bin_entity_extractor.BinEntityExtractor
    match_training_data: true
    match_all_entities: false
+   use_stop_words: true
    entity_mappings:
      contact:
        - ism
