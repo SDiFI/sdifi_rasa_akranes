@@ -1,0 +1,42 @@
+# Icelandic entity extractor based on the BÍN database. Please place the contents of this file after all other entity
+# extractor definitions in your Rasa pipeline config (config.yml).
+
+- name: classifiers.bin_entity_extractor.BinEntityExtractor
+  enable: false
+  # 'match_training_data' takes into account only sentences that are present inside the training data. The unlabelled
+  # sentence parts of the training data are used as a regex matcher against the tested sentence and the labelled part
+  # is used to find the appropriate entity. This setting can be thought of as a kind of regex entity extractor, but on a
+  # whole sentence basis instead of a token basis and uses all training sentences as regexes.
+  # This flag is useful to augment entity extractors further up in the pipeline. If set to 'true', this flag takes
+  # precedence over the 'match_all_entities' flag.
+  # Mandatory. Default: false
+  match_training_data: true
+  # 'match_all_entities' takes into account any entities found inside the given sentence. This can often lead to false
+  # positives and should be accompanied by appropriate 'stop_words' and 'entity_mappings' settings.
+  # If set to 'true', this flag is overriden by the 'match_training_data' flag.
+  # Mandatory. Default: false
+  match_all_entities: false
+  # This flag allows you to specify a mapping of entity labels of the training data to BÍN entity types. The purpose is
+  # to restrict the matching to only a relevant subset of entities. This is useful to avoid false positives.
+  # Mandatory. Default: {}
+  entity_mappings:
+    city: ['bær', 'þor']
+    contact: ['ism', 'gæl', 'föð', 'móð', 'erm']
+    place: ['fyr', 'göt', 'örn']
+  # This flag allows you to specify a list of stop words that should be ignored when matching entities with the
+  # BÍN entity extractor. This is useful to avoid false positives especially inside the test data. In case of
+  # setting the flag 'match_all_entities' to 'true', this configuration needs to be carefully chosen, otherwise it can
+  # lead to a lot of false positives
+  # Default: []
+  stop_words: ['á', 'dag', 'tala']
+  # The extraction mode determines how the BÍN entity extractor should be used when an entity has already been extracted
+  # by a previous pipeline step.
+  # There are three modes available:
+  # - 'append':             The BÍN entity extractor is used as an additional entity extractor. This means that the
+  #                         entities found by the BÍN entity extractor are added to the entities found by the previous
+  #                         entity extractors.
+  # - 'overwrite':          The BÍN entity extractor overwrites the entities found by the previous entity extractors in
+  #                         case of a conflict.
+  # - 'skip': [recommended] The BÍN entity extractor is skipped and the entities found by the previous entity extractors
+  #                         are kept in case of a conflict.
+  extraction_mode: 'skip'

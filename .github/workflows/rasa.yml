@@ -34,7 +34,7 @@ jobs:
       - name: Run PyTest
         run: |
           source venv/bin/activate
-          export PYTHONPATH="`pwd`/src/municipal_info_api"
+          export PYTHONPATH="`pwd`:`pwd`/src/municipal_info_api"
           pytest -s -v --junitxml=report.xml .
           touch report.xml
       - name: Publish PyTest Report
