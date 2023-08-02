@@ -365,6 +365,9 @@ nlu:
     - en hvað er [síminn]{"entity": "email_or_phone", "value": "phone"} hjá henni(pronoun)
     - er [hún](pronoun) líka með [netfang]{"entity": "email_or_phone", "value": "email"}
     - er [hann](pronoun) líka með [tölvupóst]{"entity": "email_or_phone", "value": "email"}
+    - [tölvupóst]{"entity": "email_or_phone", "value": "email"} hjá [Sigurði Ólafssyni](contact)
+    - [tölvupóst]{"entity": "email_or_phone", "value": "email"} hjá [Sigurði](contact)
+    - [tölvupóst]{"entity": "email_or_phone", "value": "email"} hjá [sigurði ólafssyni](contact)
 
 - intent: inform
   examples: |
