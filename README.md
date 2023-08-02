@@ -249,6 +249,27 @@ Currently, the system can identify the following intents:
 The intent 'motd' is also included, but has no training data as it is not meant to be 
 triggered through a message from the user (see 'Trigger intent via endpoint').
 
+## BÍN Entity Extraction
+
+We have implemented an experimental entity extractor as a Rasa custom component that uses the BÍN database to extract
+entities from the user input.
+This extractor is currently disabled by default, but can be enabled by placing the configuration snippet
+[bin_config.yml](classifiers/bin_config.yml) below the DIETClassifier configuration into the file [config.yml](config.yml])`.
+
+The idea is to use the BÍN database to extract entities that are not covered by the DIETClassifier, such as names of
+people, places, etc. The BÍN database is a large database of Icelandic words, their inflections and their grammatical
+properties. The BÍN entity extractor can be customized to use mappings of entities to certain BÍN properties as
+described [here](https://bin.arnastofnun.is/gogn/storasnid/ord/). One should also carefully place stop-words into the
+`stop_words` configuration parameter to avoid extracting entities that are not relevant or that are ambiguous as e.g.
+`á, dag, ...`
+
+It should be placed behind all other entity extractors in the Rasa pipeline and be configured to either ignore or
+replace already extracted entities, otherwise it will append the BÍN entities to the already extracted entities which
+leads to double extracted entities. It can also be configured via the parameter `match_training_data` to extract only
+entities that are labelled and where the user text closely follows the training data.
+
+Please refer to the BÍN entity extractor configuration snippet for further details.
+
 ## Knowledge base
 
 The knowledge base is initialised via an RDF document (`src/municipal_info_api/offices_staff.rdf`) and uses the following ontologies:
