@@ -226,6 +226,8 @@ class BinEntityExtractor(GraphComponent, EntityExtractorMixin):
         entity_tokens = []
         LABEL_REGEX = r'\[(.*?)\][\{\(](.*?)[\)\}]'
         REPLACE_PATTERN = '(.*)'
+        replace_pattern = re.escape(REPLACE_PATTERN)
+        invalid_pattern = re.compile(fr'^\s*{replace_pattern}\s*$|{replace_pattern}\s+{replace_pattern}')
         for nlu_entry in self.nlu_examples():
             if 'intent' in nlu_entry and nlu_entry['intent'] == intent['name']:
                 for intent_example in nlu_entry['examples'].split('\n'):
@@ -235,6 +237,16 @@ class BinEntityExtractor(GraphComponent, EntityExtractorMixin):
                         training_string = re.sub(LABEL_REGEX, REPLACE_PATTERN, intent_example)
                         # remove leading dash and trailing question mark from training example
                         training_string = training_string.removeprefix('- ').rstrip("?").rstrip()
+
+                        # training_string must not only contain match-all regexes, otherwise it will match
+                        # everything.
+                        # For example, if the training example is:
+                        #   "[email]{"entity": "email_or_phone", "value": "email"} [Ástu Jónu](contact)?"
+                        # training_string will be "(.*) (.*)", which will match everything.
+                        # Therefore, skip occurrences of match-all - only regex in training_string.
+                        if invalid_pattern.match(training_string):
+                            continue
+
                         re_match = re.search(training_string, message_text)
                         if re_match:
                             for i, match in enumerate(re_match.groups()):

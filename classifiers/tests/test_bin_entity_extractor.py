@@ -11,9 +11,10 @@ from classifiers.bin_entity_extractor import BinEntityExtractor
 config = {
     "enable": True,
     "entity_mappings": {
-        "city": ['bær'],
+        # city, place not in training data yet
+        # "city": ['bær'],
         "contact": ['ism', 'gæl', 'föð', 'móð', 'erm'],
-        "place": ['fyr', 'göt', 'þor', 'örn']
+        # "place": ['fyr', 'göt', 'þor', 'örn']
     },
     "stop_words": ['á', 'dag', 'tala'],
     "match_training_data": True,
