@@ -111,6 +111,16 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+**note:**
+
+Currently, there is a bug when running `rasa interactive` in combination with the package `uvloop`, therefore, you need
+to uninstall `uvloop` before running `rasa interactive`:
+
+``` bash
+pip uninstall uvloop
+```
+
+#### Configuration files
 Rasa needs certain configuration files to be present. For local development, these are:
 
 ```
@@ -146,7 +156,7 @@ rasa test --endpoints config/endpoints.yml  --config config.yml -s tests/
 To run cross validations:
 
 ```bash
-rasa test --endpoints config/endpoints-standalone.yml  --config config.yml -s tests/ --cross-validation
+rasa test --endpoints config/endpoints.yml  --config config.yml -s tests/ --cross-validation
 ```
 
 This needs a long time, as there are multiple models trained and tested. All test and cross-validation results are
