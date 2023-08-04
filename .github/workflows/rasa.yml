@@ -8,11 +8,12 @@ on:
       - "**"
 
 env:
-  RASA_VERSION: 3.4.9
+  RASA_VERSION: 3.6.2
   FUSEKI_VERSION: 4.8.0
   FUSEKI_NETWORK_HOST: localhost
   FUSEKI_NETWORK_PORT: 3030
   DEBUG_MODE: true
+  SQLALCHEMY_SILENCE_UBER_WARNING: 1
 
 jobs:
   training-testing:
