@@ -10,7 +10,7 @@ This is the recommended way to run Rasa in a production environment. Clone the r
 following contents set:
 
 ```bash
-RASA_VERSION=3.4.9                        # Rasa version to use, you should also set an appropriate Rasa SDK version
+RASA_VERSION=3.6.2                        # Rasa version to use, you should also set an appropriate Rasa SDK version
                                           # when building the action_server via docker/sdk/Dockerfile
                                           # in case the major or minor number changes
 RASA_TOKEN=<some_rasa_token>              # Access token for using the Restful API of Rasa
@@ -18,6 +18,7 @@ RABBITMQ_PASSWORD=<some_rabbitmq_passwd>  # Password to use for RabbitMQ
 DB_PASSWORD=<some_database_passwd>        # PostgreSQL password
 RASA_TELEMETRY_ENABLED=false              # Set to true in case you want to send anonymous usage data to Rasa
 DEBUG_MODE=true                           # Set to false, if you don't want lots of information from Rasa
+SQLALCHEMY_SILENCE_UBER_WARNING=1         # Set to 0, if you want to see SQLAlchemy warnings
 FUSEKI_VERSION=4.8.0                      # set version of Fuseki, the RDF knowledge base used in rasa actions
 ```
 You can also use the provided `.env.template` file as an example.
