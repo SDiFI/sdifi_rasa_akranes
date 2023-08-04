@@ -133,13 +133,13 @@ stories:
           - active_loop: null
           - action: action_get_contact_info
 
-      - story: Request contact test, user mentions email preference and only email info is returned
+      - story:  Request contact test, user mentions email preference and only email info is returned
         steps:
           - intent: request_contact
-            user: |-
-              [tölvupóst]{"entity": "email_or_phone", "value": "email"} hjá [maríu jóhannsdóttur](contact)
+            user:  |-
+              [tölvupóst]{"entity": "email_or_phone", "value": "email"} hjá [Maríu Jóhannsdóttur](contact)
           - slot_was_set:
-              - contact: maríu jóhannsdóttur
+              - contact: Maríu Jóhannsdóttur
           - slot_was_set:
               - email_or_phone: email
           - action: request_contact_form
@@ -152,6 +152,14 @@ stories:
               - email_or_phone: email
           - active_loop: null
           - action: action_get_contact_info
+          - slot_was_set:
+              - contact: María Jóhannsdóttir
+          - slot_was_set:
+              - title: null
+          - slot_was_set:
+              - subject: null
+          - slot_was_set:
+              - pronoun: null
 
       - story: Activate request contact with inform and submit form test
         steps:

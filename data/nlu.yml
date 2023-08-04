@@ -588,30 +588,7 @@ nlu:
   examples: |
     - stjórnsýslumál
     - persónuvernd
-- lookup: contact
-  examples: |
-    - Guðmundur Gunnarsson
-    - Sigurður
-    - guðmundur
-    - Gunnar Ólafsson
-    - gunnar ólafsson
-    - Gunnar
-    - Sigríður Kristín Gunnarsdóttir
-    - Sigríði Kristínu Gunnarsdóttur
-    - Sigríði Kristínu
-    - sigríði kristínu gunnarsdóttur
-    - sigríði kristínu
-    - Sigríði
-    - Kristín Margrét Ólafsdóttir
-    - Kristín M Ólafsd
-    - Kristínu Margréti Ólafsdóttur
-    - Kristínu Margréti
-    - kristín margrét
-    - kristínu margréti
-    - Ragnar Helgi Þorsteinsson
-    - Ragnar H
-    - Ragnar H Þorsteins
-    - Guðmundur B
+
 - lookup: title
   examples: |
     - bókari
