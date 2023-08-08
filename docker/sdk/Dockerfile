@@ -1,11 +1,10 @@
-FROM rasa/rasa-sdk:3.6.1
+FROM rasa/rasa:3.6.2
 USER root
-RUN pip install --upgrade pip
-RUN pip install --no-cache-dir --default-timeout=100 islenska==0.4.7
-RUN pip install --no-cache-dir pyyaml==6.0
-RUN pip install --no-cache-dir requests==2.31.0
-
 RUN mkdir -p /app/src
+
+COPY requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
+
 COPY actions/actions.py /app/actions/actions.py
 COPY src/ /app/src
 COPY data/motd/motd.yml /app/data/motd/motd.yml
